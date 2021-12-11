@@ -1,6 +1,22 @@
 import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-abstract class ProblemaSuministro extends Equatable{
+part 'problema_suministro.g.dart';
+
+@JsonSerializable()
+class ProblemaSuministro extends Equatable {
+  ProblemaSuministro({
+    this.cn,
+    this.nombre,
+    this.fini,
+    this.ffin,
+    this.observ,
+    this.activo,
+  });
+
+  factory ProblemaSuministro.fromJson(Map<String, dynamic> json) =>
+      _$ProblemaSuministroFromJson(json);
+
   final String? cn;
   final String? nombre;
   final int? fini;
@@ -8,6 +24,15 @@ abstract class ProblemaSuministro extends Equatable{
   final String? observ;
   final bool? activo;
 
-  ProblemaSuministro(
-      {this.cn, this.nombre, this.fini, this.ffin, this.observ, this.activo});
+  Map<String, dynamic> toJson() => _$ProblemaSuministroToJson(this);
+
+  @override
+  List<Object?> get props => [
+        cn,
+        nombre,
+        fini,
+        ffin,
+        observ,
+        activo,
+      ];
 }

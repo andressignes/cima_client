@@ -1,0 +1,19 @@
+name: cima_repository
+description: A new Flutter package project.
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ">=2.15.0 <3.0.0"
+
+dependencies:
+  cima_api:
+    path: ../cima_api
+  cima_model:
+    path: ../cima_model
+  dartz: any
+  errors:
+    path: ../errors
+
+dev_dependencies:
+  lints: any
