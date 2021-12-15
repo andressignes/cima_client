@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
                 AppLocalizations.of(context)!.appTitle,
             theme: ThemeData(
                 colorScheme:
-                    ColorScheme.fromSwatch(primarySwatch: Colors.green)),
+                    ColorScheme.fromSwatch(primarySwatch: Colors.teal)),
             darkTheme: ThemeData.dark().copyWith(
                 colorScheme:
                     ColorScheme.fromSwatch(primarySwatch: Colors.teal)),
