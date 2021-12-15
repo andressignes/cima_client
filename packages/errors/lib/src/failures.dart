@@ -11,3 +11,6 @@ class ServerFailure extends Failure {}
 
 /// Cache Failure
 class CacheFailure extends Failure {}
+
+/// Json Format not Valid
+class FormatFailure extends Failure {}

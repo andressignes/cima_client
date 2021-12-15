@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:cima_api/cima_api.dart';
 import 'package:cima_model/cima_model.dart';
@@ -31,14 +32,25 @@ class CimaRepository {
   Future<Either<Failure, List<Medicamento>>> authorizedList(
       {Map<String, String>? params}) async {
     try {
-      final response =
-          await _remoteDataSouce.getAutorizados(userParams: params);
+      final response = await _remoteDataSouce.getAutorizados(
+        userParams: params,
+      );
+      log('statusCode: ${response.statusCode}');
       if (response.statusCode == 200) {
-        final medicamentos = (jsonDecode(response.body) as List<dynamic>)
-            .cast<Map<String, dynamic>>()
-            .map((json) => Medicamento.fromJson(json))
-            .toList();
-        return Right(medicamentos);
+        try {
+          final cimaPaginado = CimaPaginado.fromJson(jsonDecode(response.body));
+          if (cimaPaginado.resultados?.isEmpty ?? true) {
+            return Right([]);
+          }
+          final medicamentos = CimaPaginado.fromJson(jsonDecode(response.body))
+              .resultados!
+              .map((e) => Medicamento.fromJson(e))
+              .toList();
+          return Right(medicamentos);
+        } catch (e) {
+          log('error: $e');
+          return Left(FormatFailure());
+        }
       } else {
         return Left(ServerFailure());
       }

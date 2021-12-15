@@ -2,10 +2,10 @@ import 'package:http/http.dart';
 
 class CimaApiClient {
   CimaApiClient({
-    required Client httpClient,
+    Client? httpClient,
     required baseUrl,
   })  : _baseUrl = baseUrl,
-        _client = httpClient;
+        _client = httpClient ?? Client();
 
   final String _baseUrl;
   static const _baseEndPoint = '/cima/rest';

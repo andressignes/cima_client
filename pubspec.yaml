@@ -14,6 +14,13 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  flutter_bloc: ^7.3.3
+  cima_api:
+    path: packages/cima_api
+  cima_repository:
+    path: packages/cima_repository
+  cima_model:
+    path: packages/cima_model
 
 dev_dependencies:
   flutter_test:
