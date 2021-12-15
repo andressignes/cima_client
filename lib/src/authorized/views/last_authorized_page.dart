@@ -1,5 +1,6 @@
 import 'package:cima_client/src/authorized/bloc/authorized_bloc.dart';
 import 'package:cima_client/src/core/widgets/widgets.dart';
+import 'package:cima_client/src/settings/settings_view.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +31,21 @@ class LastAuthorizedView extends StatelessWidget {
     return BlocBuilder<AuthorizedBloc, AuthorizedState>(
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+            title: const Text('Last Authorized'),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.settings),
+                onPressed: () {
+                  // Navigate to the settings page. If the user leaves and returns
+                  // to the app after it has been killed while running in the
+                  // background, the navigation stack is restored.
+                  Navigator.restorablePushNamed(
+                      context, SettingsView.routeName);
+                },
+              ),
+            ],
+          ),
           body: const Center(child: LastAuthorizedBlocBuilder()),
           floatingActionButton: FloatingActionButton(
             onPressed: () {

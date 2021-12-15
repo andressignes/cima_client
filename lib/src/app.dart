@@ -40,8 +40,12 @@ class MyApp extends StatelessWidget {
             ],
             onGenerateTitle: (BuildContext context) =>
                 AppLocalizations.of(context)!.appTitle,
-            theme: ThemeData(),
-            darkTheme: ThemeData.dark(),
+            theme: ThemeData(
+                colorScheme:
+                    ColorScheme.fromSwatch(primarySwatch: Colors.green)),
+            darkTheme: ThemeData.dark().copyWith(
+                colorScheme:
+                    ColorScheme.fromSwatch(primarySwatch: Colors.teal)),
             themeMode: settingsController.themeMode,
             onGenerateRoute: (RouteSettings routeSettings) {
               return MaterialPageRoute<void>(
