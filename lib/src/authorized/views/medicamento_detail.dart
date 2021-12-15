@@ -1,4 +1,5 @@
 import 'package:cima_client/src/core/widgets/medicamento_foto.dart';
+import 'package:cima_client/src/medicamento/views/medicamento_detail.dart';
 import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
 
@@ -21,11 +22,11 @@ class CardMedicamento extends StatelessWidget {
       // shape: _shape,
       child: InkWell(
         onTap: () {
-          // Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //         builder: (context) =>
-          //             MedicationPage(medicamento: _medicamento)));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      MedicationPage(medicamento: _medicamento)));
           debugPrint('Card was tapped');
         },
         // Generally, material cards use onSurface with 12% opacity for the pressed state.
