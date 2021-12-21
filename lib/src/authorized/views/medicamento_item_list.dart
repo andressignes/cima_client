@@ -66,6 +66,5 @@ class FotoItemList extends StatelessWidget {
         fotos!.firstWhere((foto) => foto.tipo == 'materialas').url!,
       );
     }
-    return Container();
   }
 }

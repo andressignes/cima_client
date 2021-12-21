@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:cima_client/src/core/widgets/pdf_button_widget.dart';
 import 'package:cima_client/src/core/widgets/widgets.dart';
 import 'package:cima_client/src/medication_detail/medication_detail.dart';
 import 'package:cima_model/cima_model.dart';
@@ -20,14 +23,14 @@ class MedicationDetailPage extends StatelessWidget {
             ..add(FetchMedicamento(nregistro: _medicamento.nregistro)),
       child: Scaffold(
         appBar: AppBar(),
-        body: Center(child: _MedicationBlocBuilder(medicamento: _medicamento)),
+        body: _MedicationDetailView(medicamento: _medicamento),
       ),
     );
   }
 }
 
-class _MedicationBlocBuilder extends StatelessWidget {
-  const _MedicationBlocBuilder({
+class _MedicationDetailView extends StatelessWidget {
+  const _MedicationDetailView({
     Key? key,
     required Medicamento medicamento,
   })  : _medicamento = medicamento,
@@ -44,6 +47,7 @@ class _MedicationBlocBuilder extends StatelessWidget {
       } else if (state is Loading) {
         return const CimaLoading();
       } else if (state is Available) {
+        log(state.medicamento.toString());
         return _MedicationCard(medicamento: _medicamento);
       } else {
         return const CimaError();
@@ -63,29 +67,68 @@ class _MedicationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-            // color: Colors.red,
-            ),
-        SizedBox(
-          // color: Colors.blue,
-          height: 200,
-          child: MedicamentoFoto(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          MedicationPhotoWidget(
             fotos: _medicamento.fotos!,
           ),
-        ),
-        Positioned.fill(
-            left: 0,
-            top: 160,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                _medicamento.nombre!,
-                overflow: TextOverflow.ellipsis,
-              ),
-            )),
-      ],
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  _medicamento.nombre!,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+                Text(
+                  _medicamento.labtitular!,
+                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                      color: Theme.of(context).colorScheme.primaryVariant),
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    PdfButtonWidget(
+                      title: 'Ficha Tecnica',
+                      url: _medicamento.docs?[0].url,
+                    ),
+                    PdfButtonWidget(
+                      title: 'Prospecto',
+                      url: _medicamento.docs?[1].url,
+                    ),
+                  ],
+                )
+              ],
+            ),
+          )
+        ],
+      ),
     );
+  }
+}
+
+class MedicationPhotoWidget extends StatelessWidget {
+  const MedicationPhotoWidget({
+    Key? key,
+    required this.fotos,
+  }) : super(key: key);
+  final List<Foto>? fotos;
+
+  @override
+  Widget build(BuildContext context) {
+    if (fotos == null || fotos!.isEmpty) {
+      return Image.asset('assets/images/no_image.png');
+    } else {
+      return Image.network(
+        fotos!
+            .firstWhere((foto) => foto.tipo == 'materialas')
+            .url!
+            .replaceAll('thumbnails', 'full'),
+      );
+    }
+    return Container();
   }
 }
