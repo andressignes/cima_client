@@ -1,14 +1,14 @@
 import 'package:cima_client/src/core/widgets/widgets.dart';
-import 'package:cima_client/src/medicamento/bloc/medicamento_bloc.dart';
+import 'package:cima_client/src/medication_detail/medication_detail.dart';
 import 'package:cima_model/cima_model.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MedicationPage extends StatelessWidget {
+class MedicationDetailPage extends StatelessWidget {
   final Medicamento _medicamento;
 
-  const MedicationPage({Key? key, required medicamento})
+  const MedicationDetailPage({Key? key, required medicamento})
       : _medicamento = medicamento,
         super(key: key);
 
@@ -16,7 +16,7 @@ class MedicationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          MedicamentoBloc(cimaRepository: context.read<CimaRepository>())
+          MedicationDetailBloc(cimaRepository: context.read<CimaRepository>())
             ..add(FetchMedicamento(nregistro: _medicamento.nregistro)),
       child: Scaffold(
         appBar: AppBar(),
@@ -37,7 +37,7 @@ class _MedicationBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MedicamentoBloc, MedicamentoState>(
+    return BlocBuilder<MedicationDetailBloc, MedicationDetailState>(
         builder: (context, state) {
       if (state is Error) {
         return const CimaError();

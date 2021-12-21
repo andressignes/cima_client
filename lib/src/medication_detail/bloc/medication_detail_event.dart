@@ -1,13 +1,13 @@
-part of 'medicamento_bloc.dart';
+part of 'medication_detail_bloc.dart';
 
-abstract class MedicamentoEvent extends Equatable {
-  const MedicamentoEvent();
+abstract class MedicationDetailEvent extends Equatable {
+  const MedicationDetailEvent();
 
   @override
   List<Object?> get props => [];
 }
 
-class FetchMedicamento extends MedicamentoEvent {
+class FetchMedicamento extends MedicationDetailEvent {
   const FetchMedicamento({this.cn, this.nregistro});
 
   final String? cn;
