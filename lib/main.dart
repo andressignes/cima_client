@@ -11,7 +11,7 @@ void main() async {
   final settingsController = SettingsController(SettingsService());
   await settingsController.loadSettings();
   final cimaApi = CimaApiClient(baseUrl: EnvironmentConfig.apiUrl);
-  final cimaRepository = CimaRepository(remoteDataSouce: cimaApi);
+  final cimaRepository = CimaRepository(remoteDataSource: cimaApi);
 
   runApp(MyApp(
     settingsController: settingsController,

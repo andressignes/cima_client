@@ -1,4 +1,4 @@
-import 'package:cima_client/src/authorized/views/medicamento_item_list.dart';
+import 'package:cima_client/src/core/widgets/medicamento_item_list.dart';
 import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
 

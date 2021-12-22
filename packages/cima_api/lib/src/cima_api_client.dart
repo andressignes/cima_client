@@ -34,9 +34,7 @@ class CimaApiClient {
     // return MedicamentoModel.fromJson(decode);
   }
 
-  Future<Response> getAutorizados({Map<String, String>? userParams}) async {
-    var params = {'autorizados': '1'};
-    userParams?.isNotEmpty == true;
+  Future<Response> getMedications({Map<String, String>? params}) async {
     var url = Uri.https(_baseUrl, '$_baseEndPoint/medicamentos', params);
     var cimaResponse = await _client.get(url);
     return cimaResponse;

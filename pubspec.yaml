@@ -16,6 +16,8 @@ dependencies:
     path: packages/cima_repository
   cima_model:
     path: packages/cima_model
+  formz_inputs:
+    path: packages/formz_inputs
   flutter:
     sdk: flutter
   flutter_bloc: ^7.3.3

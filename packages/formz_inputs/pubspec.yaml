@@ -1,0 +1,12 @@
+name: formz_inputs
+description: Inputs fields package
+version: 0.0.1
+
+environment:
+  sdk: ">=2.15.0 <3.0.0"
+
+dependencies:
+  formz: any
+
+dev_dependencies:
+  lints: ^1.0.0
