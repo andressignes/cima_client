@@ -71,7 +71,7 @@ class _MedicationCard extends StatelessWidget {
       child: Column(
         children: [
           MedicationPhotoWidget(
-            fotos: _medicamento.fotos!,
+            fotos: _medicamento.fotos,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -93,11 +93,15 @@ class _MedicationCard extends StatelessWidget {
                   children: [
                     PdfButtonWidget(
                       title: 'Ficha Tecnica',
-                      url: _medicamento.docs?[0].url,
+                      url: _medicamento.docs
+                          ?.firstWhere((element) => element.tipo == 1)
+                          .url,
                     ),
                     PdfButtonWidget(
                       title: 'Prospecto',
-                      url: _medicamento.docs?[1].url,
+                      url: _medicamento.docs
+                          ?.firstWhere((element) => element.tipo == 2)
+                          .url,
                     ),
                   ],
                 )
