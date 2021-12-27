@@ -34,9 +34,9 @@ class CimaRepository {
   Future<Either<Failure, List<Medicamento>>> authorizedList(
       {Map<String, String>? params}) async {
     try {
-      var params = {'autorizados': '1'};
+      var paramsDefault = {'autorizados': '1'};
       final response = await _remoteDataSource.getMedications(
-        params: params,
+        params: paramsDefault,
       );
       log('statusCode: ${response.statusCode}');
       if (response.statusCode == 200) {
@@ -58,6 +58,7 @@ class CimaRepository {
         return Left(ServerFailure());
       }
     } catch (e) {
+      log(e.toString());
       return Left(ServerFailure());
     }
   }

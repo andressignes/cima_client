@@ -1,10 +1,13 @@
+import 'dart:developer';
+
 import 'package:http/http.dart';
 
 class CimaApiClient {
   CimaApiClient({
     Client? httpClient,
-    required baseUrl,
-  })  : _baseUrl = baseUrl,
+    required String baseUrl,
+  })  : assert(baseUrl.isNotEmpty),
+        _baseUrl = baseUrl,
         _client = httpClient ?? Client();
 
   final String _baseUrl;
@@ -36,6 +39,7 @@ class CimaApiClient {
 
   Future<Response> getMedications({Map<String, String>? params}) async {
     var url = Uri.https(_baseUrl, '$_baseEndPoint/medicamentos', params);
+    log(url.toString());
     var cimaResponse = await _client.get(url);
     return cimaResponse;
     // if (cimaResponse.statusCode != 200) {
