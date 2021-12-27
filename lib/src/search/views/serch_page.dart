@@ -10,10 +10,9 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => SearchCubit(),
-      child: const SearchView(),
-    );
+    return MultiBlocProvider(providers: [
+      BlocProvider(create: (_) => SearchCubit()),
+    ], child: const SearchView());
   }
 }
 

@@ -8,9 +8,11 @@ class SearchCubit extends Cubit<SearchState> {
   SearchCubit() : super(const SearchState());
 
   void medicationNameChanged(String medicationName) {
+    final medicamentoName = MedicationNameFormInput.dirty(medicationName);
     emit(
       state.copyWith(
         medicationName: MedicationNameFormInput.dirty(medicationName),
+        status: Formz.validate([medicamentoName]),
       ),
     );
   }

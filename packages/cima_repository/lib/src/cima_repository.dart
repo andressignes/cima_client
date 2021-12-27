@@ -36,7 +36,7 @@ class CimaRepository {
     try {
       var paramsDefault = {'autorizados': '1'};
       final response = await _remoteDataSource.getMedications(
-        params: paramsDefault,
+        params: params,
       );
       log('statusCode: ${response.statusCode}');
       if (response.statusCode == 200) {

@@ -1,5 +1,6 @@
 import 'package:cima_client/src/home/views/home_page.dart';
 import 'package:cima_client/src/search/views/serch_page.dart';
+import 'package:cima_client/src/search_result/views/search_result_page.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,6 +57,10 @@ class MyApp extends StatelessWidget {
                       return SettingsView(controller: settingsController);
                     case SearchPage.routeName:
                       return const SearchPage();
+                    case SearchResultPage.routeName:
+                      return SearchResultPage(
+                          params: ModalRoute.of(context)!.settings.arguments
+                              as Map<String, String>);
                     case HomePage.routeName:
                     default:
                       return const HomePage();
