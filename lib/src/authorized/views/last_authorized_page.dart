@@ -1,5 +1,5 @@
-import 'package:cima_client/src/authorized/bloc/authorized_bloc.dart';
 import 'package:cima_client/src/core/widgets/widgets.dart';
+import 'package:cima_client/src/search_result/bloc/search_medication_result_bloc.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,10 +14,10 @@ class LastAuthorizedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthorizedBloc(
+      create: (context) => SearchMedicationResultBloc(
         cimaRepository: context.read<CimaRepository>(),
       )..add(
-          const GetAuthorized(params: {'autorizados': '1'}),
+          const Search(params: {'autorizados': '1'}),
         ),
       child: const LastAuthorizedBlocBuilder(),
     );
@@ -29,15 +29,15 @@ class LastAuthorizedBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthorizedBloc, AuthorizedState>(
+    return BlocBuilder<SearchMedicationResultBloc, SearchMedicationResultState>(
         builder: (context, state) {
-      if (state is AuthorizedStateInitial) {
+      if (state is Initial) {
         return const CimaEmpty();
-      } else if (state is AuthorizedStateLoading) {
+      } else if (state is Loading) {
         return const CimaLoading();
-      } else if (state is AuthorizedStateAvailable) {
+      } else if (state is Available) {
         return CimaPopulatedList(medicamentos: state.medicamentos);
-      } else if (state is AuthorizedStateError) {
+      } else if (state is Error) {
         return const CimaError();
       } else {
         return const CimaError();

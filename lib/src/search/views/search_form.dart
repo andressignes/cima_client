@@ -54,7 +54,7 @@ class _SubmitButton extends StatelessWidget {
               Map<String, String> params = {
                 'nombre': state.medicationName.value
               };
-              Navigator.pushNamed(
+              Navigator.pushReplacementNamed(
                 context,
                 SearchResultPage.routeName,
                 arguments: params,

@@ -1,4 +1,4 @@
-import 'package:cima_client/src/authorized/bloc/authorized_bloc.dart';
+import 'package:cima_client/src/search_result/bloc/search_medication_result_bloc.dart';
 import 'package:cima_client/src/search_result/views/search_result_view.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +19,9 @@ class SearchResultPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       body: BlocProvider(
-        create: (context) => AuthorizedBloc(
+        create: (context) => SearchMedicationResultBloc(
           cimaRepository: context.read<CimaRepository>(),
-        )..add(GetAuthorized(params: params)),
+        )..add(Search(params: params)),
         child: const SearchResultView(),
       ),
     );
