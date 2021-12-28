@@ -31,38 +31,6 @@ class CimaRepository {
     }
   }
 
-  Future<Either<Failure, List<Medicamento>>> authorizedList(
-      {Map<String, String>? params}) async {
-    try {
-      var paramsDefault = {'autorizados': '1'};
-      final response = await _remoteDataSource.getMedications(
-        params: params,
-      );
-      log('statusCode: ${response.statusCode}');
-      if (response.statusCode == 200) {
-        try {
-          final cimaPaginado = CimaPaginado.fromJson(jsonDecode(response.body));
-          if (cimaPaginado.resultados?.isEmpty ?? true) {
-            return Right([]);
-          }
-          final medicamentos = CimaPaginado.fromJson(jsonDecode(response.body))
-              .resultados!
-              .map((e) => Medicamento.fromJson(e))
-              .toList();
-          return Right(medicamentos);
-        } catch (e) {
-          log('error: $e');
-          return Left(FormatFailure());
-        }
-      } else {
-        return Left(ServerFailure());
-      }
-    } catch (e) {
-      log(e.toString());
-      return Left(ServerFailure());
-    }
-  }
-
   Future<Either<Failure, List<Medicamento>>> findMedications(
       {Map<String, String>? params}) async {
     try {

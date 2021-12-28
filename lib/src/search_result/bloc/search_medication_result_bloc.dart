@@ -25,7 +25,7 @@ class SearchMedicationResultBloc
   Stream<SearchMedicationResultState> mapGetAuthorizedEventToState(
       Search event) async* {
     yield Loading();
-    final result = await _cimaRepository.authorizedList(params: event.params);
+    final result = await _cimaRepository.findMedications(params: event.params);
 
     yield result.fold(
       (error) => Error(),

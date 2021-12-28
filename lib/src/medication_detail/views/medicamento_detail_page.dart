@@ -87,6 +87,14 @@ class _MedicationCard extends StatelessWidget {
                   style: Theme.of(context).textTheme.subtitle1!.copyWith(
                       color: Theme.of(context).colorScheme.primaryVariant),
                 ),
+                Text(
+                  'Num Registro: ${_medicamento.nregistro!}',
+                  style: Theme.of(context).textTheme.caption,
+                ),
+                Text(
+                  'CN: ${_medicamento.presentaciones?.length ?? 0}',
+                  style: Theme.of(context).textTheme.caption,
+                ),
                 const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -94,13 +102,19 @@ class _MedicationCard extends StatelessWidget {
                     PdfButtonWidget(
                       title: 'Ficha Tecnica',
                       url: _medicamento.docs
-                          ?.firstWhere((element) => element.tipo == 1)
+                          ?.firstWhere(
+                            (element) => element.tipo == 1,
+                            orElse: () => Documento(),
+                          )
                           .url,
                     ),
                     PdfButtonWidget(
                       title: 'Prospecto',
                       url: _medicamento.docs
-                          ?.firstWhere((element) => element.tipo == 2)
+                          ?.firstWhere(
+                            (element) => element.tipo == 2,
+                            orElse: () => Documento(),
+                          )
                           .url,
                     ),
                   ],
