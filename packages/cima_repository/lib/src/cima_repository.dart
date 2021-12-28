@@ -13,7 +13,7 @@ class CimaRepository {
 
   final CimaApiClient _remoteDataSource;
 
-  Future<Either<Failure, Medicamento>> get({
+  Future<Either<Failure, Medicamento>> getMedicamento({
     String? nregistro,
     String? cn,
   }) async {
@@ -48,6 +48,36 @@ class CimaRepository {
               .map((e) => Medicamento.fromJson(e))
               .toList();
           return Right(medicamentos);
+        } catch (e) {
+          log('error: $e');
+          return Left(FormatFailure());
+        }
+      } else {
+        return Left(ServerFailure());
+      }
+    } catch (e) {
+      return Left(ServerFailure());
+    }
+  }
+
+  Future<Either<Failure, List<ProblemaSuministro>>> findProblemasSuministro({
+    required Map<String, String> params,
+  }) async {
+    try {
+      final response = await _remoteDataSource.getProblemasSuministro(
+        params: params,
+      );
+      log('statusCode: ${response.statusCode}');
+      if (response.statusCode == 200) {
+        try {
+          final cimaPaginado = CimaPaginado.fromJson(jsonDecode(response.body));
+          if (cimaPaginado.resultados?.isEmpty ?? true) {
+            return Right([]);
+          }
+          final problemasSuministro = cimaPaginado.resultados!
+              .map((e) => ProblemaSuministro.fromJson(e))
+              .toList();
+          return Right(problemasSuministro);
         } catch (e) {
           log('error: $e');
           return Left(FormatFailure());

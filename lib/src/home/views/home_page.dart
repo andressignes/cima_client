@@ -1,4 +1,5 @@
 import 'package:cima_client/src/authorized/views/last_authorized_page.dart';
+import 'package:cima_client/src/problemas_suministro/views/problemas_suministro_page.dart';
 import 'package:cima_client/src/search/views/serch_page.dart';
 import 'package:cima_client/src/settings/settings_view.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +13,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('⚕️ CIMA'),
+        title: const Text('⚕️ Last Medication Authorized'),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.report_problem),
+            onPressed: () {
+              Navigator.restorablePushNamed(
+                  context, ProblemasSuministroPage.routeName);
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {

@@ -2,6 +2,14 @@
 
 A CIMA client to find medication of AEMPS
 
+# Pantalles
+* Home
+* Search
+* Medication Detail
+* Authrorized List
+* Problemas Suministro List
+* Preferences
+
 ## Route Map
  * Scan code from floatting action button
  * Advanced search on appbar

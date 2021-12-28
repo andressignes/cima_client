@@ -28,7 +28,7 @@ class MedicationDetailBloc
   Stream<MedicationDetailState> mapEventGetMedicamento(
       FetchMedicamento event) async* {
     yield Loading();
-    final _result = await _cimaRepository.get(
+    final _result = await _cimaRepository.getMedicamento(
       cn: event.cn,
       nregistro: event.nregistro,
     );

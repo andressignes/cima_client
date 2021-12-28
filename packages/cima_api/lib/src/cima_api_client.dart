@@ -50,4 +50,11 @@ class CimaApiClient {
     // var decode = json.decode(cimaResponse.body);
     // return CimaPaginadoModel.fromJson(decode);
   }
+
+  Future<Response> getProblemasSuministro({Map<String, String>? params}) async {
+    var url = Uri.https(_baseUrl, '$_baseEndPoint/psuministro', params);
+    log(url.toString());
+    var cimaResponse = await _client.get(url);
+    return cimaResponse;
+  }
 }

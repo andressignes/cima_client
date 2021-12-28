@@ -1,4 +1,5 @@
 import 'package:cima_client/src/home/views/home_page.dart';
+import 'package:cima_client/src/problemas_suministro/views/problemas_suministro_page.dart';
 import 'package:cima_client/src/search/views/serch_page.dart';
 import 'package:cima_client/src/search_result/views/search_result_page.dart';
 import 'package:cima_repository/cima_repository.dart';
@@ -62,6 +63,8 @@ class MyApp extends StatelessWidget {
                       return SearchResultPage(
                           params: ModalRoute.of(context)!.settings.arguments
                               as Map<String, String>);
+                    case ProblemasSuministroPage.routeName:
+                      return const ProblemasSuministroPage();
                     case HomePage.routeName:
                     default:
                       return const HomePage();
