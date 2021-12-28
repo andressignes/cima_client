@@ -9,10 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MedicationDetailPage extends StatelessWidget {
-  final Medicamento _medicamento;
+  final String _nregistro;
 
-  const MedicationDetailPage({Key? key, required medicamento})
-      : _medicamento = medicamento,
+  const MedicationDetailPage({Key? key, required nregistro})
+      : _nregistro = nregistro,
         super(key: key);
 
   @override
@@ -20,10 +20,19 @@ class MedicationDetailPage extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           MedicationDetailBloc(cimaRepository: context.read<CimaRepository>())
-            ..add(FetchMedicamento(nregistro: _medicamento.nregistro)),
+            ..add(FetchMedicamento(nregistro: _nregistro)),
       child: Scaffold(
-        appBar: AppBar(),
-        body: _MedicationDetailView(medicamento: _medicamento),
+        appBar: AppBar(
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.star_border),
+              onPressed: () {
+                //TODO Add to favorites
+              },
+            )
+          ],
+        ),
+        body: _MedicationDetailView(),
       ),
     );
   }
@@ -32,11 +41,7 @@ class MedicationDetailPage extends StatelessWidget {
 class _MedicationDetailView extends StatelessWidget {
   const _MedicationDetailView({
     Key? key,
-    required Medicamento medicamento,
-  })  : _medicamento = medicamento,
-        super(key: key);
-
-  final Medicamento _medicamento;
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +53,7 @@ class _MedicationDetailView extends StatelessWidget {
         return const CimaLoading();
       } else if (state is Available) {
         log(state.medicamento.toString());
-        return _MedicationCard(medicamento: _medicamento);
+        return _MedicationCard(medicamento: state.medicamento);
       } else {
         return const CimaError();
       }
@@ -137,16 +142,22 @@ class MedicationPhotoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (fotos == null || fotos!.isEmpty) {
-      return Image.asset('assets/images/no_image.png');
-    } else {
-      return Image.network(
-        fotos!
-            .firstWhere((foto) => foto.tipo == 'materialas')
-            .url!
-            .replaceAll('thumbnails', 'full'),
-      );
-    }
-    return Container();
+    return SizedBox(
+      height: 150,
+      width: double.infinity,
+      child: fotos?.isEmpty ?? true
+          ? Image.asset('assets/images/no_image.png')
+          : Image.network(
+              fotos!
+                  .firstWhere((foto) => foto.tipo == 'materialas')
+                  .url!
+                  .replaceAll('thumbnails', 'full'),
+              fit: BoxFit.cover,
+              loadingBuilder: (context, child, loadingProgress) {
+              return loadingProgress == null
+                  ? child
+                  : const Center(child: CircularProgressIndicator());
+            }),
+    );
   }
 }

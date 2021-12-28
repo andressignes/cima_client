@@ -21,7 +21,7 @@ class MedicamentoItemList extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  MedicationDetailPage(medicamento: _medicamento))),
+                  MedicationDetailPage(nregistro: _medicamento.nregistro))),
       child: Card(
         child: Row(
           children: [
