@@ -19,13 +19,13 @@ class LastAuthorizedPage extends StatelessWidget {
       )..add(
           const Search(params: {'autorizados': '1'}),
         ),
-      child: const LastAuthorizedBlocBuilder(),
+      child: const LastAuthorizedView(),
     );
   }
 }
 
-class LastAuthorizedBlocBuilder extends StatelessWidget {
-  const LastAuthorizedBlocBuilder({Key? key}) : super(key: key);
+class LastAuthorizedView extends StatelessWidget {
+  const LastAuthorizedView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
