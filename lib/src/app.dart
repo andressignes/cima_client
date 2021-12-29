@@ -1,3 +1,4 @@
+import 'package:cima_client/src/authorized/views/last_authorized_page.dart';
 import 'package:cima_client/src/home/views/home_page.dart';
 import 'package:cima_client/src/problemas_suministro/views/problemas_suministro_page.dart';
 import 'package:cima_client/src/search/views/serch_page.dart';
@@ -65,6 +66,8 @@ class MyApp extends StatelessWidget {
                               as Map<String, String>);
                     case ProblemasSuministroPage.routeName:
                       return const ProblemasSuministroPage();
+                    case LastAuthorizedPage.routeName:
+                      return const LastAuthorizedPage();
                     case HomePage.routeName:
                     default:
                       return const HomePage();

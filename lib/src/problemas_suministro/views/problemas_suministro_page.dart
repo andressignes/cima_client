@@ -27,6 +27,9 @@ class _ProblemasSuministroView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Problemas de Suministro'),
+      ),
       body: BlocBuilder<ProblemasSuministroBloc, ProblemasSuministroState>(
           builder: (context, state) {
         if (state is ProblemasSuministroLoading) {

@@ -29,19 +29,25 @@ class LastAuthorizedBlocBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SearchMedicationResultBloc, SearchMedicationResultState>(
-        builder: (context, state) {
-      if (state is Initial) {
-        return const CimaEmpty();
-      } else if (state is Loading) {
-        return const CimaLoading();
-      } else if (state is Available) {
-        return CimaPopulatedList(medicamentos: state.medicamentos);
-      } else if (state is Error) {
-        return const CimaError();
-      } else {
-        return const CimaError();
-      }
-    });
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Autorizados recientemente'),
+      ),
+      body:
+          BlocBuilder<SearchMedicationResultBloc, SearchMedicationResultState>(
+              builder: (context, state) {
+        if (state is Initial) {
+          return const CimaEmpty();
+        } else if (state is Loading) {
+          return const CimaLoading();
+        } else if (state is Available) {
+          return CimaPopulatedList(medicamentos: state.medicamentos);
+        } else if (state is Error) {
+          return const CimaError();
+        } else {
+          return const CimaError();
+        }
+      }),
+    );
   }
 }

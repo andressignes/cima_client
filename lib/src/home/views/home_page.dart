@@ -1,4 +1,4 @@
-import 'package:cima_client/src/authorized/views/last_authorized_page.dart';
+import 'package:cima_client/src/core/widgets/drawer_widget.dart';
 import 'package:cima_client/src/problemas_suministro/views/problemas_suministro_page.dart';
 import 'package:cima_client/src/search/views/serch_page.dart';
 import 'package:cima_client/src/settings/settings_view.dart';
@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('⚕️ Last Medication Authorized'),
+        title: const Text('⚕️ CIMA Client'),
         actions: [
           IconButton(
             icon: const Icon(Icons.report_problem),
@@ -36,7 +36,8 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: const LastAuthorizedPage(),
+      body: const Center(child: Text('Home')),
+      drawer: const DrawerWidget(),
       // floatingActionButton: FloatingActionButton(
       //   onPressed: () {
       //     context.read<AuthorizedBloc>().add(const GetAuthorized());
