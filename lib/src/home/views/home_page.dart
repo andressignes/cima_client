@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
               'Aqui podras consultar los medicamentos que tienen disponibles en el inventario, ver los ultimos medicamentos autorizados y los medicamentos que tienen algun tipo de problemas de suministro.',
               style: Theme.of(context).textTheme.bodyText2,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
               'Para mas informacion dirigete a la web de la AEMPS o ponte en contacto en alguna de sus redes sociales.',
               style: Theme.of(context).textTheme.bodyText2,

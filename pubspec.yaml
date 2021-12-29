@@ -23,6 +23,7 @@ dependencies:
   flutter_bloc: ^7.3.3
   flutter_localizations:
     sdk: flutter
+  intl: any
   url_launcher: any
 
 dev_dependencies:

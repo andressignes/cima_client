@@ -9,10 +9,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MedicationDetailPage extends StatelessWidget {
-  final String _nregistro;
+  final String? _nregistro;
+  final String? _cn;
 
-  const MedicationDetailPage({Key? key, required nregistro})
-      : _nregistro = nregistro,
+  const MedicationDetailPage({
+    Key? key,
+    String? nregistro,
+    String? cn,
+  })  : assert(nregistro != null || cn != null),
+        _nregistro = nregistro,
+        _cn = cn,
         super(key: key);
 
   @override
@@ -20,7 +26,7 @@ class MedicationDetailPage extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           MedicationDetailBloc(cimaRepository: context.read<CimaRepository>())
-            ..add(FetchMedicamento(nregistro: _nregistro)),
+            ..add(FetchMedicamento(nregistro: _nregistro, cn: _cn)),
       child: Scaffold(
         appBar: AppBar(
           actions: [
