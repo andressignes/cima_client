@@ -32,7 +32,7 @@ class MedicationDetailPage extends StatelessWidget {
             )
           ],
         ),
-        body: _MedicationDetailView(),
+        body: const _MedicationDetailView(),
       ),
     );
   }

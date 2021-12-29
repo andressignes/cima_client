@@ -48,7 +48,7 @@ class SettingsView extends StatelessWidget {
                   )
                 ],
               ),
-              Spacer(),
+              const Spacer(),
               Center(
                   child: Column(
                 children: [

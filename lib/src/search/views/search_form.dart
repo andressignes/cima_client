@@ -63,7 +63,7 @@ class _SubmitButton extends StatelessWidget {
               return;
             }
           },
-          child: Text('Submit'),
+          child: const Text('Buscar'),
         );
       },
     );
