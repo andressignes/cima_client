@@ -11,10 +11,16 @@ class CimaLoading extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text('💊', style: TextStyle(fontSize: 64)),
-          Text(
-            'Loading CIMA',
-            style: theme.textTheme.headline5,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text('💊', style: TextStyle(fontSize: 32)),
+              const SizedBox(width: 16),
+              Text(
+                'Loading...',
+                style: theme.textTheme.headline5,
+              ),
+            ],
           ),
           const Padding(
             padding: EdgeInsets.all(16.0),
