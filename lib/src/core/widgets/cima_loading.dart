@@ -17,7 +17,7 @@ class CimaLoading extends StatelessWidget {
               const Text('💊', style: TextStyle(fontSize: 32)),
               const SizedBox(width: 16),
               Text(
-                'Loading...',
+                'buscando...',
                 style: theme.textTheme.headline5,
               ),
             ],

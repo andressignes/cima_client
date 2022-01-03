@@ -15,23 +15,23 @@ class MedicationPhotoWidget extends StatelessWidget {
       return Image.asset('assets/images/no_image.png');
     }
     final urlPhoto =
-        fotos!.firstWhere((foto) => foto.tipo == 'materialas').url!;
+        fotos!.firstWhere((foto) => foto.tipo == 'materialas').url ?? '';
 
     return SizedBox(
       height: 150,
       width: double.infinity,
       child: fotos?.isEmpty ?? true
           ? Image.asset('assets/images/no_image.png')
-          : Hero(
-              tag: urlPhoto,
-              child: InkWell(
-                onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => ImageFullscreenPage(
-                      imageLink: urlPhoto.replaceAll('thumbnails', 'full'),
-                    ),
+          : InkWell(
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ImageFullscreenPage(
+                    imageLink: urlPhoto,
                   ),
                 ),
+              ),
+              child: Hero(
+                tag: urlPhoto,
                 child: Image.network(urlPhoto.replaceAll('thumbnails', 'full'),
                     fit: BoxFit.cover,
                     loadingBuilder: (context, child, loadingProgress) {

@@ -11,6 +11,18 @@ class CimaPopulatedList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (_medicamentos.isEmpty) {
+      return Padding(
+        padding: const EdgeInsets.all(16),
+        child: Center(
+          child: Text(
+            'No se han encontrado medicamentos',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.headline4,
+          ),
+        ),
+      );
+    }
     return ListView.builder(
       itemCount: _medicamentos.length,
       itemBuilder: (context, index) => MedicationItemList(

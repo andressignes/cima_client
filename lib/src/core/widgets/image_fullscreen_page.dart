@@ -3,18 +3,19 @@ import 'package:flutter/material.dart';
 class ImageFullscreenPage extends StatelessWidget {
   const ImageFullscreenPage({
     Key? key,
-    required this.imageLink,
-  }) : super(key: key);
+    required String imageLink,
+  })  : _imageLink = imageLink,
+        super(key: key);
 
-  final String imageLink;
+  final String _imageLink;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Hero(
-        tag: imageLink,
+        tag: _imageLink,
         child: Image.network(
-          imageLink,
+          _imageLink.replaceAll('thumbnails', 'full'),
           fit: BoxFit.contain,
           height: double.infinity,
           width: double.infinity,

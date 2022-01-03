@@ -1,3 +1,4 @@
+import 'package:cima_client/src/core/widgets/image_fullscreen_page.dart';
 import 'package:cima_model/cima_model.dart' show Foto;
 import 'package:flutter/material.dart';
 
@@ -12,16 +13,32 @@ class PharmaceuticalFormPhotoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: fotos?.isEmpty ?? true
-          ? Image.asset('assets/images/no_image.png')
-          : Image.network(fotos!.firstWhere((foto) => foto.tipo == _type).url!,
-              fit: BoxFit.cover,
-              loadingBuilder: (context, child, loadingProgress) {
-              return loadingProgress == null
-                  ? child
-                  : const Center(child: CircularProgressIndicator());
-            }),
+    if (fotos == null ||
+        fotos!.isEmpty ||
+        fotos!.indexWhere((element) => element.tipo == _type) == -1) {
+      return Image.asset('assets/images/no_image.png');
+    }
+    final urlPhoto = fotos!.firstWhere((foto) => foto.tipo == _type).url ?? '';
+    return InkWell(
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => ImageFullscreenPage(
+            imageLink: urlPhoto,
+          ),
+        ),
+      ),
+      child: Hero(
+        tag: urlPhoto,
+        child: Image.network(
+          urlPhoto,
+          fit: BoxFit.cover,
+          loadingBuilder: (context, child, loadingProgress) {
+            return loadingProgress == null
+                ? child
+                : const Center(child: CircularProgressIndicator());
+          },
+        ),
+      ),
     );
   }
 }
