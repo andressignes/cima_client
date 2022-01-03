@@ -1,7 +1,7 @@
 import 'package:cima_client/src/authorized/views/last_authorized_page.dart';
 import 'package:cima_client/src/problemas_suministro/views/problemas_suministro_page.dart';
 import 'package:cima_client/src/search/views/serch_page.dart';
-import 'package:cima_client/src/settings/settings_view.dart';
+import 'package:cima_client/src/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {

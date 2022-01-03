@@ -3,14 +3,13 @@ import 'package:cima_client/src/home/views/home_page.dart';
 import 'package:cima_client/src/problemas_suministro/views/problemas_suministro_page.dart';
 import 'package:cima_client/src/search/views/serch_page.dart';
 import 'package:cima_client/src/search_result/views/search_result_page.dart';
+import 'package:cima_client/src/settings/settings_page.dart';
 import 'package:cima_client/src/theme/cubit/theme_app_cubit.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
-import 'settings/settings_view.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({
