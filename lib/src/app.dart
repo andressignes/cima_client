@@ -1,18 +1,22 @@
-import 'package:cima_client/src/authorized/views/last_authorized_page.dart';
-import 'package:cima_client/src/home/views/home_page.dart';
-import 'package:cima_client/src/problemas_suministro/views/problemas_suministro_page.dart';
-import 'package:cima_client/src/search/views/serch_page.dart';
-import 'package:cima_client/src/search_result/views/search_result_page.dart';
-import 'package:cima_client/src/settings/settings_page.dart';
-import 'package:cima_client/src/theme/cubit/theme_app_cubit.dart';
+import 'package:cima_client/src/authorized/authorized.dart'
+    show LastAuthorizedPage;
+import 'package:cima_client/src/home/home.dart';
+import 'package:cima_client/src/search/search.dart' show SearchPage;
+import 'package:cima_client/src/search_result/search_result.dart'
+    show SearchResultPage;
+import 'package:cima_client/src/settings/settings.dart' show SettingsPage;
+import 'package:cima_client/src/supply_problems/supply_problems.dart'
+    show SupplyProblemsPage;
+import 'package:cima_client/src/theme/theme.dart'
+    show ThemeAppCubit, ThemeAppState;
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({
+class App extends StatelessWidget {
+  const App({
     Key? key,
     required CimaRepository cimaRepository,
   })  : _cimaRepository = cimaRepository,
@@ -62,8 +66,8 @@ class MyApp extends StatelessWidget {
                         return SearchResultPage(
                             params: ModalRoute.of(context)!.settings.arguments
                                 as Map<String, String>);
-                      case ProblemasSuministroPage.routeName:
-                        return const ProblemasSuministroPage();
+                      case SupplyProblemsPage.routeName:
+                        return const SupplyProblemsPage();
                       case LastAuthorizedPage.routeName:
                         return const LastAuthorizedPage();
                       case HomePage.routeName:

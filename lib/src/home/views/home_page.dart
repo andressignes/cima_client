@@ -1,8 +1,8 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:cima_client/src/core/widgets/drawer_widget.dart';
-import 'package:flutter/foundation.dart';
+import 'package:cima_client/src/core/widgets/widgets.dart' show DrawerWidget;
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -60,12 +60,6 @@ class HomePage extends StatelessWidget {
         ),
       ),
       drawer: const DrawerWidget(),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     context.read<AuthorizedBloc>().add(const GetAuthorized());
-      //   },
-      //   child: const Icon(Icons.search),
-      // ),
     );
   }
 

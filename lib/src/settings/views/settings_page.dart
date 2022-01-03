@@ -1,10 +1,9 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:cima_client/src/theme/cubit/theme_app_cubit.dart';
+import 'package:cima_client/src/theme/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -25,29 +24,7 @@ class SettingsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              BlocBuilder<ThemeAppCubit, ThemeAppState>(
-                builder: (context, state) {
-                  return DropdownButton<ThemeMode>(
-                    value: state.themeMode,
-                    onChanged: (themeMode) =>
-                        context.read<ThemeAppCubit>().setTheme(themeMode!),
-                    items: const [
-                      DropdownMenuItem(
-                        value: ThemeMode.system,
-                        child: Text('Tema del sistema'),
-                      ),
-                      DropdownMenuItem(
-                        value: ThemeMode.light,
-                        child: Text('Tema claro'),
-                      ),
-                      DropdownMenuItem(
-                        value: ThemeMode.dark,
-                        child: Text('Tema oscuro'),
-                      )
-                    ],
-                  );
-                },
-              ),
+              const ThemeSelectorWidget(),
               const Spacer(),
               TextButton(
                 onPressed: () =>

@@ -1,11 +1,11 @@
 import 'dart:developer';
 
-import 'package:cima_client/src/medication_detail/views/medicamento_detail_page.dart';
+import 'package:cima_client/src/medication_detail/views/medication_detail_page.dart';
 import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
 
-class MedicamentoItemList extends StatelessWidget {
-  const MedicamentoItemList({
+class MedicationItemList extends StatelessWidget {
+  const MedicationItemList({
     Key? key,
     required Medicamento medicamento,
   })  : _medicamento = medicamento,
@@ -61,10 +61,12 @@ class FotoItemList extends StatelessWidget {
   Widget build(BuildContext context) {
     if (fotos == null || fotos!.isEmpty) {
       return Image.asset('assets/images/no_image.png');
-    } else {
-      return Image.network(
-        fotos!.firstWhere((foto) => foto.tipo == 'materialas').url!,
-      );
     }
+    final urlPhoto =
+        fotos!.firstWhere((foto) => foto.tipo == 'materialas').url!;
+    return Hero(
+      tag: urlPhoto,
+      child: Image.network(urlPhoto),
+    );
   }
 }

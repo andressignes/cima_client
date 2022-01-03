@@ -8,8 +8,5 @@ import 'src/app.dart';
 void main() async {
   final cimaApi = CimaApiClient(baseUrl: EnvironmentConfig.apiUrl);
   final cimaRepository = CimaRepository(remoteDataSource: cimaApi);
-
-  runApp(MyApp(
-    cimaRepository: cimaRepository,
-  ));
+  runApp(App(cimaRepository: cimaRepository));
 }

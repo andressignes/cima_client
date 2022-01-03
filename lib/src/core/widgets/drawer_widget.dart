@@ -1,7 +1,7 @@
 import 'package:cima_client/src/authorized/views/last_authorized_page.dart';
-import 'package:cima_client/src/problemas_suministro/views/problemas_suministro_page.dart';
 import 'package:cima_client/src/search/views/serch_page.dart';
-import 'package:cima_client/src/settings/settings_page.dart';
+import 'package:cima_client/src/settings/views/settings_page.dart';
+import 'package:cima_client/src/supply_problems/supply_problems.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -27,7 +27,7 @@ class DrawerWidget extends StatelessWidget {
             onTap: () {
               Navigator.of(context).pop();
               Navigator.restorablePushNamed(
-                  context, ProblemasSuministroPage.routeName);
+                  context, SupplyProblemsPage.routeName);
             },
           ),
           ListTile(

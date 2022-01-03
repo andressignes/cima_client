@@ -1,10 +1,8 @@
 import 'package:cima_client/src/core/widgets/widgets.dart';
-import 'package:cima_client/src/search_result/bloc/search_medication_result_bloc.dart';
+import 'package:cima_client/src/search_result/search_result.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../core/widgets/cima_populated_list.dart';
 
 class LastAuthorizedPage extends StatelessWidget {
   const LastAuthorizedPage({Key? key}) : super(key: key);

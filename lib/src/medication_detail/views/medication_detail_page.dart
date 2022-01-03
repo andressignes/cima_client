@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:cima_client/src/core/widgets/pdf_button_widget.dart';
 import 'package:cima_client/src/core/widgets/widgets.dart';
 import 'package:cima_client/src/medication_detail/medication_detail.dart';
 import 'package:cima_model/cima_model.dart';
@@ -102,68 +101,53 @@ class _MedicationCard extends StatelessWidget {
                   'Num Registro: ${_medicamento.nregistro!}',
                   style: Theme.of(context).textTheme.caption,
                 ),
-                Text(
-                  'CN: ${_medicamento.presentaciones?.length ?? 0}',
-                  style: Theme.of(context).textTheme.caption,
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      PdfButtonWidget(
+                        title: 'Ficha Tecnica',
+                        url: _medicamento.docs
+                            ?.firstWhere(
+                              (element) => element.tipo == 1,
+                              orElse: () => Documento(),
+                            )
+                            .url,
+                      ),
+                      PdfButtonWidget(
+                        title: 'Prospecto',
+                        url: _medicamento.docs
+                            ?.firstWhere(
+                              (element) => element.tipo == 2,
+                              orElse: () => Documento(),
+                            )
+                            .url,
+                      ),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: 8),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    PdfButtonWidget(
-                      title: 'Ficha Tecnica',
-                      url: _medicamento.docs
-                          ?.firstWhere(
-                            (element) => element.tipo == 1,
-                            orElse: () => Documento(),
-                          )
-                          .url,
-                    ),
-                    PdfButtonWidget(
-                      title: 'Prospecto',
-                      url: _medicamento.docs
-                          ?.firstWhere(
-                            (element) => element.tipo == 2,
-                            orElse: () => Documento(),
-                          )
-                          .url,
-                    ),
-                  ],
-                )
+                _medicamento.formaFarmaceutica != null
+                    ? ListTile(
+                        title: const Text('Forma Farmaceutica'),
+                        subtitle:
+                            Text('${_medicamento.formaFarmaceutica!.nombre}'),
+                        leading: PharmaceuticalFormPhotoWidget(
+                          fotos: _medicamento.fotos,
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+                _medicamento.dosis != null
+                    ? ListTile(
+                        title: const Text('Dosis'),
+                        subtitle: Text(_medicamento.dosis!),
+                      )
+                    : const SizedBox.shrink(),
               ],
             ),
           )
         ],
       ),
-    );
-  }
-}
-
-class MedicationPhotoWidget extends StatelessWidget {
-  const MedicationPhotoWidget({
-    Key? key,
-    required this.fotos,
-  }) : super(key: key);
-  final List<Foto>? fotos;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 150,
-      width: double.infinity,
-      child: fotos?.isEmpty ?? true
-          ? Image.asset('assets/images/no_image.png')
-          : Image.network(
-              fotos!
-                  .firstWhere((foto) => foto.tipo == 'materialas')
-                  .url!
-                  .replaceAll('thumbnails', 'full'),
-              fit: BoxFit.cover,
-              loadingBuilder: (context, child, loadingProgress) {
-              return loadingProgress == null
-                  ? child
-                  : const Center(child: CircularProgressIndicator());
-            }),
     );
   }
 }
