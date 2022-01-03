@@ -32,8 +32,10 @@ class _MedicationNameInput extends StatelessWidget {
             onChanged: (value) =>
                 context.read<SearchCubit>().medicationNameChanged(value),
             decoration: InputDecoration(
-              labelText: 'Medication Name',
-              errorText: input.invalid ? 'Medication name is required' : null,
+              labelText: 'Nombre del medicamento',
+              errorText: input.invalid
+                  ? 'Introduce 3 caracteres como minimo para buscar'
+                  : null,
             ),
           );
         });

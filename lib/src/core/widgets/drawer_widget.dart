@@ -49,7 +49,7 @@ class DrawerWidget extends StatelessWidget {
             title: const Text('Ajustes'),
             onTap: () {
               Navigator.of(context).pop();
-              Navigator.restorablePushNamed(context, SettingsView.routeName);
+              Navigator.restorablePushNamed(context, SettingsPage.routeName);
             },
           ),
         ],

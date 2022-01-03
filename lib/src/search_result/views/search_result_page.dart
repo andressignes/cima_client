@@ -17,7 +17,9 @@ class SearchResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: const Text('Resultado'),
+      ),
       body: BlocProvider(
         create: (context) => SearchMedicationResultBloc(
           cimaRepository: context.read<CimaRepository>(),
