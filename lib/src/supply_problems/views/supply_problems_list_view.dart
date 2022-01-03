@@ -1,3 +1,4 @@
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:cima_client/src/medication_detail/views/medication_detail_page.dart';
 import 'package:cima_model/cima_model.dart' show ProblemaSuministro;
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ class SupplyProblemsListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     final dateFormat = DateFormat('dd/MM/yyyy');
     return ListView.builder(
       itemCount: supplyProblemsList.length,
@@ -41,9 +44,9 @@ class SupplyProblemsListWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                          'Desde: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(problemaSuministro.fini!))}'),
+                          '${l10n.from}: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(problemaSuministro.fini!))}'),
                       Text(
-                          'Hasta: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(problemaSuministro.ffin!))}'),
+                          '${l10n.to}: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(problemaSuministro.ffin!))}'),
                     ],
                   )
                 ],

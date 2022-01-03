@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:cima_client/src/core/widgets/widgets.dart' show DrawerWidget;
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,25 +14,26 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('⚕️ CIMA Client'),
+        title: Text(l10n.home_page_title),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             Text(
-              'Bienvenido al Centro de Información de Medicamentos de la AEMPS',
+              l10n.home_page_paragraph1,
               style: Theme.of(context).textTheme.headline5,
             ),
             Text(
-              'Aqui podras consultar los medicamentos que tienen disponibles en el inventario, ver los ultimos medicamentos autorizados y los medicamentos que tienen algun tipo de problemas de suministro.',
+              l10n.home_page_paragraph2,
               style: Theme.of(context).textTheme.bodyText2,
             ),
             const SizedBox(height: 16),
             Text(
-              'Para mas informacion dirigete a la web de la AEMPS o ponte en contacto en alguna de sus redes sociales.',
+              l10n.home_page_paragraph3,
               style: Theme.of(context).textTheme.bodyText2,
             ),
             const Spacer(),

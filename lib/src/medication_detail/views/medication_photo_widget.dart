@@ -8,14 +8,14 @@ class MedicationPhotoWidget extends StatelessWidget {
     required this.fotos,
   }) : super(key: key);
   final List<Foto>? fotos;
+  final _type = 'materialas';
 
   @override
   Widget build(BuildContext context) {
     if (fotos == null || fotos!.isEmpty) {
       return Image.asset('assets/images/no_image.png');
     }
-    final urlPhoto =
-        fotos!.firstWhere((foto) => foto.tipo == 'materialas').url ?? '';
+    final urlPhoto = fotos!.firstWhere((foto) => foto.tipo == _type).url ?? '';
 
     return SizedBox(
       height: 150,

@@ -1,5 +1,6 @@
 import 'package:cima_client/src/core/widgets/cima_error.dart';
 import 'package:cima_client/src/core/widgets/cima_loading.dart';
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:cima_client/src/supply_problems/bloc/supply_problems_bloc.dart';
 import 'package:cima_client/src/supply_problems/views/supply_problems_list_view.dart';
 import 'package:cima_repository/cima_repository.dart';
@@ -26,9 +27,11 @@ class _SupplyProblemsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Problemas de Suministro'),
+        title: Text(l10n.supplier_problems_title),
       ),
       body: BlocBuilder<SupplyProblemsBloc, SupplyProblemsState>(
           builder: (context, state) {

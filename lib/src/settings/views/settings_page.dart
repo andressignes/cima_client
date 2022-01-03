@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:cima_client/src/theme/theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +14,10 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Ajustes'),
+        title: Text(l10n.settings_title),
       ),
       body: SafeArea(
         child: Padding(
@@ -36,7 +38,7 @@ class SettingsPage extends StatelessWidget {
                       width: 32,
                     ),
                     const SizedBox(width: 8),
-                    const Text('Codigo fuente disponible en GitHub'),
+                    Text(l10n.github_button_text),
                   ],
                 ),
               ),
@@ -46,9 +48,9 @@ class SettingsPage extends StatelessWidget {
                   children: [
                     Image.asset('assets/images/cima.png', width: 32),
                     const SizedBox(width: 8),
-                    const Expanded(
+                    Expanded(
                       child: Text(
-                        'Informacion proporcionada por Agencia Española de Medicamentos y Productos Sanitarios',
+                        l10n.cima_button_text,
                       ),
                     ),
                   ],
@@ -56,9 +58,9 @@ class SettingsPage extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () => _openAboutDialog(context),
-                  child: const Text('Mas informacion')),
+                  child: Text(l10n.about_button_text)),
               const SizedBox(height: 32),
-              const Text('Made with Flutter 💙 by Andres Signes'),
+              Text(l10n.made_with_love_by),
             ],
           ),
         ),

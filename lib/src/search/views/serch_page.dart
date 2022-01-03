@@ -1,3 +1,4 @@
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:cima_client/src/search/cubit/search_cubit.dart';
 import 'package:cima_client/src/search/views/search_form.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +22,10 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Buscar '),
+        title: Text(l10n.search_title),
       ),
       body: const Padding(
         padding: EdgeInsets.all(8.0),

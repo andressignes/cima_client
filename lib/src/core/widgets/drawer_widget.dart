@@ -1,4 +1,5 @@
 import 'package:cima_client/src/authorized/views/last_authorized_page.dart';
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:cima_client/src/search/views/serch_page.dart';
 import 'package:cima_client/src/settings/views/settings_page.dart';
 import 'package:cima_client/src/supply_problems/supply_problems.dart';
@@ -9,6 +10,7 @@ class DrawerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Drawer(
       child: ListView(
         children: [
@@ -23,7 +25,7 @@ class DrawerWidget extends StatelessWidget {
             ),
           ),
           ListTile(
-            title: const Text('Problemas de suministro'),
+            title: Text(l10n.supplier_problems_title),
             onTap: () {
               Navigator.of(context).pop();
               Navigator.restorablePushNamed(
@@ -31,7 +33,7 @@ class DrawerWidget extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('Autorizados Recientemente'),
+            title: Text(l10n.recently_authorized_title),
             onTap: () {
               Navigator.of(context).pop();
               Navigator.restorablePushNamed(
@@ -39,14 +41,14 @@ class DrawerWidget extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('Buscar'),
+            title: Text(l10n.search_title),
             onTap: () {
               Navigator.of(context).pop();
               Navigator.restorablePushNamed(context, SearchPage.routeName);
             },
           ),
           ListTile(
-            title: const Text('Ajustes'),
+            title: Text(l10n.settings_title),
             onTap: () {
               Navigator.of(context).pop();
               Navigator.restorablePushNamed(context, SettingsPage.routeName);

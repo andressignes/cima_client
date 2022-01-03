@@ -1,3 +1,4 @@
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:cima_client/src/search_result/bloc/search_medication_result_bloc.dart';
 import 'package:cima_client/src/search_result/views/search_result_view.dart';
 import 'package:cima_repository/cima_repository.dart';
@@ -16,9 +17,11 @@ class SearchResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Resultado'),
+        title: Text(l10n.search_result_title),
       ),
       body: BlocProvider(
         create: (context) => SearchMedicationResultBloc(

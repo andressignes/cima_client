@@ -1,4 +1,5 @@
 import 'package:cima_client/src/core/widgets/widgets.dart';
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:cima_client/src/medication_detail/medication_detail.dart';
 import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class MedicationDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -35,7 +37,7 @@ class MedicationDetailWidget extends StatelessWidget {
                       color: Theme.of(context).colorScheme.primaryVariant),
                 ),
                 Text(
-                  'Num. Registro: ${_medicamento.nregistro ?? ''}',
+                  '${l10n.registration_number}: ${_medicamento.nregistro ?? ''}',
                   style: Theme.of(context).textTheme.caption,
                 ),
                 Padding(
@@ -44,7 +46,7 @@ class MedicationDetailWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       PdfButtonWidget(
-                        title: 'Ficha Tecnica',
+                        title: l10n.technical_profile,
                         url: _medicamento.docs
                             ?.firstWhere(
                               (element) => element.tipo == 1,
@@ -53,7 +55,7 @@ class MedicationDetailWidget extends StatelessWidget {
                             .url,
                       ),
                       PdfButtonWidget(
-                        title: 'Prospecto',
+                        title: l10n.prospect,
                         url: _medicamento.docs
                             ?.firstWhere(
                               (element) => element.tipo == 2,
@@ -66,7 +68,7 @@ class MedicationDetailWidget extends StatelessWidget {
                 ),
                 _medicamento.formaFarmaceutica != null
                     ? ListTile(
-                        title: const Text('Forma Farmaceutica'),
+                        title: Text(l10n.pharmaceutical_form),
                         subtitle:
                             Text('${_medicamento.formaFarmaceutica!.nombre}'),
                         leading: PharmaceuticalFormPhotoWidget(
@@ -76,7 +78,7 @@ class MedicationDetailWidget extends StatelessWidget {
                     : const SizedBox.shrink(),
                 _medicamento.dosis != null
                     ? ListTile(
-                        title: const Text('Dosis'),
+                        title: Text(l10n.dose),
                         subtitle: Text(_medicamento.dosis!),
                       )
                     : const SizedBox.shrink(),

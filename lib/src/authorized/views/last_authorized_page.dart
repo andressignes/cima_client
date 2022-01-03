@@ -1,4 +1,5 @@
 import 'package:cima_client/src/core/widgets/widgets.dart';
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:cima_client/src/search_result/search_result.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
@@ -27,9 +28,10 @@ class LastAuthorizedView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Autorizados recientemente'),
+        title: Text(l10n.recently_authorized),
       ),
       body:
           BlocBuilder<SearchMedicationResultBloc, SearchMedicationResultState>(

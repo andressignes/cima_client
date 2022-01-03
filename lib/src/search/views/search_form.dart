@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:cima_client/src/search/cubit/search_cubit.dart';
 import 'package:cima_client/src/search_result/views/search_result_page.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,8 @@ class _MedicationNameInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return BlocSelector<SearchCubit, SearchState, MedicationNameFormInput>(
         selector: (state) => state.medicationName,
         builder: (context, input) {
@@ -32,10 +35,9 @@ class _MedicationNameInput extends StatelessWidget {
             onChanged: (value) =>
                 context.read<SearchCubit>().medicationNameChanged(value),
             decoration: InputDecoration(
-              labelText: 'Nombre del medicamento',
-              errorText: input.invalid
-                  ? 'Introduce 3 caracteres como minimo para buscar'
-                  : null,
+              labelText: l10n.medication_name,
+              errorText:
+                  input.invalid ? l10n.medication_name_min_3_characters : null,
             ),
           );
         });
@@ -47,6 +49,8 @@ class _SubmitButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return BlocBuilder<SearchCubit, SearchState>(
       builder: (context, state) {
         log(state.status.toString());
@@ -65,7 +69,7 @@ class _SubmitButton extends StatelessWidget {
               return;
             }
           },
-          child: const Text('Buscar'),
+          child: Text(l10n.search_title),
         );
       },
     );

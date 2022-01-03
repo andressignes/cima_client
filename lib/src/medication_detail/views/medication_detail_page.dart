@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cima_client/src/core/widgets/widgets.dart';
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:cima_client/src/medication_detail/medication_detail.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
@@ -21,20 +22,14 @@ class MedicationDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
     return BlocProvider(
       create: (context) =>
           MedicationDetailBloc(cimaRepository: context.read<CimaRepository>())
             ..add(FetchMedicamento(nregistro: _nregistro, cn: _cn)),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Detalle del medicamento'),
-          // actions: [
-          // IconButton(
-          //   icon: const Icon(Icons.star_border),
-          //   onPressed: () {
-          //   },
-          // )
-          // ],
+          title: Text(l10n.medication_detail_page_title),
         ),
         body: const _MedicationDetailView(),
       ),

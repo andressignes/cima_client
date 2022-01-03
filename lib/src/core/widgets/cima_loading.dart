@@ -1,3 +1,4 @@
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CimaLoading extends StatelessWidget {
@@ -6,6 +7,7 @@ class CimaLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = context.l10n;
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -17,7 +19,7 @@ class CimaLoading extends StatelessWidget {
               const Text('💊', style: TextStyle(fontSize: 32)),
               const SizedBox(width: 16),
               Text(
-                'buscando...',
+                l10n.searching,
                 style: theme.textTheme.headline5,
               ),
             ],

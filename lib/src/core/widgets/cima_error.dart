@@ -1,3 +1,4 @@
+import 'package:cima_client/src/localization/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CimaError extends StatelessWidget {
@@ -6,6 +7,7 @@ class CimaError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final l10n = context.l10n;
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -13,7 +15,7 @@ class CimaError extends StatelessWidget {
         children: [
           const Text('🙈', style: TextStyle(fontSize: 64)),
           Text(
-            'Something went wrong!',
+            l10n.error_title,
             style: theme.textTheme.headline5,
           ),
         ],
