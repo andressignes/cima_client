@@ -12,6 +12,11 @@ class ImageFullscreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        foregroundColor: Theme.of(context).colorScheme.primary,
+      ),
       body: Hero(
         tag: _imageLink,
         child: Image.network(
