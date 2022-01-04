@@ -1,8 +1,10 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:cima_client/src/core/widgets/widgets.dart' show DrawerWidget;
+import 'package:cima_client/src/home/views/drawer_widget.dart';
 import 'package:cima_client/src/localization/l10n.dart';
+import 'package:cima_client/src/search/search.dart';
+import 'package:cima_client/src/settings/settings.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,6 +20,14 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.home_page_title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () {
+              Navigator.pushNamed(context, SettingsPage.routeName);
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -62,6 +72,11 @@ class HomePage extends StatelessWidget {
         ),
       ),
       drawer: const DrawerWidget(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () =>
+            Navigator.restorablePushNamed(context, SearchPage.routeName),
+        child: const Icon(Icons.search),
+      ),
     );
   }
 

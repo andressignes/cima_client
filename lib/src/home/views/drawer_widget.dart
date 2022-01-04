@@ -1,7 +1,5 @@
 import 'package:cima_client/src/authorized/views/last_authorized_page.dart';
 import 'package:cima_client/src/localization/l10n.dart';
-import 'package:cima_client/src/search/views/serch_page.dart';
-import 'package:cima_client/src/settings/views/settings_page.dart';
 import 'package:cima_client/src/supply_problems/supply_problems.dart';
 import 'package:flutter/material.dart';
 
@@ -38,20 +36,6 @@ class DrawerWidget extends StatelessWidget {
               Navigator.of(context).pop();
               Navigator.restorablePushNamed(
                   context, LastAuthorizedPage.routeName);
-            },
-          ),
-          ListTile(
-            title: Text(l10n.search_title),
-            onTap: () {
-              Navigator.of(context).pop();
-              Navigator.restorablePushNamed(context, SearchPage.routeName);
-            },
-          ),
-          ListTile(
-            title: Text(l10n.settings_title),
-            onTap: () {
-              Navigator.of(context).pop();
-              Navigator.restorablePushNamed(context, SettingsPage.routeName);
             },
           ),
         ],
