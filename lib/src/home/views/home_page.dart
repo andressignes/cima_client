@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
               l10n.home_page_paragraph3,
               style: Theme.of(context).textTheme.bodyText2,
             ),
-            const Spacer(),
+            const SizedBox(height: 16),
             SizedBox(
               height: 50,
               child: Row(
