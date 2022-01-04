@@ -26,45 +26,102 @@ class SettingsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const ThemeSelectorWidget(),
+              const _AppearanceSectionView(),
+              const SizedBox(height: 16),
+              const _AboutSectionView(),
               const Spacer(),
-              TextButton(
-                onPressed: () =>
-                    _openBrowser('https://github.com/asignes86/cima_client'),
-                child: Row(
-                  children: [
-                    Image.asset(
-                      'assets/images/github.png',
-                      width: 32,
-                    ),
-                    const SizedBox(width: 8),
-                    Text(l10n.github_button_text),
-                  ],
-                ),
-              ),
-              TextButton(
-                onPressed: () => _openBrowser('https://cima.aemps.es/'),
-                child: Row(
-                  children: [
-                    Image.asset('assets/images/cima.png', width: 32),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        l10n.cima_button_text,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              ElevatedButton(
-                  onPressed: () => _openAboutDialog(context),
-                  child: Text(l10n.about_button_text)),
-              const SizedBox(height: 32),
               Text(l10n.made_with_love_by),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class _AppearanceSectionView extends StatelessWidget {
+  const _AppearanceSectionView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.appearance,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headline5,
+        ),
+        Row(
+          children: [
+            Text(
+              l10n.theme,
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            const SizedBox(width: 8),
+            const ThemeSelectorWidget()
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class _AboutSectionView extends StatelessWidget {
+  const _AboutSectionView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          l10n.about,
+          style: Theme.of(context).textTheme.headline5,
+        ),
+        ElevatedButton(
+          onPressed: () =>
+              _openBrowser('https://github.com/asignes86/cima_client'),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/images/github.png',
+                width: 32,
+              ),
+              const SizedBox(width: 8),
+              Text(l10n.github_button_text),
+            ],
+          ),
+        ),
+        ElevatedButton(
+          onPressed: () => _openBrowser('https://cima.aemps.es/'),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/cima.png', width: 32),
+              const SizedBox(width: 8),
+              Text(
+                l10n.cima_button_text,
+              ),
+            ],
+          ),
+        ),
+        ElevatedButton(
+            onPressed: () => _openAboutDialog(context),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  l10n.about_button_text,
+                ),
+              ],
+            )),
+      ],
     );
   }
 

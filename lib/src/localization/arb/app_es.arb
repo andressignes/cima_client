@@ -111,7 +111,19 @@
   "@to": {
     "description": "The text of the to"
   },
-  "system_theme": "Tema del sistema",
+  "appearance": "Apariencia",
+  "@appearance": {
+    "description": "The text of the appearance"
+  },
+  "about": "Acerca de",
+  "@about": {
+    "description": "The title of the about page"
+  },
+  "theme": "Tema",
+  "@theme": {
+    "description": "The text of the theme"
+  },
+  "system_theme": "Por defecto",
   "@system_theme": {
     "description": "The text of the system theme"
   },
