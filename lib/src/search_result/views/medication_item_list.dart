@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cima_client/src/medication_detail/views/medication_detail_page.dart';
 import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +13,6 @@ class MedicationItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log(_medication.toJson().toString());
     return InkWell(
       onTap: () => Navigator.push(
           context,
@@ -26,16 +23,17 @@ class MedicationItemList extends StatelessWidget {
         child: Row(
           children: [
             Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(4),
-                  child: Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Theme.of(context).colorScheme.primary),
-                      ),
-                      child: FotoItemList(photos: _medication.fotos)),
-                )),
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(4),
+                child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                          color: Theme.of(context).colorScheme.primary),
+                    ),
+                    child: PhotoItemList(photos: _medication.fotos)),
+              ),
+            ),
             Expanded(
               flex: 3,
               child: ListTile(
@@ -50,8 +48,8 @@ class MedicationItemList extends StatelessWidget {
   }
 }
 
-class FotoItemList extends StatelessWidget {
-  const FotoItemList({
+class PhotoItemList extends StatelessWidget {
+  const PhotoItemList({
     Key? key,
     required this.photos,
   }) : super(key: key);
@@ -65,10 +63,17 @@ class FotoItemList extends StatelessWidget {
         photos!.indexWhere((photo) => photo.tipo == photoType) == -1) {
       return Image.asset('assets/images/no_image.png');
     }
-    final urlPhoto = photos!.firstWhere((foto) => foto.tipo == photoType).url!;
+    final urlPhoto =
+        photos!.firstWhere((photo) => photo.tipo == photoType).url!;
     return Hero(
       tag: urlPhoto,
-      child: Image.network(urlPhoto),
+      child: Image.network(
+        urlPhoto,
+        loadingBuilder: (context, child, loadingProgress) =>
+            loadingProgress == null
+                ? child
+                : const Center(child: CircularProgressIndicator()),
+      ),
     );
   }
 }

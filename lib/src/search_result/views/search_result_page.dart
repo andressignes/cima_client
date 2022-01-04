@@ -19,16 +19,11 @@ class SearchResultPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.search_result_title),
-      ),
-      body: BlocProvider(
-        create: (context) => SearchMedicationResultBloc(
-          cimaRepository: context.read<CimaRepository>(),
-        )..add(Search(params: params)),
-        child: const SearchResultView(),
-      ),
+    return BlocProvider(
+      create: (context) => SearchMedicationResultBloc(
+        cimaRepository: context.read<CimaRepository>(),
+      )..add(Search(params: params)),
+      child: SearchResultView(title: l10n.search_result_title),
     );
   }
 }

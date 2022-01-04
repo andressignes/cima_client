@@ -1,4 +1,3 @@
-import 'package:cima_client/src/core/widgets/widgets.dart';
 import 'package:cima_client/src/localization/l10n.dart';
 import 'package:cima_client/src/search_result/search_result.dart';
 import 'package:cima_repository/cima_repository.dart';
@@ -14,42 +13,13 @@ class LastAuthorizedPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return BlocProvider(
       create: (context) => SearchMedicationResultBloc(
         cimaRepository: context.read<CimaRepository>(),
-      )..add(
-          const Search(params: _paramsSearch),
-        ),
-      child: const LastAuthorizedView(),
-    );
-  }
-}
-
-class LastAuthorizedView extends StatelessWidget {
-  const LastAuthorizedView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.recently_authorized),
-      ),
-      body:
-          BlocBuilder<SearchMedicationResultBloc, SearchMedicationResultState>(
-              builder: (context, state) {
-        if (state is Initial) {
-          return const CimaEmpty();
-        } else if (state is Loading) {
-          return const CimaLoading();
-        } else if (state is Available) {
-          return CimaPopulatedList(medications: state.medicamentos);
-        } else if (state is Error) {
-          return const CimaError();
-        } else {
-          return const CimaError();
-        }
-      }),
+      )..add(const Search(params: _paramsSearch)),
+      child: SearchResultView(title: l10n.recently_authorized),
     );
   }
 }

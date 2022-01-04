@@ -4,12 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchResultView extends StatelessWidget {
-  const SearchResultView({Key? key}) : super(key: key);
+  const SearchResultView({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child:
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(title),
+      ),
+      body:
           BlocBuilder<SearchMedicationResultBloc, SearchMedicationResultState>(
               builder: (context, state) {
         if (state is Initial) {
@@ -17,7 +25,7 @@ class SearchResultView extends StatelessWidget {
         } else if (state is Loading) {
           return const CimaLoading();
         } else if (state is Available) {
-          return CimaPopulatedList(medications: state.medicamentos);
+          return MedicationListWidget(medications: state.medicamentos);
         } else if (state is Error) {
           return const CimaError();
         } else {

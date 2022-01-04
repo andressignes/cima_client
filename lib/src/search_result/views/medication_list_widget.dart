@@ -1,12 +1,12 @@
-import 'package:cima_client/src/core/widgets/medication_item_list.dart';
 import 'package:cima_client/src/localization/l10n.dart';
+import 'package:cima_client/src/search_result/views/medication_item_list.dart';
 import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
 
-class CimaPopulatedList extends StatelessWidget {
+class MedicationListWidget extends StatelessWidget {
   final List<Medicamento> _medications;
 
-  const CimaPopulatedList({Key? key, required medications})
+  const MedicationListWidget({Key? key, required medications})
       : _medications = medications,
         super(key: key);
 
