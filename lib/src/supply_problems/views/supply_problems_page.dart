@@ -10,7 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class SupplyProblemsPage extends StatelessWidget {
   const SupplyProblemsPage({Key? key}) : super(key: key);
 
-  static const routeName = '/problemas_suministro';
+  static const routeName = '/supply_problems';
 
   @override
   Widget build(BuildContext context) {

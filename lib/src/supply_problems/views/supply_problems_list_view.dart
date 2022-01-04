@@ -43,10 +43,14 @@ class SupplyProblemsListWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                          '${l10n.from}: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(problemaSuministro.fini!))}'),
-                      Text(
-                          '${l10n.to}: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(problemaSuministro.ffin!))}'),
+                      problemaSuministro.fini != null
+                          ? Text(
+                              '${l10n.from}: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(problemaSuministro.fini!))}')
+                          : const SizedBox.shrink(),
+                      problemaSuministro.ffin != null
+                          ? Text(
+                              '${l10n.to}: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(problemaSuministro.ffin!))}')
+                          : const SizedBox.shrink(),
                     ],
                   )
                 ],
