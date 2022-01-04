@@ -4,16 +4,16 @@ import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
 
 class CimaPopulatedList extends StatelessWidget {
-  final List<Medicamento> _medicamentos;
+  final List<Medicamento> _medications;
 
-  const CimaPopulatedList({Key? key, required medicamentos})
-      : _medicamentos = medicamentos,
+  const CimaPopulatedList({Key? key, required medications})
+      : _medications = medications,
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    if (_medicamentos.isEmpty) {
+    if (_medications.isEmpty) {
       return Padding(
         padding: const EdgeInsets.all(16),
         child: Center(
@@ -26,9 +26,9 @@ class CimaPopulatedList extends StatelessWidget {
       );
     }
     return ListView.builder(
-      itemCount: _medicamentos.length,
+      itemCount: _medications.length,
       itemBuilder: (context, index) => MedicationItemList(
-        medicamento: _medicamentos[index],
+        medication: _medications[index],
       ),
     );
   }

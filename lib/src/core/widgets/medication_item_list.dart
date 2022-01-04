@@ -7,21 +7,21 @@ import 'package:flutter/material.dart';
 class MedicationItemList extends StatelessWidget {
   const MedicationItemList({
     Key? key,
-    required Medicamento medicamento,
-  })  : _medicamento = medicamento,
+    required Medicamento medication,
+  })  : _medication = medication,
         super(key: key);
 
-  final Medicamento _medicamento;
+  final Medicamento _medication;
 
   @override
   Widget build(BuildContext context) {
-    log(_medicamento.toJson().toString());
+    log(_medication.toJson().toString());
     return InkWell(
       onTap: () => Navigator.push(
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  MedicationDetailPage(nregistro: _medicamento.nregistro))),
+                  MedicationDetailPage(nregistro: _medication.nregistro))),
       child: Card(
         child: Row(
           children: [
@@ -34,13 +34,13 @@ class MedicationItemList extends StatelessWidget {
                         border: Border.all(
                             color: Theme.of(context).colorScheme.primary),
                       ),
-                      child: FotoItemList(fotos: _medicamento.fotos)),
+                      child: FotoItemList(photos: _medication.fotos)),
                 )),
             Expanded(
               flex: 3,
               child: ListTile(
-                title: Text(_medicamento.nombre ?? ''),
-                subtitle: Text(_medicamento.labtitular ?? ''),
+                title: Text(_medication.nombre ?? ''),
+                subtitle: Text(_medication.labtitular ?? ''),
               ),
             ),
           ],
@@ -53,17 +53,19 @@ class MedicationItemList extends StatelessWidget {
 class FotoItemList extends StatelessWidget {
   const FotoItemList({
     Key? key,
-    required this.fotos,
+    required this.photos,
   }) : super(key: key);
-  final List<Foto>? fotos;
+  final List<Foto>? photos;
+  static const photoType = 'materialas';
 
   @override
   Widget build(BuildContext context) {
-    if (fotos == null || fotos!.isEmpty) {
+    if (photos == null ||
+        photos!.isEmpty ||
+        photos!.indexWhere((photo) => photo.tipo == photoType) == -1) {
       return Image.asset('assets/images/no_image.png');
     }
-    final urlPhoto =
-        fotos!.firstWhere((foto) => foto.tipo == 'materialas').url!;
+    final urlPhoto = photos!.firstWhere((foto) => foto.tipo == photoType).url!;
     return Hero(
       tag: urlPhoto,
       child: Image.network(urlPhoto),

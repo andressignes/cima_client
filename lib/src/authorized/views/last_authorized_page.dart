@@ -10,13 +10,15 @@ class LastAuthorizedPage extends StatelessWidget {
 
   static const routeName = '/authorized';
 
+  static const _paramsSearch = {'autorizados': '1'};
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => SearchMedicationResultBloc(
         cimaRepository: context.read<CimaRepository>(),
       )..add(
-          const Search(params: {'autorizados': '1'}),
+          const Search(params: _paramsSearch),
         ),
       child: const LastAuthorizedView(),
     );
@@ -41,7 +43,7 @@ class LastAuthorizedView extends StatelessWidget {
         } else if (state is Loading) {
           return const CimaLoading();
         } else if (state is Available) {
-          return CimaPopulatedList(medicamentos: state.medicamentos);
+          return CimaPopulatedList(medications: state.medicamentos);
         } else if (state is Error) {
           return const CimaError();
         } else {

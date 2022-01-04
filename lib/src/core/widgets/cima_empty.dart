@@ -6,7 +6,10 @@ class CimaEmpty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('⚕️', style: TextStyle(fontSize: 64)),
+      child: Text(
+        '⚕️',
+        style: TextStyle(fontSize: 64),
+      ),
     );
   }
 }
