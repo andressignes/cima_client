@@ -20,7 +20,7 @@ class SupplyProblemsListWidget extends StatelessWidget {
     return ListView.builder(
       itemCount: supplyProblemsList.length,
       itemBuilder: (context, index) {
-        final problemaSuministro = supplyProblemsList[index];
+        final supplyProblem = supplyProblemsList[index];
         return InkWell(
           child: Card(
             child: Padding(
@@ -30,11 +30,11 @@ class SupplyProblemsListWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    problemaSuministro.nombre ?? '',
+                    supplyProblem.nombre ?? '',
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                   Text(
-                    problemaSuministro.observ ?? '',
+                    supplyProblem.observ ?? '',
                     style: Theme.of(context).textTheme.subtitle2!.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
@@ -43,13 +43,13 @@ class SupplyProblemsListWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      problemaSuministro.fini != null
+                      supplyProblem.fini != null
                           ? Text(
-                              '${l10n.from}: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(problemaSuministro.fini!))}')
+                              '${l10n.from}: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(supplyProblem.fini!))}')
                           : const SizedBox.shrink(),
-                      problemaSuministro.ffin != null
+                      supplyProblem.ffin != null
                           ? Text(
-                              '${l10n.to}: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(problemaSuministro.ffin!))}')
+                              '${l10n.to}: ${dateFormat.format(DateTime.fromMillisecondsSinceEpoch(supplyProblem.ffin!))}')
                           : const SizedBox.shrink(),
                     ],
                   )
@@ -61,7 +61,7 @@ class SupplyProblemsListWidget extends StatelessWidget {
             context,
             MaterialPageRoute(
               builder: (context) => MedicationDetailPage(
-                cn: problemaSuministro.cn,
+                cn: supplyProblem.cn,
               ),
             ),
           ),
