@@ -6,13 +6,13 @@ part 'descripcion_clinica.g.dart';
 @JsonSerializable()
 class DescripcionClinica extends Equatable {
   DescripcionClinica(
-      {this.vmp, this.vmpDec, this.vmpp, this.vmppDesc, this.presComerc});
+      {this.vmp, this.vmpDesc, this.vmpp, this.vmppDesc, this.presComerc});
 
   factory DescripcionClinica.fromJson(Map<String, dynamic> json) =>
       _$DescripcionClinicaFromJson(json);
 
   final String? vmp;
-  final String? vmpDec;
+  final String? vmpDesc;
   final String? vmpp;
   final String? vmppDesc;
   final int? presComerc;
@@ -22,7 +22,7 @@ class DescripcionClinica extends Equatable {
   @override
   List<Object?> get props => [
         vmp,
-        vmpDec,
+        vmpDesc,
         vmpp,
         vmppDesc,
         presComerc,

@@ -9,7 +9,7 @@ part of 'descripcion_clinica.dart';
 DescripcionClinica _$DescripcionClinicaFromJson(Map<String, dynamic> json) =>
     DescripcionClinica(
       vmp: json['vmp'] as String?,
-      vmpDec: json['vmpDec'] as String?,
+      vmpDesc: json['vmpDesc'] as String?,
       vmpp: json['vmpp'] as String?,
       vmppDesc: json['vmppDesc'] as String?,
       presComerc: json['presComerc'] as int?,
@@ -18,7 +18,7 @@ DescripcionClinica _$DescripcionClinicaFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$DescripcionClinicaToJson(DescripcionClinica instance) =>
     <String, dynamic>{
       'vmp': instance.vmp,
-      'vmpDec': instance.vmpDec,
+      'vmpDesc': instance.vmpDesc,
       'vmpp': instance.vmpp,
       'vmppDesc': instance.vmppDesc,
       'presComerc': instance.presComerc,
