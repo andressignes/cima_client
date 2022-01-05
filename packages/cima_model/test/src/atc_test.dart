@@ -3,17 +3,22 @@ import 'package:test/test.dart';
 
 void main() {
   group('Atc', () {
-    final atcJson = {
-      "codigo": "N02B",
-      "nombre": "OTROS ANALGÉSICOS Y ANTIPIRÉTICOS",
-      "nivel": 3
-    };
+    late Map<String, dynamic> atcJson;
+    late Atc atcObj;
 
-    final atcObj = Atc(
-      nombre: 'OTROS ANALGÉSICOS Y ANTIPIRÉTICOS',
-      codigo: 'N02B',
-      nivel: 3,
-    );
+    setUp(() {
+      atcJson = {
+        "codigo": "N02B",
+        "nombre": "OTROS ANALGÉSICOS Y ANTIPIRÉTICOS",
+        "nivel": 3
+      };
+
+      atcObj = Atc(
+        nombre: 'OTROS ANALGÉSICOS Y ANTIPIRÉTICOS',
+        codigo: 'N02B',
+        nivel: 3,
+      );
+    });
 
     test('can be instantiated', () {
       expect(atcObj, isNotNull);
