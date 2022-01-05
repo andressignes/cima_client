@@ -30,16 +30,32 @@ void main() {
     });
 
     test('supports value comparisons', () {
-      expect(),
+      expect(
+          DescripcionClinica(
+                vmp: "322246006",
+                vmpDesc: "Paracetamol 100 mg/ml solución/suspensión oral",
+                vmpp: "18021000140104",
+                vmppDesc:
+                    "Paracetamol 100 mg/ml solución/suspensión oral 30 ml 1 frasco",
+                presComerc: 2,
+              ) ==
+              DescripcionClinica(
+                vmp: "322246006",
+                vmpDesc: "Paracetamol 100 mg/ml solución/suspensión oral",
+                vmpp: "18021000140104",
+                vmppDesc:
+                    "Paracetamol 100 mg/ml solución/suspensión oral 30 ml 1 frasco",
+                presComerc: 2,
+              ),
           isTrue);
     });
 
     test('json serialization fromJson', () {
-      expect(Atc.fromJson(atcJson), atcObj);
+      expect(DescripcionClinica.fromJson(json), obj);
     });
 
     test('json serialization toJson', () {
-      expect(atcObj.toJson(), atcJson);
+      expect(obj.toJson(), json);
     });
   });
 }
