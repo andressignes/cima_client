@@ -31,7 +31,7 @@ class PharmaceuticalFormPhotoWidget extends StatelessWidget {
         tag: urlPhoto,
         child: Image.network(
           urlPhoto,
-          fit: BoxFit.cover,
+          fit: BoxFit.fitWidth,
           loadingBuilder: (context, child, loadingProgress) {
             return loadingProgress == null
                 ? child

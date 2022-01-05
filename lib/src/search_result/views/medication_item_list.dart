@@ -26,12 +26,7 @@ class MedicationItemList extends StatelessWidget {
               flex: 1,
               child: Padding(
                 padding: const EdgeInsets.all(4),
-                child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                          color: Theme.of(context).colorScheme.primary),
-                    ),
-                    child: PhotoItemList(photos: _medication.fotos)),
+                child: _PhotoItemList(photos: _medication.fotos),
               ),
             ),
             Expanded(
@@ -48,8 +43,8 @@ class MedicationItemList extends StatelessWidget {
   }
 }
 
-class PhotoItemList extends StatelessWidget {
-  const PhotoItemList({
+class _PhotoItemList extends StatelessWidget {
+  const _PhotoItemList({
     Key? key,
     required this.photos,
   }) : super(key: key);
@@ -65,6 +60,7 @@ class PhotoItemList extends StatelessWidget {
     }
     final urlPhoto =
         photos!.firstWhere((photo) => photo.tipo == photoType).url!;
+
     return Hero(
       tag: urlPhoto,
       child: Image.network(

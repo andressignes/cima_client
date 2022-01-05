@@ -3,10 +3,12 @@ import 'dart:io';
 
 import 'package:cima_client/src/home/views/drawer_widget.dart';
 import 'package:cima_client/src/localization/l10n.dart';
+import 'package:cima_client/src/medication_detail/medication_detail.dart';
 import 'package:cima_client/src/search/search.dart';
 import 'package:cima_client/src/settings/settings.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
@@ -72,10 +74,38 @@ class HomePage extends StatelessWidget {
         ),
       ),
       drawer: const DrawerWidget(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Navigator.restorablePushNamed(context, SearchPage.routeName),
-        child: const Icon(Icons.search),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            heroTag: 'search',
+            onPressed: () =>
+                Navigator.restorablePushNamed(context, SearchPage.routeName),
+            child: const Icon(Icons.search),
+          ),
+          const SizedBox(width: 16),
+          FloatingActionButton(
+            heroTag: 'scan',
+            onPressed: () async {
+              String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+                "#ff6666",
+                "Cancel",
+                false,
+                ScanMode.DEFAULT,
+              );
+              log('Barcode: $barcodeScanRes');
+              final nationalCode = barcodeScanRes.substring(6, 12);
+              log('cn: $nationalCode');
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MedicationDetailPage(
+                            cn: nationalCode,
+                          )));
+            },
+            child: const Icon(Icons.qr_code_scanner),
+          ),
+        ],
       ),
     );
   }

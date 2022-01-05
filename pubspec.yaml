@@ -23,6 +23,7 @@ dependencies:
     sdk: flutter
   intl: any
   url_launcher: any
+  flutter_barcode_scanner: ^2.0.0
 
 dev_dependencies:
   flutter_lints: ^1.0.0
