@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cima_api/cima_api.dart';
 import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';
@@ -23,25 +25,10 @@ void main() {
     });
 
     group('getMedicamento', () {
-      test('get medication', () async {
-        final params = <String, String>{};
-        when(
-          () => client.get(Uri.https(
-            baseUrl,
-            '/cima/rest/medicamento',
-            params,
-          )),
-        ).thenAnswer((_) async => Response('', 200));
-        final apiClient = CimaApiClient(
-          httpClient: client,
-          baseUrl: baseUrl,
-        );
-        final result = await apiClient.getMedicamento();
-        expect(result, isNotNull);
-      });
       test('get medication by CN', () async {
+        final cn = '712729';
         final params = <String, String>{};
-        params['cn'] = '712729';
+        params['cn'] = cn;
         final jsonResponse = {
           "nregistro": "51347",
           "nombre": "ASPIRINA C 400 mg/240 mg COMPRIMIDOS EFERVESCENTES",
@@ -182,13 +169,74 @@ void main() {
             '/cima/rest/medicamento',
             params,
           )),
-        ).thenAnswer((_) async => Response(jsonResponse.toString(), 200));
+        ).thenAnswer((_) async => Response(jsonEncode(jsonResponse), 200));
         final apiClient = CimaApiClient(
           httpClient: client,
           baseUrl: baseUrl,
         );
-        final result = await apiClient.getMedicamento();
-        expect(result.body == jsonResponse.toString(), isTrue);
+        final result = await apiClient.getMedicationByCN(cn);
+        expect(result, isA<Response>());
+        expect(result.statusCode, 200);
+      });
+
+      test('get medication by nregistro', () async {
+        final nRegistro = '51347';
+        final params = <String, String>{};
+        params['nregistro'] = nRegistro;
+        when(
+          () => client.get(Uri.https(
+            baseUrl,
+            '/cima/rest/medicamento',
+            params,
+          )),
+        ).thenAnswer((_) async => Response('', 200));
+        final apiClient = CimaApiClient(
+          httpClient: client,
+          baseUrl: baseUrl,
+        );
+        final result = await apiClient.getMedicationByNRegistro(nRegistro);
+        expect(result, isA<Response>());
+        expect(result.statusCode, 200);
+      });
+    });
+
+    group('getMedications', () {
+      test('get medications without params', () async {
+        final params = <String, String>{};
+        when(
+          () => client.get(Uri.https(
+            baseUrl,
+            '/cima/rest/medicamentos',
+            params,
+          )),
+        ).thenAnswer((_) async => Response('', 204));
+        final apiClient = CimaApiClient(
+          httpClient: client,
+          baseUrl: baseUrl,
+        );
+        final result = await apiClient.getMedications(params: params);
+        expect(result, isA<Response>());
+        expect(result.statusCode, 204);
+      });
+
+      test('get medications with params', () async {
+        final params = <String, String>{};
+        params['nombre'] = 'paracetamol';
+        when(
+          () => client.get(Uri.https(
+            baseUrl,
+            '/cima/rest/medicamentos',
+            params,
+          )),
+        ).thenAnswer((_) async => Response('', 200));
+
+        final apiClient = CimaApiClient(
+          httpClient: client,
+          baseUrl: baseUrl,
+        );
+        final result = await apiClient.getMedications(params: params);
+        expect(result, isA<Response>());
+        expect(result.statusCode, 200);
       });
     });
   });

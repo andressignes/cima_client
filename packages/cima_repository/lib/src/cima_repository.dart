@@ -18,13 +18,22 @@ class CimaRepository {
     String? cn,
   }) async {
     try {
-      final response =
-          await _remoteDataSource.getMedicamento(cn: cn, nregistro: nregistro);
-      if (response.statusCode == 200) {
+      final response = nregistro != null
+          ? await _remoteDataSource.getMedicationByNRegistro(nregistro)
+          : cn != null
+              ? await _remoteDataSource.getMedicationByCN(cn)
+              : null;
+      if (response == null) {
+        return Left(ServerFailure());
+      }
+      if (response.statusCode != 200) {
+        return Left(ServerFailure());
+      }
+      try {
         final medicamento = Medicamento.fromJson(jsonDecode(response.body));
         return Right(medicamento);
-      } else {
-        return Left(ServerFailure());
+      } on FormatException {
+        return Left(FormatFailure());
       }
     } catch (e) {
       return Left(ServerFailure());

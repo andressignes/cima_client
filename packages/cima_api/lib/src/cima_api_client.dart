@@ -14,7 +14,15 @@ class CimaApiClient {
   static const _baseEndPoint = '/cima/rest';
   final Client _client;
 
-  Future<Response> getMedicamento({
+  Future<Response> getMedicationByCN(String cn) async {
+    return _getMedicamento(cn: cn);
+  }
+
+  Future<Response> getMedicationByNRegistro(String nRegistro) async {
+    return _getMedicamento(nregistro: nRegistro);
+  }
+
+  Future<Response> _getMedicamento({
     String? cn,
     String? nregistro,
   }) async {
@@ -28,13 +36,6 @@ class CimaApiClient {
     final url = Uri.https(_baseUrl, '$_baseEndPoint/medicamento', params);
     final cimaResponse = await _client.get(url);
     return cimaResponse;
-    // if (cimaResponse.statusCode != 200) {
-    //   //TODO CAPTURAR EXCEPCION
-    //   // throw ServerException();
-    // }
-    //
-    // final decode = json.decode(cimaResponse.body);
-    // return MedicamentoModel.fromJson(decode);
   }
 
   Future<Response> getMedications({Map<String, String>? params}) async {
@@ -42,13 +43,6 @@ class CimaApiClient {
     log(url.toString());
     var cimaResponse = await _client.get(url);
     return cimaResponse;
-    // if (cimaResponse.statusCode != 200) {
-    //   //TODO CAPTURE EXCEPTION
-    //   // throw CimaRequestFailure();
-    // }
-    //
-    // var decode = json.decode(cimaResponse.body);
-    // return CimaPaginadoModel.fromJson(decode);
   }
 
   Future<Response> getProblemasSuministro({Map<String, String>? params}) async {
