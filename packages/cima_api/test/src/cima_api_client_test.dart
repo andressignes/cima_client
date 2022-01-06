@@ -239,5 +239,25 @@ void main() {
         expect(result.statusCode, 200);
       });
     });
+
+    group('getProblemasSuministro', () {
+      test('get Problemas Suministro', () async {
+        final params = <String, String>{};
+        when(
+          () => client.get(Uri.https(
+            baseUrl,
+            '/cima/rest/psuministro',
+            params,
+          )),
+        ).thenAnswer((_) async => Response('', 200));
+        final apiClient = CimaApiClient(
+          httpClient: client,
+          baseUrl: baseUrl,
+        );
+        final result = await apiClient.getProblemasSuministro(params: params);
+        expect(result, isA<Response>());
+        expect(result.statusCode, 200);
+      });
+    });
   });
 }
