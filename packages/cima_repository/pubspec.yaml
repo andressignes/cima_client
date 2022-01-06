@@ -16,4 +16,5 @@ dependencies:
     path: ../errors
 
 dev_dependencies:
+  test: any
   lints: any
