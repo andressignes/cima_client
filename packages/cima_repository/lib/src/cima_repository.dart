@@ -61,6 +61,8 @@ class CimaRepository {
           log('error: $e');
           return Left(FormatFailure());
         }
+      } else if (response.statusCode == 204) {
+        return Left(NoDataFailure());
       } else {
         return Left(ServerFailure());
       }
@@ -77,22 +79,22 @@ class CimaRepository {
         params: params,
       );
       log('statusCode: ${response.statusCode}');
-      if (response.statusCode == 200) {
-        try {
-          final cimaPaginado = CimaPaginado.fromJson(jsonDecode(response.body));
-          if (cimaPaginado.resultados?.isEmpty ?? true) {
-            return Right([]);
-          }
-          final problemasSuministro = cimaPaginado.resultados!
-              .map((e) => ProblemaSuministro.fromJson(e))
-              .toList();
-          return Right(problemasSuministro);
-        } catch (e) {
-          log('error: $e');
-          return Left(FormatFailure());
-        }
-      } else {
+      if (response.statusCode != 200) {
         return Left(ServerFailure());
+      }
+
+      try {
+        final cimaPaginado = CimaPaginado.fromJson(jsonDecode(response.body));
+        if (cimaPaginado.resultados?.isEmpty ?? true) {
+          return Right([]);
+        }
+        final problemasSuministro = cimaPaginado.resultados!
+            .map((e) => ProblemaSuministro.fromJson(e))
+            .toList();
+        return Right(problemasSuministro);
+      } catch (e) {
+        log('error: $e');
+        return Left(FormatFailure());
       }
     } catch (e) {
       return Left(ServerFailure());

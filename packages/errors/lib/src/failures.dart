@@ -14,3 +14,6 @@ class CacheFailure extends Failure {}
 
 /// Json Format not Valid
 class FormatFailure extends Failure {}
+
+/// Empty Data Failure
+class NoDataFailure extends Failure {}
