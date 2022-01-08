@@ -14,7 +14,7 @@ dependencies:
   dartz: any
   errors:
     path: ../errors
-
+  collection: ^1.15.0
 dev_dependencies:
   test: any
   mocktail: ^0.2.0
