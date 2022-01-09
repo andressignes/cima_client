@@ -32,11 +32,11 @@ class PharmaceuticalFormPhotoWidget extends StatelessWidget {
         child: Image.network(
           urlPhoto,
           fit: BoxFit.fitWidth,
-          loadingBuilder: (context, child, loadingProgress) {
-            return loadingProgress == null
-                ? child
-                : const Center(child: CircularProgressIndicator());
-          },
+          // loadingBuilder: (context, child, loadingProgress) {
+          //   return loadingProgress == null
+          //       ? child
+          //       : const Center(child: CircularProgressIndicator());
+          // },
         ),
       ),
     );
