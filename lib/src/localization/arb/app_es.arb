@@ -134,5 +134,9 @@
   "light_mode": "Modo claro",
   "@light_mode": {
     "description": "The text of the light mode"
+  },
+  "cancel": "Cancelar",
+  "@cancel": {
+    "description": "The text of the cancel button"
   }
 }

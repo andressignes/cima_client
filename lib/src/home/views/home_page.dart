@@ -88,11 +88,14 @@ class HomePage extends StatelessWidget {
             heroTag: 'scan',
             onPressed: () async {
               String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-                "#ff6666",
-                "Cancel",
+                '#${Theme.of(context).colorScheme.primary.value.toRadixString(16)}',
+                l10n.cancel,
                 false,
                 ScanMode.DEFAULT,
               );
+              if (barcodeScanRes.isEmpty || barcodeScanRes.length < 12) {
+                return;
+              }
               log('Barcode: $barcodeScanRes');
               final nationalCode = barcodeScanRes.substring(6, 12);
               log('cn: $nationalCode');
