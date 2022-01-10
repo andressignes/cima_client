@@ -1,0 +1,7 @@
+name: cima_client
+
+packages:
+  - packages/**
+
+scripts:
+  analyze: melos exec -- "dart analyze ."
