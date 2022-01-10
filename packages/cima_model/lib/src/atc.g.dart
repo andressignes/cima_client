@@ -12,8 +12,17 @@ Atc _$AtcFromJson(Map<String, dynamic> json) => Atc(
       nivel: json['nivel'] as int?,
     );
 
-Map<String, dynamic> _$AtcToJson(Atc instance) => <String, dynamic>{
-      'codigo': instance.codigo,
-      'nombre': instance.nombre,
-      'nivel': instance.nivel,
-    };
+Map<String, dynamic> _$AtcToJson(Atc instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('codigo', instance.codigo);
+  writeNotNull('nombre', instance.nombre);
+  writeNotNull('nivel', instance.nivel);
+  return val;
+}

@@ -13,9 +13,18 @@ Seccion _$SeccionFromJson(Map<String, dynamic> json) => Seccion(
       contenido: json['contenido'] as String?,
     );
 
-Map<String, dynamic> _$SeccionToJson(Seccion instance) => <String, dynamic>{
-      'seccion': instance.seccion,
-      'titulo': instance.titulo,
-      'orden': instance.orden,
-      'contenido': instance.contenido,
-    };
+Map<String, dynamic> _$SeccionToJson(Seccion instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('seccion', instance.seccion);
+  writeNotNull('titulo', instance.titulo);
+  writeNotNull('orden', instance.orden);
+  writeNotNull('contenido', instance.contenido);
+  return val;
+}

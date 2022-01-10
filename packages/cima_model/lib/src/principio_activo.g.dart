@@ -16,12 +16,20 @@ PrincipioActivo _$PrincipioActivoFromJson(Map<String, dynamic> json) =>
       orden: json['orden'] as int?,
     );
 
-Map<String, dynamic> _$PrincipioActivoToJson(PrincipioActivo instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'codigo': instance.codigo,
-      'nombre': instance.nombre,
-      'cantidad': instance.cantidad,
-      'unidad': instance.unidad,
-      'orden': instance.orden,
-    };
+Map<String, dynamic> _$PrincipioActivoToJson(PrincipioActivo instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('codigo', instance.codigo);
+  writeNotNull('nombre', instance.nombre);
+  writeNotNull('cantidad', instance.cantidad);
+  writeNotNull('unidad', instance.unidad);
+  writeNotNull('orden', instance.orden);
+  return val;
+}

@@ -17,9 +17,18 @@ Material _$MaterialFromJson(Map<String, dynamic> json) => Material(
       texto: json['texto'] as String?,
     );
 
-Map<String, dynamic> _$MaterialToJson(Material instance) => <String, dynamic>{
-      'titulo': instance.titulo,
-      'listaDocsPaciente': instance.listaDocsPaciente,
-      'listaDocsProfesional': instance.listaDocsProfesional,
-      'texto': instance.texto,
-    };
+Map<String, dynamic> _$MaterialToJson(Material instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('titulo', instance.titulo);
+  writeNotNull('listaDocsPaciente', instance.listaDocsPaciente);
+  writeNotNull('listaDocsProfesional', instance.listaDocsProfesional);
+  writeNotNull('texto', instance.texto);
+  return val;
+}

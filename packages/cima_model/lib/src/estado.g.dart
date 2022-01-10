@@ -12,8 +12,17 @@ Estado _$EstadoFromJson(Map<String, dynamic> json) => Estado(
       rev: json['rev'] as int?,
     );
 
-Map<String, dynamic> _$EstadoToJson(Estado instance) => <String, dynamic>{
-      'aut': instance.aut,
-      'susp': instance.susp,
-      'rev': instance.rev,
-    };
+Map<String, dynamic> _$EstadoToJson(Estado instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('aut', instance.aut);
+  writeNotNull('susp', instance.susp);
+  writeNotNull('rev', instance.rev);
+  return val;
+}

@@ -13,10 +13,18 @@ CimaPaginado _$CimaPaginadoFromJson(Map<String, dynamic> json) => CimaPaginado(
       resultados: json['resultados'] as List<dynamic>?,
     );
 
-Map<String, dynamic> _$CimaPaginadoToJson(CimaPaginado instance) =>
-    <String, dynamic>{
-      'totalFilas': instance.totalFilas,
-      'pagina': instance.pagina,
-      'tamanioPagina': instance.tamanioPagina,
-      'resultados': instance.resultados,
-    };
+Map<String, dynamic> _$CimaPaginadoToJson(CimaPaginado instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('totalFilas', instance.totalFilas);
+  writeNotNull('pagina', instance.pagina);
+  writeNotNull('tamanioPagina', instance.tamanioPagina);
+  writeNotNull('resultados', instance.resultados);
+  return val;
+}

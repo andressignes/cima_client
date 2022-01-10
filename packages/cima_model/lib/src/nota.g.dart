@@ -9,17 +9,26 @@ part of 'nota.dart';
 Nota _$NotaFromJson(Map<String, dynamic> json) => Nota(
       tipo: json['tipo'] as int?,
       num: json['num'] as String?,
-      ref: json['ref'] as String?,
+      referencia: json['referencia'] as String?,
       asunto: json['asunto'] as String?,
       fecha: json['fecha'] as int?,
       url: json['url'] as String?,
     );
 
-Map<String, dynamic> _$NotaToJson(Nota instance) => <String, dynamic>{
-      'tipo': instance.tipo,
-      'num': instance.num,
-      'ref': instance.ref,
-      'asunto': instance.asunto,
-      'fecha': instance.fecha,
-      'url': instance.url,
-    };
+Map<String, dynamic> _$NotaToJson(Nota instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('tipo', instance.tipo);
+  writeNotNull('num', instance.num);
+  writeNotNull('referencia', instance.referencia);
+  writeNotNull('asunto', instance.asunto);
+  writeNotNull('fecha', instance.fecha);
+  writeNotNull('url', instance.url);
+  return val;
+}

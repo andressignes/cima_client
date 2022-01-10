@@ -16,11 +16,19 @@ Presentacion _$PresentacionFromJson(Map<String, dynamic> json) => Presentacion(
       psum: json['psum'] as bool?,
     );
 
-Map<String, dynamic> _$PresentacionToJson(Presentacion instance) =>
-    <String, dynamic>{
-      'cn': instance.cn,
-      'nombre': instance.nombre,
-      'estado': instance.estado,
-      'comerc': instance.comerc,
-      'psum': instance.psum,
-    };
+Map<String, dynamic> _$PresentacionToJson(Presentacion instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('cn', instance.cn);
+  writeNotNull('nombre', instance.nombre);
+  writeNotNull('estado', instance.estado);
+  writeNotNull('comerc', instance.comerc);
+  writeNotNull('psum', instance.psum);
+  return val;
+}

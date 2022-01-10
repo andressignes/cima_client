@@ -16,12 +16,20 @@ ProblemaSuministro _$ProblemaSuministroFromJson(Map<String, dynamic> json) =>
       activo: json['activo'] as bool?,
     );
 
-Map<String, dynamic> _$ProblemaSuministroToJson(ProblemaSuministro instance) =>
-    <String, dynamic>{
-      'cn': instance.cn,
-      'nombre': instance.nombre,
-      'fini': instance.fini,
-      'ffin': instance.ffin,
-      'observ': instance.observ,
-      'activo': instance.activo,
-    };
+Map<String, dynamic> _$ProblemaSuministroToJson(ProblemaSuministro instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('cn', instance.cn);
+  writeNotNull('nombre', instance.nombre);
+  writeNotNull('fini', instance.fini);
+  writeNotNull('ffin', instance.ffin);
+  writeNotNull('observ', instance.observ);
+  writeNotNull('activo', instance.activo);
+  return val;
+}

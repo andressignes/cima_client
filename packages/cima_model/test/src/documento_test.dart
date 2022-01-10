@@ -15,7 +15,7 @@ void main() {
       );
 
       obj = Documento(
-        tipo: json['tipo'] as int,
+        tipo: TipoDocumento.fichaTecnica,
         url: json['url'] as String,
         secc: json['secc'] as bool,
       );
@@ -28,12 +28,12 @@ void main() {
     test('supports value comparisons', () {
       expect(
           Documento(
-                tipo: 1,
+                tipo: TipoDocumento.fichaTecnica,
                 url: "",
                 secc: true,
               ) ==
               Documento(
-                tipo: 1,
+                tipo: TipoDocumento.fichaTecnica,
                 url: "",
                 secc: true,
               ),

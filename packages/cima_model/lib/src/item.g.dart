@@ -12,8 +12,17 @@ Item _$ItemFromJson(Map<String, dynamic> json) => Item(
       nombre: json['nombre'] as String?,
     );
 
-Map<String, dynamic> _$ItemToJson(Item instance) => <String, dynamic>{
-      'id': instance.id,
-      'codigo': instance.codigo,
-      'nombre': instance.nombre,
-    };
+Map<String, dynamic> _$ItemToJson(Item instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('codigo', instance.codigo);
+  writeNotNull('nombre', instance.nombre);
+  return val;
+}

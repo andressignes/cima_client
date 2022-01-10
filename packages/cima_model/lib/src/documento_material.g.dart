@@ -13,9 +13,17 @@ DocumentoMaterial _$DocumentoMaterialFromJson(Map<String, dynamic> json) =>
       fecha: json['fecha'] as int?,
     );
 
-Map<String, dynamic> _$DocumentoMaterialToJson(DocumentoMaterial instance) =>
-    <String, dynamic>{
-      'nombre': instance.nombre,
-      'url': instance.url,
-      'fecha': instance.fecha,
-    };
+Map<String, dynamic> _$DocumentoMaterialToJson(DocumentoMaterial instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('nombre', instance.nombre);
+  writeNotNull('url', instance.url);
+  writeNotNull('fecha', instance.fecha);
+  return val;
+}

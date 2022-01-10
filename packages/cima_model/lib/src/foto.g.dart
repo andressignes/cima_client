@@ -12,8 +12,17 @@ Foto _$FotoFromJson(Map<String, dynamic> json) => Foto(
       fecha: json['fecha'] as int?,
     );
 
-Map<String, dynamic> _$FotoToJson(Foto instance) => <String, dynamic>{
-      'tipo': instance.tipo,
-      'url': instance.url,
-      'fecha': instance.fecha,
-    };
+Map<String, dynamic> _$FotoToJson(Foto instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('tipo', instance.tipo);
+  writeNotNull('url', instance.url);
+  writeNotNull('fecha', instance.fecha);
+  return val;
+}

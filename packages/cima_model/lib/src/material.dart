@@ -6,11 +6,12 @@ part 'material.g.dart';
 
 @JsonSerializable()
 class Material extends Equatable {
-  Material(
-      {this.titulo,
-      this.listaDocsPaciente,
-      this.listaDocsProfesional,
-      this.texto});
+  Material({
+    this.titulo,
+    this.listaDocsPaciente,
+    this.listaDocsProfesional,
+    this.texto,
+  });
 
   factory Material.fromJson(Map<String, dynamic> json) =>
       _$MaterialFromJson(json);

@@ -15,11 +15,19 @@ DescripcionClinica _$DescripcionClinicaFromJson(Map<String, dynamic> json) =>
       presComerc: json['presComerc'] as int?,
     );
 
-Map<String, dynamic> _$DescripcionClinicaToJson(DescripcionClinica instance) =>
-    <String, dynamic>{
-      'vmp': instance.vmp,
-      'vmpDesc': instance.vmpDesc,
-      'vmpp': instance.vmpp,
-      'vmppDesc': instance.vmppDesc,
-      'presComerc': instance.presComerc,
-    };
+Map<String, dynamic> _$DescripcionClinicaToJson(DescripcionClinica instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('vmp', instance.vmp);
+  writeNotNull('vmpDesc', instance.vmpDesc);
+  writeNotNull('vmpp', instance.vmpp);
+  writeNotNull('vmppDesc', instance.vmppDesc);
+  writeNotNull('presComerc', instance.presComerc);
+  return val;
+}

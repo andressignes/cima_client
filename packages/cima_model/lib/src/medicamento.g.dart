@@ -56,31 +56,40 @@ Medicamento _$MedicamentoFromJson(Map<String, dynamic> json) => Medicamento(
       dosis: json['dosis'] as String?,
     );
 
-Map<String, dynamic> _$MedicamentoToJson(Medicamento instance) =>
-    <String, dynamic>{
-      'nregistro': instance.nregistro,
-      'nombre': instance.nombre,
-      'pactivos': instance.pactivos,
-      'labtitular': instance.labtitular,
-      'estado': instance.estado,
-      'cpresc': instance.cpresc,
-      'comerc': instance.comerc,
-      'conduc': instance.conduc,
-      'triangulo': instance.triangulo,
-      'huerfano': instance.huerfano,
-      'biosimilar': instance.biosimilar,
-      'ema': instance.ema,
-      'psum': instance.psum,
-      'docs': instance.docs,
-      'fotos': instance.fotos,
-      'notas': instance.notas,
-      'materialesInf': instance.materialesInf,
-      'atcs': instance.atcs,
-      'principiosActivos': instance.principiosActivos,
-      'viasAdministracion': instance.viasAdministracion,
-      'nosustituible': instance.nosustituible,
-      'presentaciones': instance.presentaciones,
-      'formaFarmaceutica': instance.formaFarmaceutica,
-      'formaFarmaceuticaSimplificada': instance.formaFarmaceuticaSimplificada,
-      'dosis': instance.dosis,
-    };
+Map<String, dynamic> _$MedicamentoToJson(Medicamento instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('nregistro', instance.nregistro);
+  writeNotNull('nombre', instance.nombre);
+  writeNotNull('pactivos', instance.pactivos);
+  writeNotNull('labtitular', instance.labtitular);
+  writeNotNull('estado', instance.estado);
+  writeNotNull('cpresc', instance.cpresc);
+  writeNotNull('comerc', instance.comerc);
+  writeNotNull('conduc', instance.conduc);
+  writeNotNull('triangulo', instance.triangulo);
+  writeNotNull('huerfano', instance.huerfano);
+  writeNotNull('biosimilar', instance.biosimilar);
+  writeNotNull('ema', instance.ema);
+  writeNotNull('psum', instance.psum);
+  writeNotNull('docs', instance.docs);
+  writeNotNull('fotos', instance.fotos);
+  writeNotNull('notas', instance.notas);
+  writeNotNull('materialesInf', instance.materialesInf);
+  writeNotNull('atcs', instance.atcs);
+  writeNotNull('principiosActivos', instance.principiosActivos);
+  writeNotNull('viasAdministracion', instance.viasAdministracion);
+  writeNotNull('nosustituible', instance.nosustituible);
+  writeNotNull('presentaciones', instance.presentaciones);
+  writeNotNull('formaFarmaceutica', instance.formaFarmaceutica);
+  writeNotNull(
+      'formaFarmaceuticaSimplificada', instance.formaFarmaceuticaSimplificada);
+  writeNotNull('dosis', instance.dosis);
+  return val;
+}
