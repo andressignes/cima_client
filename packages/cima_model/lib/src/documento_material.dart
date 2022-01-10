@@ -3,6 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'documento_material.g.dart';
 
+/// Contiene la información relativa a los documentos asociados a un medicamento
 @JsonSerializable()
 class DocumentoMaterial extends Equatable {
   DocumentoMaterial({this.nombre, this.url, this.fecha});

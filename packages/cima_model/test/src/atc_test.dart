@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:cima_model/cima_model.dart';
 import 'package:test/test.dart';
 
@@ -6,17 +9,15 @@ void main() {
     late Map<String, dynamic> atcJson;
     late Atc atcObj;
 
-    setUp(() {
-      atcJson = {
-        "codigo": "N02B",
-        "nombre": "OTROS ANALGÉSICOS Y ANTIPIRÉTICOS",
-        "nivel": 3
-      };
+    setUp(() async {
+      atcJson = jsonDecode(
+        await File('test/resources/atc.json').readAsString(),
+      );
 
       atcObj = Atc(
-        nombre: 'OTROS ANALGÉSICOS Y ANTIPIRÉTICOS',
-        codigo: 'N02B',
-        nivel: 3,
+        nombre: atcJson['nombre'] as String,
+        codigo: atcJson['codigo'] as String,
+        nivel: atcJson['nivel'] as int,
       );
     });
 
