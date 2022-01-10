@@ -47,21 +47,15 @@ class MedicationDetailWidget extends StatelessWidget {
                     children: [
                       PdfButtonWidget(
                         title: l10n.technical_profile,
-                        url: _medicamento.docs
-                            ?.firstWhere(
-                              (element) => element.tipo == 1,
-                              orElse: () => Documento(),
-                            )
-                            .url,
+                        url: _medicamento
+                            .getDocumento(TipoDocumento.fichaTecnica)
+                            ?.url,
                       ),
                       PdfButtonWidget(
                         title: l10n.prospect,
-                        url: _medicamento.docs
-                            ?.firstWhere(
-                              (element) => element.tipo == 2,
-                              orElse: () => Documento(),
-                            )
-                            .url,
+                        url: _medicamento
+                            .getDocumento(TipoDocumento.prospecto)
+                            ?.url,
                       ),
                     ],
                   ),

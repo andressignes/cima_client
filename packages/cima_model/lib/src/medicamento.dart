@@ -64,6 +64,12 @@ class Medicamento extends Equatable {
 
   Map<String, dynamic> toJson() => _$MedicamentoToJson(this);
 
+  Documento? getDocumento(TipoDocumento type) {
+    if (docs == null) return null;
+    if (docs!.indexWhere((element) => element.tipo == type) == -1) return null;
+    return docs!.firstWhere((d) => d.tipo == type);
+  }
+
   @override
   List<Object?> get props => [
         nregistro,
