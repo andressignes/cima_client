@@ -1,0 +1,26 @@
+name: cima_client
+
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: subosito/github-actions-build@v2
+
+      - name: Install Dependencies
+        run: flutter packages get
+
+      - name: Format
+        run: flutter format --set-exit-if-changed lib test
+
+      - name: Analize
+        run: flutter analyze lib test
+
+      - name: Run Test
+        run: flutter test --no-pub --coverage
+
+      - name: Check Code Coverage
+        uses: VeryGoodOpensource/very_good_coverage@v1.1.1
