@@ -17,7 +17,7 @@ jobs:
         run: flutter format --set-exit-if-changed lib test
 
       - name: Analize
-        run: flutter analyze
+        run: flutter analyze lib test
 
       - name: Run Test
         run: flutter test --no-pub --coverage
