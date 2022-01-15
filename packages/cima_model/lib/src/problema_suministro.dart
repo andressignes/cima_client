@@ -8,6 +8,7 @@ class ProblemaSuministro extends Equatable {
   ProblemaSuministro({
     this.cn,
     this.nombre,
+    this.tipoProblemaSuministro,
     this.fini,
     this.ffin,
     this.observ,
@@ -19,6 +20,7 @@ class ProblemaSuministro extends Equatable {
 
   final String? cn;
   final String? nombre;
+  final int? tipoProblemaSuministro;
   final int? fini;
   final int? ffin;
   final String? observ;
@@ -30,6 +32,7 @@ class ProblemaSuministro extends Equatable {
   List<Object?> get props => [
         cn,
         nombre,
+        tipoProblemaSuministro,
         fini,
         ffin,
         observ,
