@@ -9,18 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v2
+      - name: Install Tools
+        run: |
+            flutter pub global activate melos
+      - name: Init tools
+        run: melos bs
 
       - name: Install Dependencies
-        run: flutter packages get
+        run: melos run WF:ci
 
-      - name: Format
-        run: flutter format --set-exit-if-changed lib test
-
-      - name: Analize
-        run: flutter analyze lib test
-
-      - name: Run Test
-        run: flutter test --no-pub --coverage
-
-      - name: Check Code Coverage
-        uses: VeryGoodOpensource/very_good_coverage@v1.1.1
+#      - name: Check Code Coverage
+#        uses: VeryGoodOpensource/very_good_coverage@v1.1.1
