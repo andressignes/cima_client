@@ -10,6 +10,7 @@ ProblemaSuministro _$ProblemaSuministroFromJson(Map<String, dynamic> json) =>
     ProblemaSuministro(
       cn: json['cn'] as String?,
       nombre: json['nombre'] as String?,
+      tipoProblemaSuministro: json['tipoProblemaSuministro'] as int?,
       fini: json['fini'] as int?,
       ffin: json['ffin'] as int?,
       observ: json['observ'] as String?,
@@ -27,6 +28,7 @@ Map<String, dynamic> _$ProblemaSuministroToJson(ProblemaSuministro instance) {
 
   writeNotNull('cn', instance.cn);
   writeNotNull('nombre', instance.nombre);
+  writeNotNull('tipoProblemaSuministro', instance.tipoProblemaSuministro);
   writeNotNull('fini', instance.fini);
   writeNotNull('ffin', instance.ffin);
   writeNotNull('observ', instance.observ);

@@ -16,6 +16,8 @@ Medicamento _$MedicamentoFromJson(Map<String, dynamic> json) => Medicamento(
           : Estado.fromJson(json['estado'] as Map<String, dynamic>),
       cpresc: json['cpresc'] as String?,
       comerc: json['comerc'] as bool?,
+      receta: json['receta'] as bool?,
+      generico: json['generico'] as bool?,
       conduc: json['conduc'] as bool?,
       triangulo: json['triangulo'] as bool?,
       huerfano: json['huerfano'] as bool?,
@@ -36,6 +38,9 @@ Medicamento _$MedicamentoFromJson(Map<String, dynamic> json) => Medicamento(
       principiosActivos: (json['principiosActivos'] as List<dynamic>?)
           ?.map((e) => PrincipioActivo.fromJson(e as Map<String, dynamic>))
           .toList(),
+      excipientes: (json['excipientes'] as List<dynamic>?)
+          ?.map((e) => PrincipioActivo.fromJson(e as Map<String, dynamic>))
+          .toList(),
       viasAdministracion: (json['viasAdministracion'] as List<dynamic>?)
           ?.map((e) => Item.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -53,6 +58,9 @@ Medicamento _$MedicamentoFromJson(Map<String, dynamic> json) => Medicamento(
           ? null
           : Item.fromJson(
               json['formaFarmaceuticaSimplificada'] as Map<String, dynamic>),
+      vtm: json['vtm'] == null
+          ? null
+          : Item.fromJson(json['vtm'] as Map<String, dynamic>),
       dosis: json['dosis'] as String?,
     );
 
@@ -72,6 +80,8 @@ Map<String, dynamic> _$MedicamentoToJson(Medicamento instance) {
   writeNotNull('estado', instance.estado);
   writeNotNull('cpresc', instance.cpresc);
   writeNotNull('comerc', instance.comerc);
+  writeNotNull('receta', instance.receta);
+  writeNotNull('generico', instance.generico);
   writeNotNull('conduc', instance.conduc);
   writeNotNull('triangulo', instance.triangulo);
   writeNotNull('huerfano', instance.huerfano);
@@ -84,12 +94,14 @@ Map<String, dynamic> _$MedicamentoToJson(Medicamento instance) {
   writeNotNull('materialesInf', instance.materialesInf);
   writeNotNull('atcs', instance.atcs);
   writeNotNull('principiosActivos', instance.principiosActivos);
+  writeNotNull('excipientes', instance.excipientes);
   writeNotNull('viasAdministracion', instance.viasAdministracion);
   writeNotNull('nosustituible', instance.nosustituible);
   writeNotNull('presentaciones', instance.presentaciones);
   writeNotNull('formaFarmaceutica', instance.formaFarmaceutica);
   writeNotNull(
       'formaFarmaceuticaSimplificada', instance.formaFarmaceuticaSimplificada);
+  writeNotNull('vtm', instance.vtm);
   writeNotNull('dosis', instance.dosis);
   return val;
 }

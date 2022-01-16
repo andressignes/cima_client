@@ -22,6 +22,8 @@ void main() {
         estado: Estado.fromJson(json['estado']),
         cpresc: json['cpresc'] as String,
         comerc: json['comerc'] as bool,
+        receta: json['receta'] as bool,
+        generico: json['generico'] as bool,
         conduc: json['conduc'] as bool,
         triangulo: json['triangulo'] as bool,
         huerfano: json['huerfano'] as bool,
@@ -36,6 +38,9 @@ void main() {
         principiosActivos: (json['principiosActivos'] as List)
             .map((e) => PrincipioActivo.fromJson(e))
             .toList(),
+        excipientes: (json['excipientes'] as List)
+            .map((e) => PrincipioActivo.fromJson(e))
+            .toList(),
         viasAdministracion: (json['viasAdministracion'] as List)
             .map((e) => Item.fromJson(e))
             .toList(),
@@ -46,6 +51,7 @@ void main() {
         formaFarmaceutica: Item.fromJson(json['formaFarmaceutica']),
         formaFarmaceuticaSimplificada:
             Item.fromJson(json['formaFarmaceuticaSimplificada']),
+        vtm: Item.fromJson(json['vtm']),
         dosis: json['dosis'] as String,
       );
     });
@@ -64,6 +70,7 @@ void main() {
                 estado: Estado(susp: 1, rev: 1, aut: 1),
                 cpresc: 'cpresc',
                 comerc: true,
+                receta: true,
                 conduc: true,
                 triangulo: true,
                 huerfano: true,
@@ -99,6 +106,7 @@ void main() {
                 estado: Estado(susp: 1, rev: 1, aut: 1),
                 cpresc: 'cpresc',
                 comerc: true,
+                receta: true,
                 conduc: true,
                 triangulo: true,
                 huerfano: true,

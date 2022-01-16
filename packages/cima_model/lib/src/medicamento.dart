@@ -6,32 +6,37 @@ part 'medicamento.g.dart';
 
 @JsonSerializable()
 class Medicamento extends Equatable {
-  Medicamento(
-      {this.nregistro,
-      this.nombre,
-      this.pactivos,
-      this.labtitular,
-      this.estado,
-      this.cpresc,
-      this.comerc,
-      this.conduc,
-      this.triangulo,
-      this.huerfano,
-      this.biosimilar,
-      this.ema,
-      this.psum,
-      this.docs,
-      this.fotos,
-      this.notas,
-      this.materialesInf,
-      this.atcs,
-      this.principiosActivos,
-      this.viasAdministracion,
-      this.nosustituible,
-      this.presentaciones,
-      this.formaFarmaceutica,
-      this.formaFarmaceuticaSimplificada,
-      this.dosis});
+  Medicamento({
+    this.nregistro,
+    this.nombre,
+    this.pactivos,
+    this.labtitular,
+    this.estado,
+    this.cpresc,
+    this.comerc,
+    this.receta,
+    this.generico,
+    this.conduc,
+    this.triangulo,
+    this.huerfano,
+    this.biosimilar,
+    this.ema,
+    this.psum,
+    this.docs,
+    this.fotos,
+    this.notas,
+    this.materialesInf,
+    this.atcs,
+    this.principiosActivos,
+    this.excipientes,
+    this.viasAdministracion,
+    this.nosustituible,
+    this.presentaciones,
+    this.formaFarmaceutica,
+    this.formaFarmaceuticaSimplificada,
+    this.vtm,
+    this.dosis,
+  });
 
   factory Medicamento.fromJson(Map<String, dynamic> json) =>
       _$MedicamentoFromJson(json);
@@ -43,6 +48,8 @@ class Medicamento extends Equatable {
   final Estado? estado;
   final String? cpresc;
   final bool? comerc;
+  final bool? receta;
+  final bool? generico;
   final bool? conduc;
   final bool? triangulo;
   final bool? huerfano;
@@ -55,11 +62,13 @@ class Medicamento extends Equatable {
   final bool? materialesInf;
   final List<Atc>? atcs;
   final List<PrincipioActivo>? principiosActivos;
+  final List<PrincipioActivo>? excipientes;
   final List<Item>? viasAdministracion;
   final Item? nosustituible;
   final List<Presentacion>? presentaciones;
   final Item? formaFarmaceutica;
   final Item? formaFarmaceuticaSimplificada;
+  final Item? vtm;
   final String? dosis;
 
   Map<String, dynamic> toJson() => _$MedicamentoToJson(this);
@@ -79,6 +88,8 @@ class Medicamento extends Equatable {
         estado,
         cpresc,
         comerc,
+        receta,
+        generico,
         conduc,
         triangulo,
         huerfano,
@@ -91,11 +102,13 @@ class Medicamento extends Equatable {
         materialesInf,
         atcs,
         principiosActivos,
+        excipientes,
         viasAdministracion,
         nosustituible,
         presentaciones,
         formaFarmaceutica,
         formaFarmaceuticaSimplificada,
+        vtm,
         dosis
       ];
 }
