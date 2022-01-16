@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:cima_model/cima_model.dart';
+import 'package:cima_model/cima_model.dart' show Item;
 import 'package:test/test.dart';
 
 void main() {
@@ -22,7 +22,7 @@ void main() {
     });
 
     test('can be instantiated', () {
-      expect(obj, isNotNull);
+      expect(Item(), isNotNull);
     });
 
     test('supports value comparisons', () {
@@ -38,6 +38,19 @@ void main() {
                 nombre: '1',
               ),
           isTrue);
+
+      expect(
+          Item(
+                id: 1,
+                codigo: 'abc123',
+                nombre: '1',
+              ) ==
+              Item(
+                id: 2,
+                codigo: 'abc123',
+                nombre: '1',
+              ),
+          isFalse);
     });
 
     test('json serialization fromJson', () {
