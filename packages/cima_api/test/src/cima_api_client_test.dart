@@ -16,6 +16,7 @@ void main() {
     });
 
     test('can be instantiated', () {
+      expect(CimaApiClient(baseUrl: baseUrl), isNotNull);
       expect(
           CimaApiClient(
             httpClient: MockHttpClient(),
