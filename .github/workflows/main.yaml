@@ -18,12 +18,12 @@ jobs:
       - name: Run CI workflow (format, analyze, test)
         run: melos run WF:ci
 
-      - name: Check 95% code coverage
-        uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
-        with:
-          path: "./coverage/merged.lcov.info"
-          min_coverage: 10
-          exclude: "**/*.freezed.dart **/*.g.dart **/*.gr.dart"
+#      - name: Check 95% code coverage
+#        uses: VeryGoodOpenSource/very_good_coverage@v1.2.0
+#        with:
+#          path: "./coverage/merged.lcov.info"
+#          min_coverage: 10
+#          exclude: "**/*.freezed.dart **/*.g.dart **/*.gr.dart"
 
       - name: Upload coverage data to codecov.io
         uses: codecov/codecov-action@v2
