@@ -9,6 +9,7 @@
 .history
 .svn/
 **/coverage/
+**/pubspec.lock
 
 # IntelliJ related
 *.iml
