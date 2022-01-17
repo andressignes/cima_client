@@ -14,13 +14,15 @@ void main() {
         await File('test/resources/seccion.json').readAsString(),
       );
 
-      obj = Seccion(
-        seccion: json['seccion'] as String,
-        titulo: json['titulo'] as String,
-        orden: json['orden'] as int,
-        contenido:
-            json.containsKey('contenido') ? json['contenido'] as String : null,
-      );
+      obj = Seccion.fromJson(json);
+
+      // obj = Seccion(
+      //   seccion: json['seccion'] as String,
+      //   titulo: json['titulo'] as String,
+      //   orden: json['orden'] as int,
+      //   contenido:
+      //       json.containsKey('contenido') ? json['contenido'] as String : null,
+      // );
     });
 
     test('can be instantiated', () {

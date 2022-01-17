@@ -9,19 +9,21 @@ void main() {
     late Map<String, dynamic> json;
     late ProblemaSuministro obj;
 
-    setUp(() async {
+    setUpAll(() async {
       json = jsonDecode(
         await File('test/resources/problema_suministro.json').readAsString(),
       );
 
-      obj = ProblemaSuministro(
-        cn: json['cn'] as String,
-        nombre: json['nombre'] as String,
-        activo: json['activo'] as bool,
-        fini: json['fini'] as int,
-        ffin: json['ffin'] as int,
-        observ: json['observ'] as String,
-      );
+      obj = ProblemaSuministro.fromJson(json);
+
+      // obj = ProblemaSuministro(
+      //   cn: json['cn'] as String,
+      //   nombre: json['nombre'] as String,
+      //   activo: json['activo'] as bool,
+      //   fini: json['fini'] as int,
+      //   ffin: json['ffin'] as int,
+      //   observ: json['observ'] as String,
+      // );
     });
 
     test('can be instantiated', () {
