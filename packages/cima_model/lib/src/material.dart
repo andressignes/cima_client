@@ -7,27 +7,27 @@ part 'material.g.dart';
 @JsonSerializable()
 class Material extends Equatable {
   Material({
-    this.titulo,
+    this.medicamento,
     this.listaDocsPaciente,
     this.listaDocsProfesional,
-    this.texto,
+    this.principiosActivos,
   });
 
   factory Material.fromJson(Map<String, dynamic> json) =>
       _$MaterialFromJson(json);
 
-  final String? titulo;
+  final String? medicamento;
   final List<DocumentoMaterial>? listaDocsPaciente;
   final List<DocumentoMaterial>? listaDocsProfesional;
-  final String? texto;
+  final String? principiosActivos;
 
   Map<String, dynamic> toJson() => _$MaterialToJson(this);
 
   @override
   List<Object?> get props => [
-        titulo,
+        medicamento,
         listaDocsPaciente,
         listaDocsProfesional,
-        texto,
+        principiosActivos,
       ];
 }

@@ -7,14 +7,14 @@ part of 'material.dart';
 // **************************************************************************
 
 Material _$MaterialFromJson(Map<String, dynamic> json) => Material(
-      titulo: json['titulo'] as String?,
+      medicamento: json['medicamento'] as String?,
       listaDocsPaciente: (json['listaDocsPaciente'] as List<dynamic>?)
           ?.map((e) => DocumentoMaterial.fromJson(e as Map<String, dynamic>))
           .toList(),
       listaDocsProfesional: (json['listaDocsProfesional'] as List<dynamic>?)
           ?.map((e) => DocumentoMaterial.fromJson(e as Map<String, dynamic>))
           .toList(),
-      texto: json['texto'] as String?,
+      principiosActivos: json['principiosActivos'] as String?,
     );
 
 Map<String, dynamic> _$MaterialToJson(Material instance) {
@@ -26,9 +26,9 @@ Map<String, dynamic> _$MaterialToJson(Material instance) {
     }
   }
 
-  writeNotNull('titulo', instance.titulo);
+  writeNotNull('medicamento', instance.medicamento);
   writeNotNull('listaDocsPaciente', instance.listaDocsPaciente);
   writeNotNull('listaDocsProfesional', instance.listaDocsProfesional);
-  writeNotNull('texto', instance.texto);
+  writeNotNull('principiosActivos', instance.principiosActivos);
   return val;
 }
