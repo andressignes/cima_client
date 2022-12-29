@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:args/command_runner.dart';
-
 import 'package:utils/commands/cov/commands/merge.dart';
 
 /// Provides `lcov.info` files utils.

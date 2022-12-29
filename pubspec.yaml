@@ -14,6 +14,7 @@ dependencies:
     path: packages/cima_repository
   cima_model:
     path: packages/cima_model
+  equatable: ^2.0.3
   formz_inputs:
     path: packages/formz_inputs
   flutter:

@@ -34,7 +34,7 @@ class MedicationDetailWidget extends StatelessWidget {
                 Text(
                   _medicamento.labtitular ?? '',
                   style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                      color: Theme.of(context).colorScheme.primaryVariant),
+                      color: Theme.of(context).colorScheme.primaryContainer),
                 ),
                 Text(
                   '${l10n.registration_number}: ${_medicamento.nregistro ?? ''}',

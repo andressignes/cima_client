@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:cima_model/cima_model.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'supply_problems_event.dart';
 part 'supply_problems_state.dart';
@@ -10,30 +10,23 @@ class SupplyProblemsBloc
     extends Bloc<SupplyProblemsEvent, SupplyProblemsState> {
   SupplyProblemsBloc({required CimaRepository cimaRepository})
       : _cimaRepository = cimaRepository,
-        super(const Initial());
+        super(const Initial()) {
+    on<GetActive>(_onGetActive);
+  }
 
   final CimaRepository _cimaRepository;
 
-  @override
-  Stream<SupplyProblemsState> mapEventToState(
-    SupplyProblemsEvent event,
-  ) async* {
-    if (event is GetActive) {
-      yield* _mapGetActivosToState();
-    }
-  }
-
-  Stream<SupplyProblemsState> _mapGetActivosToState() async* {
-    yield const Loading();
+  Future<void> _onGetActive(event, emit) async {
+    emit(const Loading());
     try {
       final result = await _cimaRepository
           .findProblemasSuministro(params: {'activos': '1'});
-      yield result.fold(
+      emit(result.fold(
         (failure) => const Error(),
         (activos) => Loaded(activos),
-      );
+      ));
     } catch (_) {
-      yield const Error();
+      emit(const Error());
     }
   }
 }

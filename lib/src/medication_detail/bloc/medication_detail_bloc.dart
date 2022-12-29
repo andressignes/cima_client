@@ -12,28 +12,23 @@ class MedicationDetailBloc
     extends Bloc<MedicationDetailEvent, MedicationDetailState> {
   MedicationDetailBloc({required cimaRepository})
       : _cimaRepository = cimaRepository,
-        super(Initial());
+        super(Initial()) {
+    on<FetchMedicamento>(_onFetchMedicamento);
+  }
 
   final CimaRepository _cimaRepository;
 
-  @override
-  Stream<MedicationDetailState> mapEventToState(
-    MedicationDetailEvent event,
-  ) async* {
-    if (event is FetchMedicamento) {
-      yield* mapEventGetMedicamento(event);
-    }
-  }
-
-  Stream<MedicationDetailState> mapEventGetMedicamento(
-      FetchMedicamento event) async* {
-    yield Loading();
-    final _result = await _cimaRepository.getMedicamento(
+  Future<void> _onFetchMedicamento(event, emit) async {
+    emit(Loading());
+    final result = await _cimaRepository.getMedicamento(
       cn: event.cn,
       nregistro: event.nregistro,
     );
-    yield _result.fold((l) => Error(), (medicamento) {
-      return Available(medicamento: medicamento);
-    });
+    emit(
+      result.fold(
+        (_) => Error(),
+        (medicamento) => Available(medicamento: medicamento),
+      ),
+    );
   }
 }

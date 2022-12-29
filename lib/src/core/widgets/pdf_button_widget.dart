@@ -1,7 +1,3 @@
-import 'dart:developer';
-import 'dart:io' show Platform;
-
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -36,32 +32,6 @@ class PdfButtonWidget extends StatelessWidget {
 
   void _openBrowser(String? url) async {
     if (url == null) return;
-    if (kIsWeb) {
-      await launch(
-        url,
-        forceSafariVC: false,
-      );
-      return;
-    }
-    if (await canLaunch(url)) {
-      if (Platform.isAndroid) {
-        await launch(url);
-      } else if (Platform.isIOS) {
-        if (!await launch(
-          url,
-          forceSafariVC: false,
-          universalLinksOnly: true,
-        )) {
-          await launch(url, forceSafariVC: true);
-        }
-      } else {
-        await launch(
-          url,
-          forceSafariVC: false,
-        );
-      }
-    } else {
-      log('Could not launch $url');
-    }
+    await launchUrl(Uri.parse(url));
   }
 }

@@ -13,13 +13,13 @@ class DrawerWidget extends StatelessWidget {
       child: ListView(
         children: [
           DrawerHeader(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.background,
+            ),
             child: Center(
               child: Image.asset(
                 'assets/images/cima.png',
               ),
-            ),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.background,
             ),
           ),
           ListTile(

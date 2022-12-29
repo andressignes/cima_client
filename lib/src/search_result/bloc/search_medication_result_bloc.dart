@@ -10,28 +10,21 @@ class SearchMedicationResultBloc
     extends Bloc<SearchMedicationResultEvent, SearchMedicationResultState> {
   SearchMedicationResultBloc({required CimaRepository cimaRepository})
       : _cimaRepository = cimaRepository,
-        super(Initial());
+        super(Initial()) {
+    on<Search>(_onSearch);
+  }
 
   final CimaRepository _cimaRepository;
 
-  @override
-  Stream<SearchMedicationResultState> mapEventToState(
-      SearchMedicationResultEvent event) async* {
-    if (event is Search) {
-      yield* mapGetAuthorizedEventToState(event);
-    }
-  }
-
-  Stream<SearchMedicationResultState> mapGetAuthorizedEventToState(
-      Search event) async* {
-    yield Loading();
+  Future<void> _onSearch(event, emit) async {
+    emit(Loading());
     final result = await _cimaRepository.findMedications(params: event.params);
 
-    yield result.fold(
+    emit(result.fold(
       (error) => Error(),
       (medications) {
         return Available(medicamentos: medications);
       },
-    );
+    ));
   }
 }
