@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.0.1+2
 
 environment:
-  sdk: ">=2.15.0 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   cima_api:
@@ -18,19 +18,19 @@ dependencies:
     path: packages/formz_inputs
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.3.3
+  flutter_bloc: ^8.1.1
   flutter_localizations:
     sdk: flutter
-  intl: any
-  url_launcher: any
+  intl: ^0.17.0
+  url_launcher: ^6.1.7
   flutter_barcode_scanner: ^2.0.0
 
 dev_dependencies:
-  bloc_test: any
+  bloc_test: ^9.1.0
   flutter_test:
     sdk: flutter
-  mocktail: any
-  flutter_lints: ^1.0.0
+  mocktail: ^0.3.0
+  flutter_lints: ^2.0.1
 
 flutter:
   uses-material-design: true

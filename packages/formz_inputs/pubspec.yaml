@@ -3,10 +3,10 @@ description: Inputs fields package
 version: 0.0.1
 
 environment:
-  sdk: ">=2.15.0 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
-  formz: any
+  formz: ^0.4.1
 
 dev_dependencies:
-  lints: ^1.0.0
+  lints: ^2.0.1

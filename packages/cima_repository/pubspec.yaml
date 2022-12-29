@@ -4,18 +4,18 @@ version: 0.0.1
 publish_to: none
 
 environment:
-  sdk: ">=2.15.0 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
   cima_api:
     path: ../cima_api
   cima_model:
     path: ../cima_model
-  dartz: any
+  dartz: ^0.10.1
   errors:
     path: ../errors
-  collection: ^1.15.0
+  collection: ^1.16.0
 dev_dependencies:
-  test: any
-  mocktail: ^0.2.0
-  lints: any
+  test: ^1.22.1
+  mocktail: ^0.3.0
+  lints: ^2.0.1
