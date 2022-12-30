@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cima_model/cima_model.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:equatable/equatable.dart';
@@ -16,15 +18,20 @@ class SearchMedicationResultBloc
 
   final CimaRepository _cimaRepository;
 
-  Future<void> _onSearch(event, emit) async {
+  Future<void> _onSearch(
+    Search event,
+    Emitter<SearchMedicationResultState> emit,
+  ) async {
     emit(Loading());
     final result = await _cimaRepository.findMedications(params: event.params);
 
-    emit(result.fold(
-      (error) => Error(),
-      (medications) {
-        return Available(medicamentos: medications);
-      },
-    ));
+    emit(
+      result.fold(
+        (error) => Error(),
+        (medications) {
+          return Available(medicamentos: medications);
+        },
+      ),
+    );
   }
 }

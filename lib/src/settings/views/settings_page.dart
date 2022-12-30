@@ -1,12 +1,12 @@
-import 'package:cima_client/src/localization/l10n.dart';
+import 'package:cima_client/l10n/l10n.dart';
 import 'package:cima_client/src/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({Key? key}) : super(key: key);
+  const SettingsPage({super.key});
 
-  static const routeName = '/settings';
+  static Page<void> get page => const MaterialPage(child: SettingsPage());
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,6 @@ class SettingsPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const _AppearanceSectionView(),
@@ -36,7 +35,7 @@ class SettingsPage extends StatelessWidget {
 }
 
 class _AppearanceSectionView extends StatelessWidget {
-  const _AppearanceSectionView({Key? key}) : super(key: key);
+  const _AppearanceSectionView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +65,7 @@ class _AppearanceSectionView extends StatelessWidget {
 }
 
 class _AboutSectionView extends StatelessWidget {
-  const _AboutSectionView({Key? key}) : super(key: key);
+  const _AboutSectionView({super.key});
 
   @override
   Widget build(BuildContext context) {

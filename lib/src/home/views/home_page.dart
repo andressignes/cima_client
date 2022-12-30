@@ -1,18 +1,18 @@
 import 'dart:developer';
 
+import 'package:cima_client/app/router/routes.dart';
+import 'package:cima_client/l10n/l10n.dart';
 import 'package:cima_client/src/home/views/drawer_widget.dart';
-import 'package:cima_client/src/localization/l10n.dart';
 import 'package:cima_client/src/medication_detail/medication_detail.dart';
-import 'package:cima_client/src/search/search.dart';
-import 'package:cima_client/src/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:go_router/go_router.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
-  static const routeName = '/home';
+  static Page<void> get page => const MaterialPage(child: HomePage());
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +23,12 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
-            onPressed: () {
-              Navigator.pushNamed(context, SettingsPage.routeName);
-            },
+            onPressed: () => context.pushNamed(Routes.settings.name),
           ),
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             Text(
@@ -77,16 +75,17 @@ class HomePage extends StatelessWidget {
         children: [
           FloatingActionButton(
             heroTag: 'search',
-            onPressed: () =>
-                Navigator.restorablePushNamed(context, SearchPage.routeName),
+            onPressed: () => context.pushNamed(Routes.search.name),
             child: const Icon(Icons.search),
           ),
           const SizedBox(width: 16),
           FloatingActionButton(
             heroTag: 'scan',
             onPressed: () async {
-              String barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-                '#${Theme.of(context).colorScheme.primary.value.toRadixString(16)}',
+              final lineColor =
+                  Theme.of(context).colorScheme.primary.value.toRadixString(16);
+              final barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+                '#$lineColor',
                 l10n.cancel,
                 false,
                 ScanMode.DEFAULT,
@@ -111,7 +110,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _openLink(String url) async {
+  Future<void> _openLink(String url) async {
     await launchUrl(Uri.parse(url));
   }
 }

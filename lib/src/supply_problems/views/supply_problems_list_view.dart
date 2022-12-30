@@ -1,4 +1,4 @@
-import 'package:cima_client/src/localization/l10n.dart';
+import 'package:cima_client/l10n/l10n.dart';
 import 'package:cima_client/src/medication_detail/views/medication_detail_page.dart';
 import 'package:cima_model/cima_model.dart' show ProblemaSuministro;
 import 'package:flutter/material.dart';
@@ -6,9 +6,9 @@ import 'package:intl/intl.dart';
 
 class SupplyProblemsListWidget extends StatelessWidget {
   const SupplyProblemsListWidget({
-    Key? key,
+    super.key,
     required this.supplyProblemsList,
-  }) : super(key: key);
+  });
 
   final List<ProblemaSuministro> supplyProblemsList;
 

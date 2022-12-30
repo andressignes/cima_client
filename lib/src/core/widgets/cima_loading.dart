@@ -1,8 +1,8 @@
-import 'package:cima_client/src/localization/l10n.dart';
+import 'package:cima_client/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CimaLoading extends StatelessWidget {
-  const CimaLoading({Key? key}) : super(key: key);
+  const CimaLoading({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,6 @@ class CimaLoading extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -25,7 +24,7 @@ class CimaLoading extends StatelessWidget {
             ],
           ),
           const Padding(
-            padding: EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16),
             child: CircularProgressIndicator(),
           ),
         ],

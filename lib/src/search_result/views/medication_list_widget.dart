@@ -1,14 +1,14 @@
-import 'package:cima_client/src/localization/l10n.dart';
+import 'package:cima_client/l10n/l10n.dart';
 import 'package:cima_client/src/search_result/views/medication_item_list.dart';
 import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
 
 class MedicationListWidget extends StatelessWidget {
+  const MedicationListWidget({
+    super.key,
+    required List<Medicamento> medications,
+  }) : _medications = medications;
   final List<Medicamento> _medications;
-
-  const MedicationListWidget({Key? key, required medications})
-      : _medications = medications,
-        super(key: key);
 
   @override
   Widget build(BuildContext context) {

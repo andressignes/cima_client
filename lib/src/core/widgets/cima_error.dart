@@ -1,8 +1,8 @@
-import 'package:cima_client/src/localization/l10n.dart';
+import 'package:cima_client/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
 class CimaError extends StatelessWidget {
-  const CimaError({Key? key}) : super(key: key);
+  const CimaError({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,6 @@ class CimaError extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text('🙈', style: TextStyle(fontSize: 64)),
           Text(

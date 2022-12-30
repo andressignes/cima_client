@@ -1,10 +1,10 @@
-import 'package:cima_client/src/localization/l10n.dart';
+import 'package:cima_client/l10n/l10n.dart';
 import 'package:cima_client/src/theme/cubit/theme_app_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThemeSelectorWidget extends StatelessWidget {
-  const ThemeSelectorWidget({Key? key}) : super(key: key);
+  const ThemeSelectorWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

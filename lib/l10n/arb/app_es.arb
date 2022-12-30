@@ -1,0 +1,147 @@
+{
+    "@@locale": "es",
+    "counterAppBarTitle": "Contador",
+    "@counterAppBarTitle": {
+        "description": "Texto mostrado en la AppBar de la página del contador"
+    },
+    "appTitle": "cima_client",
+    "@appTitle": {
+        "description": "The title of the application"
+    },
+    "recently_authorized": "Autorizados recientemente",
+    "@recently_authorized": {
+        "description": "The title of the recently authorized section"
+    },
+    "error_title": "Algo salió mal",
+    "@error_title": {
+        "description": "The title of the error dialog"
+    },
+    "searching": "Buscando...",
+    "@searching": {
+        "description": "The text of the searching dialog"
+    },
+    "no_results": "No se encontraron resultados",
+    "@no_results": {
+        "description": "The text of the no results dialog"
+    },
+    "supplier_problems_title": "Problemas de suministro",
+    "@supplier_problems_title": {
+        "description": "The title of the supplier problems page"
+    },
+    "recently_authorized_title": "Autorizados recientemente",
+    "@recently_authorized_title": {
+        "description": "The title of the recently authorized page"
+    },
+    "search_title": "Buscar",
+    "@search_title": {
+        "description": "The title of the search page"
+    },
+    "settings_title": "Ajustes",
+    "@settings_title": {
+        "description": "The title of the settings page"
+    },
+    "home_page_title": "⚕️ Buscador CIMA ",
+    "@home_page_title": {
+        "description": "The title of the home page"
+    },
+    "home_page_paragraph1": "Bienvenido al Centro de Información de Medicamentos de la AEMPS",
+    "@home_page_paragraph1": {
+        "description": "The first paragraph of the home page"
+    },
+    "home_page_paragraph2": "Aqui podras consultar los medicamentos que tienen disponibles en el inventario, ver los ultimos medicamentos autorizados y los medicamentos que tienen algun tipo de problemas de suministro.",
+    "@home_page_paragraph2": {
+        "description": "The second paragraph of the home page"
+    },
+    "home_page_paragraph3": "Para mas informacion dirigete a la web de la AEMPS o ponte en contacto en alguna de sus redes sociales.",
+    "@home_page_paragraph3": {
+        "description": "The third paragraph of the home page"
+    },
+    "medication_detail_page_title": "Detalle del medicamento",
+    "@medication_detail_page_title": {
+        "description": "The title of the medication detail page"
+    },
+    "technical_profile": "Ficha Tecnica",
+    "@technical_profile": {
+        "description": "The title of the technical data button"
+    },
+    "prospect": "Prospecto",
+    "@prospect": {
+        "description": "The title of the prospect button"
+    },
+    "registration_number": "Num. Registro",
+    "@registration_number": {
+        "description": "The title of the registration number"
+    },
+    "pharmaceutical_form": "Forma Farmaceutica",
+    "@pharmaceutical_form": {
+        "description": "The title of the pharmaceutical form"
+    },
+    "dose": "Dosis",
+    "@dose": {
+        "description": "The title of the dosis"
+    },
+    "medication_name": "Nombre del medicamento",
+    "@medication_name": {
+        "description": "The title of the medication name"
+    },
+    "medication_name_min_3_characters": "El nombre del medicamento debe tener al menos 3 caracteres",
+    "@medication_name_min_3_characters": {
+        "description": "The error message of the medication name"
+    },
+    "search_result_title": "Resultados de la busqueda",
+    "@search_result_title": {
+        "description": "The title of the search result page"
+    },
+    "github_button_text": "Codigo fuente disponible en GitHub",
+    "@github_button_text": {
+        "description": "The text of the GitHub button"
+    },
+    "cima_button_text": "Pagina web de la AEMPS",
+    "@cima_button_text": {
+        "description": "The text of the AEMPS button"
+    },
+    "about_button_text": "Mas informacion",
+    "@about_button_text": {
+        "description": "The text of the about button"
+    },
+    "made_with_love_by": "Made with Flutter 💙 by Andres Signes",
+    "@made_with_love_by": {
+        "description": "The text of the made with love by"
+    },
+    "from": "Desde",
+    "@from": {
+        "description": "The text of the from"
+    },
+    "to": "Hasta",
+    "@to": {
+        "description": "The text of the to"
+    },
+    "appearance": "Apariencia",
+    "@appearance": {
+        "description": "The text of the appearance"
+    },
+    "about": "Acerca de",
+    "@about": {
+        "description": "The title of the about page"
+    },
+    "theme": "Tema",
+    "@theme": {
+        "description": "The text of the theme"
+    },
+    "system_theme": "Por defecto",
+    "@system_theme": {
+        "description": "The text of the system theme"
+    },
+    "dark_mode": "Modo oscuro",
+    "@dark_mode": {
+        "description": "The text of the dark mode"
+    },
+    "light_mode": "Modo claro",
+    "@light_mode": {
+        "description": "The text of the light mode"
+    },
+    "cancel": "Cancelar",
+    "@cancel": {
+        "description": "The text of the cancel button"
+    }
+}

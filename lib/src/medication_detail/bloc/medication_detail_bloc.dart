@@ -10,7 +10,7 @@ part 'medication_detail_state.dart';
 
 class MedicationDetailBloc
     extends Bloc<MedicationDetailEvent, MedicationDetailState> {
-  MedicationDetailBloc({required cimaRepository})
+  MedicationDetailBloc({required CimaRepository cimaRepository})
       : _cimaRepository = cimaRepository,
         super(Initial()) {
     on<FetchMedicamento>(_onFetchMedicamento);
@@ -18,7 +18,10 @@ class MedicationDetailBloc
 
   final CimaRepository _cimaRepository;
 
-  Future<void> _onFetchMedicamento(event, emit) async {
+  Future<void> _onFetchMedicamento(
+    FetchMedicamento event,
+    Emitter<MedicationDetailState> emit,
+  ) async {
     emit(Loading());
     final result = await _cimaRepository.getMedicamento(
       cn: event.cn,

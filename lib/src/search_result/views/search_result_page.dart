@@ -1,4 +1,4 @@
-import 'package:cima_client/src/localization/l10n.dart';
+import 'package:cima_client/l10n/l10n.dart';
 import 'package:cima_client/src/search_result/bloc/search_medication_result_bloc.dart';
 import 'package:cima_client/src/search_result/views/search_result_view.dart';
 import 'package:cima_repository/cima_repository.dart';
@@ -7,11 +7,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchResultPage extends StatelessWidget {
   const SearchResultPage({
-    Key? key,
+    super.key,
     required this.params,
-  }) : super(key: key);
+  });
 
-  static const routeName = '/result';
+  static Page<void> page({
+    required Map<String, String> params,
+  }) =>
+      MaterialPage<void>(
+        child: SearchResultPage(params: params),
+      );
 
   final Map<String, String> params;
 

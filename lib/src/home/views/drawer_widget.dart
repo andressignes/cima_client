@@ -1,10 +1,10 @@
-import 'package:cima_client/src/authorized/views/last_authorized_page.dart';
-import 'package:cima_client/src/localization/l10n.dart';
-import 'package:cima_client/src/supply_problems/supply_problems.dart';
+import 'package:cima_client/app/router/routes.dart';
+import 'package:cima_client/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class DrawerWidget extends StatelessWidget {
-  const DrawerWidget({Key? key}) : super(key: key);
+  const DrawerWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,26 +17,20 @@ class DrawerWidget extends StatelessWidget {
               color: Theme.of(context).colorScheme.background,
             ),
             child: Center(
-              child: Image.asset(
-                'assets/images/cima.png',
-              ),
+              child: Image.asset('assets/images/cima.png'),
             ),
           ),
           ListTile(
             title: Text(l10n.supplier_problems_title),
-            onTap: () {
-              Navigator.of(context).pop();
-              Navigator.restorablePushNamed(
-                  context, SupplyProblemsPage.routeName);
-            },
+            onTap: () => context
+              ..pop()
+              ..pushNamed(Routes.supplyProblems.name),
           ),
           ListTile(
             title: Text(l10n.recently_authorized_title),
-            onTap: () {
-              Navigator.of(context).pop();
-              Navigator.restorablePushNamed(
-                  context, LastAuthorizedPage.routeName);
-            },
+            onTap: () => context
+              ..pop()
+              ..pushNamed(Routes.lastAuthorized.name),
           ),
         ],
       ),

@@ -1,13 +1,13 @@
 import 'package:cima_client/src/medication_detail/views/medication_detail_page.dart';
+import 'package:cima_client/src/search_result/search_result.dart';
 import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
 
 class MedicationItemList extends StatelessWidget {
   const MedicationItemList({
-    Key? key,
+    super.key,
     required Medicamento medication,
-  })  : _medication = medication,
-        super(key: key);
+  }) : _medication = medication;
 
   final Medicamento _medication;
 
@@ -16,17 +16,16 @@ class MedicationItemList extends StatelessWidget {
     return InkWell(
       onTap: () => Navigator.push(
           context,
-          MaterialPageRoute(
+          MaterialPageRoute<void>(
               builder: (context) =>
                   MedicationDetailPage(nregistro: _medication.nregistro))),
       child: Card(
         child: Row(
           children: [
             Expanded(
-              flex: 1,
               child: Padding(
                 padding: const EdgeInsets.all(4),
-                child: _PhotoItemList(photos: _medication.fotos),
+                child: PhotoItemList(photo: _medication.photoMaterialAs),
               ),
             ),
             Expanded(
@@ -38,37 +37,6 @@ class MedicationItemList extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _PhotoItemList extends StatelessWidget {
-  const _PhotoItemList({
-    Key? key,
-    required this.photos,
-  }) : super(key: key);
-  final List<Foto>? photos;
-  static const photoType = 'materialas';
-
-  @override
-  Widget build(BuildContext context) {
-    if (photos == null ||
-        photos!.isEmpty ||
-        photos!.indexWhere((photo) => photo.tipo == photoType) == -1) {
-      return Image.asset('assets/images/no_image.png');
-    }
-    final urlPhoto =
-        photos!.firstWhere((photo) => photo.tipo == photoType).url!;
-
-    return Hero(
-      tag: urlPhoto,
-      child: Image.network(
-        urlPhoto,
-        loadingBuilder: (context, child, loadingProgress) =>
-            loadingProgress == null
-                ? child
-                : const Center(child: CircularProgressIndicator()),
       ),
     );
   }
