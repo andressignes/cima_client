@@ -12,38 +12,29 @@ class SupplyProblemsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return BlocProvider(
       create: (context) => SupplyProblemsBloc(
         cimaRepository: context.read<CimaRepository>(),
       )..add(const GetActive()),
-      child: const _SupplyProblemsView(),
-    );
-  }
-}
-
-class _SupplyProblemsView extends StatelessWidget {
-  const _SupplyProblemsView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.supplier_problems_title),
-      ),
-      body: BlocBuilder<SupplyProblemsBloc, SupplyProblemsState>(
-        builder: (context, state) {
-          if (state is Loading) {
-            return const CimaLoading();
-          } else if (state is Loaded) {
-            return SupplyProblemsListWidget(
-              supplyProblemsList: state.problemasSuministro,
-            );
-          } else {
-            return const CimaError();
-          }
-        },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(l10n.supplier_problems_title),
+        ),
+        body: BlocBuilder<SupplyProblemsBloc, SupplyProblemsState>(
+          builder: (context, state) {
+            if (state is Loading) {
+              return const CimaLoading();
+            } else if (state is Loaded) {
+              return SupplyProblemsListWidget(
+                supplyProblemsList: state.problemasSuministro,
+              );
+            } else {
+              return const CimaError();
+            }
+          },
+        ),
       ),
     );
   }

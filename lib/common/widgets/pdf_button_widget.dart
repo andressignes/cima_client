@@ -3,10 +3,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 class PdfButtonWidget extends StatelessWidget {
   const PdfButtonWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.url,
-  }) : super(key: key);
+  });
 
   final String title;
   final String? url;
@@ -19,7 +19,7 @@ class PdfButtonWidget extends StatelessWidget {
     return ElevatedButton(
       onPressed: () => _openBrowser(url),
       child: Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: const EdgeInsets.all(4),
         child: Column(
           children: [
             const Icon(Icons.picture_as_pdf),
@@ -30,7 +30,7 @@ class PdfButtonWidget extends StatelessWidget {
     );
   }
 
-  void _openBrowser(String? url) async {
+  Future<void> _openBrowser(String? url) async {
     if (url == null) return;
     await launchUrl(Uri.parse(url));
   }

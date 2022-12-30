@@ -28,7 +28,7 @@ class MedicationListWidget extends StatelessWidget {
     return ListView.builder(
       itemCount: _medications.length,
       itemBuilder: (context, index) => MedicationItemList(
-        medication: _medications[index],
+        medication: _medications.elementAt(index),
       ),
     );
   }

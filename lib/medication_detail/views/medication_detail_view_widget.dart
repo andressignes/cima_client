@@ -18,11 +18,9 @@ class MedicationDetailWidget extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          MedicationPhotoWidget(
-            photo: _medicamento.photoMaterialAs,
-          ),
+          MedicationPhotoWidget(photo: _medicamento.photoMaterialAs),
           Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -32,13 +30,13 @@ class MedicationDetailWidget extends StatelessWidget {
                 ),
                 Text(
                   _medicamento.labtitular ?? '',
-                  style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                      color: Theme.of(context).colorScheme.primaryContainer),
+                  style: Theme.of(context).textTheme.subtitle1,
                 ),
-                Text(
-                  '${l10n.registration_number}: ${_medicamento.nregistro ?? ''}',
-                  style: Theme.of(context).textTheme.caption,
-                ),
+                if (_medicamento.nregistro != null)
+                  Text(
+                    '${l10n.registration_number}: ${_medicamento.nregistro!}',
+                    style: Theme.of(context).textTheme.caption,
+                  ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Row(
@@ -59,45 +57,47 @@ class MedicationDetailWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                _medicamento.formaFarmaceutica != null
-                    ? ListTile(
-                        title: Text(l10n.pharmaceutical_form),
-                        subtitle:
-                            Text('${_medicamento.formaFarmaceutica!.nombre}'),
-                        leading: PharmaceuticalFormPhotoWidget(
-                          fotos: _medicamento.fotos,
+                if (_medicamento.formaFarmaceutica != null)
+                  ListTile(
+                    title: Text(l10n.pharmaceutical_form),
+                    subtitle: Text('${_medicamento.formaFarmaceutica!.nombre}'),
+                    leading: PharmaceuticalFormPhotoWidget(
+                      photo: _medicamento.photoFormaFarmaceutica,
+                    ),
+                  )
+                else
+                  const SizedBox.shrink(),
+                if (_medicamento.dosis != null)
+                  ListTile(
+                    title: Text(l10n.dose),
+                    subtitle: Text(_medicamento.dosis!),
+                  )
+                else
+                  const SizedBox.shrink(),
+                if (_medicamento.cpresc != null)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.warning,
+                          color: Theme.of(context).errorColor,
                         ),
-                      )
-                    : const SizedBox.shrink(),
-                _medicamento.dosis != null
-                    ? ListTile(
-                        title: Text(l10n.dose),
-                        subtitle: Text(_medicamento.dosis!),
-                      )
-                    : const SizedBox.shrink(),
-                _medicamento.cpresc != null
-                    ? Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Row(
-                          children: [
-                            const Icon(Icons.warning, color: Colors.redAccent),
-                            const SizedBox(width: 8),
-                            Flexible(
-                              child: Text(
-                                _medicamento.cpresc!,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .subtitle1!
-                                    .copyWith(
-                                      fontStyle: FontStyle.italic,
-                                      color: Colors.redAccent,
+                        const SizedBox(width: 8),
+                        Flexible(
+                          child: Text(
+                            _medicamento.cpresc!,
+                            style:
+                                Theme.of(context).textTheme.subtitle1!.copyWith(
+                                      color: Theme.of(context).errorColor,
                                     ),
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
-                      )
-                    : const SizedBox.shrink(),
+                      ],
+                    ),
+                  )
+                else
+                  const SizedBox.shrink(),
               ],
             ),
           )

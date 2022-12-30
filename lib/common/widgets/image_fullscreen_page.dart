@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 
 class ImageFullscreenPage extends StatelessWidget {
   const ImageFullscreenPage({
-    Key? key,
+    super.key,
     required String imageLink,
-  })  : _imageLink = imageLink,
-        super(key: key);
+  }) : _imageLink = imageLink;
 
   final String _imageLink;
 
@@ -25,7 +24,6 @@ class ImageFullscreenPage extends StatelessWidget {
           fit: BoxFit.contain,
           height: double.infinity,
           width: double.infinity,
-          alignment: Alignment.center,
         ),
       ),
     );

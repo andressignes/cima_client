@@ -1,6 +1,5 @@
 import 'package:cima_client/app/router/router.dart';
 import 'package:cima_client/l10n/l10n.dart';
-import 'package:cima_client/theme/app_theme.dart';
 import 'package:cima_client/theme/theme.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +22,7 @@ class App extends StatelessWidget {
         child: BlocBuilder<ThemeAppCubit, ThemeAppState>(
           builder: (context, state) {
             return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
               routerConfig: router,
               theme: appTheme.light,
               darkTheme: appTheme.dark,

@@ -47,7 +47,10 @@ final router = GoRouter(
     GoRoute(
       name: Routes.medicationDetail.name,
       path: Routes.medicationDetail.path,
-      pageBuilder: (context, state) => MedicationDetailPage.page,
+      pageBuilder: (context, state) => MedicationDetailPage.page(
+        cn: state.queryParams['cn'],
+        nregistro: state.queryParams['nregistro'],
+      ),
     )
   ],
 );

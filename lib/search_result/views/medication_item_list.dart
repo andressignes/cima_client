@@ -1,42 +1,47 @@
-import 'package:cima_client/medication_detail/medication_detail.dart';
+import 'package:cima_client/app/router/routes.dart';
 import 'package:cima_client/search_result/search_result.dart';
 import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class MedicationItemList extends StatelessWidget {
-  const MedicationItemList({
-    super.key,
-    required Medicamento medication,
-  }) : _medication = medication;
+  const MedicationItemList({super.key, required this.medication});
 
-  final Medicamento _medication;
+  final Medicamento medication;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Navigator.push(
-          context,
-          MaterialPageRoute<void>(
-              builder: (context) =>
-                  MedicationDetailPage(nregistro: _medication.nregistro))),
-      child: Card(
-        child: Row(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(4),
-                child: PhotoItemList(photo: _medication.photoMaterialAs),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        child: Card(
+          child: Row(
+            children: [
+              Expanded(
+                child: PhotoItemList(photo: medication.photoMaterialAs),
               ),
-            ),
-            Expanded(
-              flex: 3,
-              child: ListTile(
-                title: Text(_medication.nombre ?? ''),
-                subtitle: Text(_medication.labtitular ?? ''),
+              Expanded(
+                flex: 3,
+                child: ListTile(
+                  title: Text(
+                    medication.nombre ?? '',
+                    maxLines: 2,
+                    overflow: TextOverflow.fade,
+                  ),
+                  subtitle: Text(
+                    medication.labtitular ?? '',
+                    maxLines: 1,
+                    overflow: TextOverflow.fade,
+                  ),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
+      ),
+      onTap: () => context.pushNamed(
+        Routes.medicationDetail.name,
+        queryParams: {'nregistro': medication.nregistro},
       ),
     );
   }

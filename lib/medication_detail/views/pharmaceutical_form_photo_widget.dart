@@ -1,42 +1,32 @@
 import 'package:cima_client/common/widgets/widgets.dart';
-import 'package:cima_model/cima_model.dart' show Foto;
 import 'package:flutter/material.dart';
 
 class PharmaceuticalFormPhotoWidget extends StatelessWidget {
   const PharmaceuticalFormPhotoWidget({
-    Key? key,
-    required this.fotos,
-  }) : super(key: key);
+    super.key,
+    required this.photo,
+  });
 
-  final List<Foto>? fotos;
-  final _type = 'formafarmac';
+  final Uri? photo;
 
   @override
   Widget build(BuildContext context) {
-    if (fotos == null ||
-        fotos!.isEmpty ||
-        fotos!.indexWhere((element) => element.tipo == _type) == -1) {
+    if (photo == null) {
       return Image.asset('assets/images/no_image.png');
     }
-    final urlPhoto = fotos!.firstWhere((foto) => foto.tipo == _type).url ?? '';
     return InkWell(
       onTap: () => Navigator.of(context).push(
-        MaterialPageRoute(
+        MaterialPageRoute<void>(
           builder: (context) => ImageFullscreenPage(
-            imageLink: urlPhoto,
+            imageLink: photo.toString(),
           ),
         ),
       ),
       child: Hero(
-        tag: urlPhoto,
+        tag: photo.toString(),
         child: Image.network(
-          urlPhoto,
+          photo.toString(),
           fit: BoxFit.fitWidth,
-          // loadingBuilder: (context, child, loadingProgress) {
-          //   return loadingProgress == null
-          //       ? child
-          //       : const Center(child: CircularProgressIndicator());
-          // },
         ),
       ),
     );

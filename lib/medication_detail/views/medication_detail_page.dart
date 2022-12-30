@@ -16,8 +16,16 @@ class MedicationDetailPage extends StatelessWidget {
         _nregistro = nregistro,
         _cn = cn;
 
-  static Page<void> get page =>
-      MaterialPage<void>(child: MedicationDetailPage());
+  static Page<void> page({
+    String? nregistro,
+    String? cn,
+  }) =>
+      MaterialPage<void>(
+        child: MedicationDetailPage(
+          cn: cn,
+          nregistro: nregistro,
+        ),
+      );
 
   final String? _nregistro;
   final String? _cn;
@@ -45,17 +53,15 @@ class _MedicationDetailView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MedicationDetailBloc, MedicationDetailState>(
-        builder: (context, state) {
-      if (state is Error) {
+      builder: (context, state) {
+        if (state is Loading) {
+          return const CimaLoading();
+        } else if (state is Available) {
+          log(state.medicamento.toString());
+          return MedicationDetailWidget(medicamento: state.medicamento);
+        }
         return const CimaError();
-      } else if (state is Loading) {
-        return const CimaLoading();
-      } else if (state is Available) {
-        log(state.medicamento.toString());
-        return MedicationDetailWidget(medicamento: state.medicamento);
-      } else {
-        return const CimaError();
-      }
-    });
+      },
+    );
   }
 }

@@ -16,15 +16,20 @@ class SupplyProblemsBloc
 
   final CimaRepository _cimaRepository;
 
-  Future<void> _onGetActive(event, emit) async {
+  Future<void> _onGetActive(
+    GetActive event,
+    Emitter<SupplyProblemsState> emit,
+  ) async {
     emit(const Loading());
     try {
       final result = await _cimaRepository
           .findProblemasSuministro(params: {'activos': '1'});
-      emit(result.fold(
-        (failure) => const Error(),
-        (activos) => Loaded(activos),
-      ));
+      emit(
+        result.fold(
+          (failure) => const Error(),
+          Loaded.new,
+        ),
+      );
     } catch (_) {
       emit(const Error());
     }

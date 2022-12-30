@@ -16,12 +16,19 @@ class PhotoItemList extends StatelessWidget {
 
     return Hero(
       tag: photo!.toString(),
-      child: Image.network(
-        photo!.toString(),
-        loadingBuilder: (context, child, loadingProgress) =>
-            loadingProgress == null
-                ? child
-                : const Center(child: CircularProgressIndicator()),
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(8),
+          topLeft: Radius.circular(8),
+        ),
+        child: Image.network(
+          photo!.toString(),
+          fit: BoxFit.fill,
+          loadingBuilder: (context, child, loadingProgress) =>
+              loadingProgress == null
+                  ? child
+                  : const Center(child: CircularProgressIndicator()),
+        ),
       ),
     );
   }

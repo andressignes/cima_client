@@ -89,6 +89,16 @@ class Medicamento extends Equatable {
         fotos!.firstWhere((photo) => photo.tipo == 'materialas').url!);
   }
 
+  Uri? get photoFormaFarmaceutica {
+    if (fotos == null ||
+        fotos!.isEmpty ||
+        fotos!.indexWhere((photo) => photo.tipo == 'formafarmac') == -1) {
+      return null;
+    }
+    return Uri.parse(
+        fotos!.firstWhere((photo) => photo.tipo == 'formafarmac').url!);
+  }
+
   @override
   List<Object?> get props => [
         nregistro,

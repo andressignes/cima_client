@@ -14,9 +14,9 @@ class Error extends MedicationDetailState {}
 class Loading extends MedicationDetailState {}
 
 class Available extends MedicationDetailState {
-  final Medicamento medicamento;
-
   const Available({required this.medicamento});
+
+  final Medicamento medicamento;
 
   @override
   List<Object> get props => [super.props, medicamento];

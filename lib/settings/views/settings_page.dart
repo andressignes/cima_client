@@ -35,7 +35,7 @@ class SettingsPage extends StatelessWidget {
 }
 
 class _AppearanceSectionView extends StatelessWidget {
-  const _AppearanceSectionView({super.key});
+  const _AppearanceSectionView();
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class _AppearanceSectionView extends StatelessWidget {
 }
 
 class _AboutSectionView extends StatelessWidget {
-  const _AboutSectionView({super.key});
+  const _AboutSectionView();
 
   @override
   Widget build(BuildContext context) {
@@ -107,15 +107,16 @@ class _AboutSectionView extends StatelessWidget {
           ),
         ),
         ElevatedButton(
-            onPressed: () => _openAboutDialog(context),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  l10n.about_button_text,
-                ),
-              ],
-            )),
+          onPressed: () => _openAboutDialog(context),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                l10n.about_button_text,
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -128,7 +129,7 @@ class _AboutSectionView extends StatelessWidget {
     );
   }
 
-  void _openBrowser(String? url) async {
+  Future<void> _openBrowser(String? url) async {
     if (url == null) return;
     await launchUrl(Uri.parse(url));
   }

@@ -10,28 +10,23 @@ class SearchPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => SearchCubit()),
-      ],
-      child: const SearchView(),
-    );
-  }
-}
-
-class SearchView extends StatelessWidget {
-  const SearchView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.search_title),
-      ),
-      body: const Padding(
-        padding: EdgeInsets.all(8),
-        child: Center(child: SearchForm()),
+    return BlocProvider(
+      create: (_) => SearchCubit(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(l10n.search_title),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            children: const [
+              SearchMedicationNameInput(),
+              SizedBox(height: 8),
+              SearchSubmitButton(),
+            ],
+          ),
+        ),
       ),
     );
   }

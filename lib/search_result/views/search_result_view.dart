@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchResultView extends StatelessWidget {
   const SearchResultView({
-    Key? key,
+    super.key,
     required this.title,
-  }) : super(key: key);
+  });
 
   final String title;
 
@@ -19,19 +19,17 @@ class SearchResultView extends StatelessWidget {
       ),
       body:
           BlocBuilder<SearchMedicationResultBloc, SearchMedicationResultState>(
-              builder: (context, state) {
-        if (state is Initial) {
-          return const CimaEmpty();
-        } else if (state is Loading) {
-          return const CimaLoading();
-        } else if (state is Available) {
-          return MedicationListWidget(medications: state.medicamentos);
-        } else if (state is Error) {
+        builder: (context, state) {
+          if (state is Initial) {
+            return const CimaEmpty();
+          } else if (state is Loading) {
+            return const CimaLoading();
+          } else if (state is Available) {
+            return MedicationListWidget(medications: state.medicamentos);
+          }
           return const CimaError();
-        } else {
-          return const CimaError();
-        }
-      }),
+        },
+      ),
     );
   }
 }

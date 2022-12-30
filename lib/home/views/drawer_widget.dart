@@ -22,15 +22,24 @@ class DrawerWidget extends StatelessWidget {
           ),
           ListTile(
             title: Text(l10n.supplier_problems_title),
+            leading: const Icon(Icons.warning),
             onTap: () => context
               ..pop()
               ..pushNamed(Routes.supplyProblems.name),
           ),
           ListTile(
             title: Text(l10n.recently_authorized_title),
+            leading: const Icon(Icons.history),
             onTap: () => context
               ..pop()
               ..pushNamed(Routes.lastAuthorized.name),
+          ),
+          ListTile(
+            title: Text(l10n.settings_title),
+            onTap: () => context
+              ..pop()
+              ..pushNamed(Routes.settings.name),
+            leading: const Icon(Icons.settings),
           ),
         ],
       ),
