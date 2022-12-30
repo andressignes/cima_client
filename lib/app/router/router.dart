@@ -1,11 +1,11 @@
 import 'package:cima_client/app/router/routes.dart';
-import 'package:cima_client/src/authorized/authorized.dart';
-import 'package:cima_client/src/home/home.dart';
-import 'package:cima_client/src/medication_detail/medication_detail.dart';
-import 'package:cima_client/src/search/search.dart';
-import 'package:cima_client/src/search_result/search_result.dart';
-import 'package:cima_client/src/settings/settings.dart';
-import 'package:cima_client/src/supply_problems/supply_problems.dart';
+import 'package:cima_client/authorized/authorized.dart';
+import 'package:cima_client/home/home.dart';
+import 'package:cima_client/medication_detail/medication_detail.dart';
+import 'package:cima_client/search/search.dart';
+import 'package:cima_client/search_result/search_result.dart';
+import 'package:cima_client/settings/settings.dart';
+import 'package:cima_client/supply_problems/supply_problems.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(

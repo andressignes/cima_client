@@ -1,5 +1,5 @@
 import 'package:cima_client/app/app.dart';
-import 'package:cima_client/src/home/home.dart';
+import 'package:cima_client/home/home.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
