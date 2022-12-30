@@ -1,0 +1,85 @@
+{
+  "nregistro": "79717",
+  "cn": "706083",
+  "nombre": "ACTYNOX  50%/50% GAS COMPRIMIDO MEDICINAL, 1 bala de gas de 15 l",
+  "pactivos": "OXIDO NITROSO, OXIGENO",
+  "labtitular": "S.E. De Carburos Metalicos, S.A.",
+  "cpresc": "Uso Hospitalario",
+  "estado": {
+    "aut": 1428530400000
+  },
+  "comerc": false,
+  "conduc": false,
+  "receta": true,
+  "generico": false,
+  "triangulo": false,
+  "huerfano": false,
+  "biosimilar": false,
+  "nosustituible": {
+    "id": 0,
+    "nombre": "N/A"
+  },
+  "psum": false,
+  "notas": false,
+  "materialesInf": true,
+  "ema": false,
+  "docs": [
+    {
+      "tipo": 1,
+      "url": "https://cima.aemps.es/cima/pdfs/ft/79717/FT_79717.pdf",
+      "secc": false
+    },
+    {
+      "tipo": 2,
+      "url": "https://cima.aemps.es/cima/pdfs/p/79717/P_79717.pdf",
+      "secc": false
+    }
+  ],
+  "principiosActivos": [
+    {
+      "id": 5007,
+      "codigo": "5007OX",
+      "nombre": "OXIDO NITROSO",
+      "cantidad": "50",
+      "unidad": "%",
+      "orden": 1
+    },
+    {
+      "id": 2972,
+      "codigo": "2972A",
+      "nombre": "OXIGENO",
+      "cantidad": "50",
+      "unidad": "%",
+      "orden": 2
+    }
+  ],
+  "atcs": [
+    {
+      "codigo": "N01A",
+      "nombre": "ANESTÉSICOS GENERALES",
+      "nivel": 3
+    },
+    {
+      "codigo": "N01AX",
+      "nombre": "Otros anestésicos generales",
+      "nivel": 4
+    },
+    {
+      "codigo": "N01AX63",
+      "nombre": "Óxido nitroso, combinaciones con",
+      "nivel": 5
+    }
+  ],
+  "vtm": {
+    "id": 421569007,
+    "nombre": "oxígeno + óxido nitroso"
+  },
+  "dcp": {
+    "id": 62201000140100,
+    "nombre": "Oxígeno/Óxido nitroso 50%/50% v/v gas medicinal"
+  },
+  "dcpf": {
+    "id": 62211000140102,
+    "nombre": "Oxígeno/Óxido nitroso 50%/50% v/v gas medicinal"
+  }
+}

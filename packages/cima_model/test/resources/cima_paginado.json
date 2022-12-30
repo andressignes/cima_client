@@ -1,0 +1,230 @@
+{
+  "totalFilas": 500,
+  "pagina": 1,
+  "tamanioPagina": 25,
+  "resultados": [
+    {
+      "cn": "708492",
+      "nombre": "ETORICOXIB MYLAN 30 MG COMPRIMIDOS RECUBIERTOS CON PELICULA EFG , 28 comprimidos (monododis) (Blister PVDC/PVC/Aluminio)",
+      "tipoProblemaSuministro": 5,
+      "fini": 1641769200000,
+      "ffin": 1644534000000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+    },
+    {
+      "cn": "676514",
+      "nombre": "ROPIVACAINA KABI 7,5 MG/ML SOLUCION INYECTABLE EFG , 5 ampollas de 10 ml",
+      "tipoProblemaSuministro": 0,
+      "fini": 1641769200000,
+      "ffin": 1647298800000,
+      "activo": true
+    },
+    {
+      "cn": "701172",
+      "nombre": "SPEDRA 200 mg comprimidos 8 COMPRIMIDOS",
+      "tipoProblemaSuministro": 3,
+      "fini": 1641769200000,
+      "ffin": 1643583600000,
+      "activo": true,
+      "observ": "El médico prescriptor deberá determinar la posibilidad de utilizar otros tratamientos comercializados. "
+    },
+    {
+      "cn": "725036",
+      "nombre": "CANESTEN 10 mg/g CREMA, 1 tubo de 30 g",
+      "tipoProblemaSuministro": 5,
+      "fini": 1641510000000,
+      "ffin": 1642719600000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+    },
+    {
+      "cn": "677694",
+      "nombre": "ESCITALOPRAM MYLAN 20 mg COMPRIMIDOS RECUBIERTOS CON PELICULA EFG , 56 comprimidos",
+      "tipoProblemaSuministro": 5,
+      "fini": 1641510000000,
+      "ffin": 1644188400000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+    },
+    {
+      "cn": "699638",
+      "nombre": "MOMETASONA FUROATO TEVA 50 MICROGRAMOS SUSPENSION PARA PULVERIZACION NASAL , 1x140 pulverizaciones",
+      "tipoProblemaSuministro": 5,
+      "fini": 1641510000000,
+      "ffin": 1643670000000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+    },
+    {
+      "cn": "664304",
+      "nombre": "PLAVIX 75 MG COMPRIMIDOS RECUBIERTOS CON PELICULA, 50 comprimidos",
+      "tipoProblemaSuministro": 5,
+      "fini": 1641510000000,
+      "ffin": 1642114800000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+    },
+    {
+      "cn": "660734",
+      "nombre": "REQUIP-PROLIB 2 mg, COMPRIMIDOS DE LIBERACION PROLONGADA , 28 comprimidos",
+      "tipoProblemaSuministro": 5,
+      "fini": 1641510000000,
+      "ffin": 1642374000000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+    },
+    {
+      "cn": "659704",
+      "nombre": "ZIDOVUDINA ALTAN 2 MG/ML SOLUCION PARA PERFUSION , 5 bolsas de 100 ml",
+      "tipoProblemaSuministro": 10,
+      "fini": 1641510000000,
+      "ffin": 1648677600000,
+      "activo": true,
+      "observ": "La AEMPS ha autorizado unidades por comercialización excepcional. "
+    },
+    {
+      "cn": "728445",
+      "nombre": "DEXMEDETOMIDINA EVER PHARMA 100 MICROGRAMOS/ML CONCENTRADO PARA SOLUCION PARA PERFUSION, 4 ampollas de 4 ml",
+      "tipoProblemaSuministro": 10,
+      "fini": 1641423600000,
+      "ffin": 1645570800000,
+      "activo": true,
+      "observ": "La AEMPS ha autorizado unidades por comercialización excepcional. Disponibles unidades etiquetadas en idioma diferente al castellano."
+    },
+    {
+      "cn": "692635",
+      "nombre": "CANDESARTAN /HIDROCLOROTIAZIDA RATIOMED 8/12,5 mg COMPRIMIDOS EFG , 28 comprimidos",
+      "tipoProblemaSuministro": 3,
+      "fini": 1641337200000,
+      "ffin": 1646002800000,
+      "activo": true,
+      "observ": "El médico prescriptor deberá determinar la posibilidad de utilizar otros tratamientos comercializados. "
+    },
+    {
+      "cn": "982116",
+      "nombre": "ELORGAN 400 mg COMPRIMIDOS DE LIBERACION PROLONGADA , 60 comprimidos",
+      "tipoProblemaSuministro": 5,
+      "fini": 1641337200000,
+      "ffin": 1641942000000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+    },
+    {
+      "cn": "725653",
+      "nombre": "ESOMEPRAZOL TEVAGEN 20 MG COMPRIMIDOS GASTRORRESISTENTES EFG, 56 comprimidos (Blister)",
+      "tipoProblemaSuministro": 5,
+      "fini": 1641337200000,
+      "ffin": 1647298800000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+    },
+    {
+      "cn": "705717",
+      "nombre": "NOVOEIGHT 1000 UI UI POLVO Y DISOLVENTE PARA SOLUCION INYECTABLE 1 vial de polvo (turoctocog alfa) + 1 jeringa precargada de disolvente",
+      "tipoProblemaSuministro": 10,
+      "fini": 1641337200000,
+      "ffin": 1647903600000,
+      "activo": true,
+      "observ": "La AEMPS ha autorizado unidades por comercialización excepcional. Disponibles unidades con caducidad inferior a 6 meses."
+    },
+    {
+      "cn": "814707",
+      "nombre": "RIMSTAR COMPRIMIDOS RECUBIERTOS CON PELICULA , 60 comprimidos",
+      "tipoProblemaSuministro": 9,
+      "fini": 1641337200000,
+      "ffin": 1642892400000,
+      "activo": true,
+      "observ": "El titular de autorización de comercialización está realizando una distribución controlada al existir unidades limitadas. "
+    },
+    {
+      "cn": "715518",
+      "nombre": "ATOSIBAN EVER PHARMA 6,75 MG/0,9 ML SOLUCION INYECTABLE EFG, 1 vial de 0,9 ml",
+      "tipoProblemaSuministro": 5,
+      "fini": 1641250800000,
+      "ffin": 1643842800000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+    },
+    {
+      "cn": "701719",
+      "nombre": "FLUTIFORM 50 MICROGRAMOS / 5 MICROGRAMOS/ INHALACION SUSPENSION PARA INHALACION EN ENVASE A PRESION , 1 inhalador (120 pulsaciones)",
+      "tipoProblemaSuministro": 3,
+      "fini": 1641250800000,
+      "ffin": 1646089200000,
+      "activo": true,
+      "observ": "El médico prescriptor deberá determinar la posibilidad de utilizar otros tratamientos comercializados. "
+    },
+    {
+      "cn": "759175",
+      "nombre": "FORDIURAN 1 mg COMPRIMIDOS, 20 comprimidos",
+      "tipoProblemaSuministro": 3,
+      "fini": 1641250800000,
+      "ffin": 1643670000000,
+      "activo": true,
+      "observ": "El médico prescriptor deberá determinar la posibilidad de utilizar otros tratamientos comercializados. "
+    },
+    {
+      "cn": "671656",
+      "nombre": "MASTICAL D  500 MG/800 UI COMPRIMIDOS MASTICABLES, 30 comprimidos",
+      "tipoProblemaSuministro": 6,
+      "fini": 1641250800000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con los mismos principios activos y para la misma vía de administración. "
+    },
+    {
+      "cn": "672567",
+      "nombre": "MICOFENOLATO DE MOFETILO ACCORD 500 mg COMPRIMIDOS RECUBIERTOS CON PELICULA EFG , 50 comprimidos",
+      "tipoProblemaSuministro": 5,
+      "fini": 1641250800000,
+      "ffin": 1643583600000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+    },
+    {
+      "cn": "868182",
+      "nombre": "OLIGOPLUS CONCENTRADO PARA SOLUCION PARA PERFUSION, 5 ampollas de 10ml",
+      "tipoProblemaSuministro": 9,
+      "fini": 1641250800000,
+      "ffin": 1647385200000,
+      "activo": true,
+      "observ": "El titular de autorización de comercialización está realizando una distribución controlada al existir unidades limitadas. "
+    },
+    {
+      "cn": "810390",
+      "nombre": "OLIGOSTANDARD CONCENTRADO PARA SOLUCION PARA PERFUSION INTRAVENOSA , 80 ampollas de 10 ml",
+      "tipoProblemaSuministro": 9,
+      "fini": 1641250800000,
+      "ffin": 1644274800000,
+      "activo": true,
+      "observ": "El titular de autorización de comercialización está realizando una distribución controlada al existir unidades limitadas. "
+    },
+    {
+      "cn": "706750",
+      "nombre": "OLMESARTAN MYLAN 40 MG COMPRIMIDOS RECUBIERTOS CON PELICULA EFG , 28 comprimidos",
+      "tipoProblemaSuministro": 5,
+      "fini": 1641250800000,
+      "ffin": 1646607600000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+    },
+    {
+      "cn": "710908",
+      "nombre": "REVOLADE 25 MG POLVO PARA SUSPENSION ORAL, 30 sobres",
+      "tipoProblemaSuministro": 10,
+      "fini": 1641250800000,
+      "ffin": 1644879600000,
+      "activo": true,
+      "observ": "La AEMPS ha autorizado unidades por comercialización excepcional. Disponibles unidades con caducidad inferior a 6 meses."
+    },
+    {
+      "cn": "725018",
+      "nombre": "STRANTAS 250 MG SOLUCION INYECTABLE EN JERINGA PRECARGADA EFG 2 jeringas precargadas de 5 ml + 2 agujas",
+      "tipoProblemaSuministro": 5,
+      "fini": 1641250800000,
+      "ffin": 1642114800000,
+      "activo": true,
+      "observ": "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+    }
+  ]
+}

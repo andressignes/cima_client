@@ -1,0 +1,24 @@
+{
+  "medicamento": "ALTELLUS",
+  "principiosActivos": "EPINEFRINA",
+  "listaDocsPaciente": [
+    {
+      "nombre": "INSTRUCCIONES DE USO PARA EL PACIENTE",
+      "url": "https://cima.aemps.es/cima/DocsPub/16/1086",
+      "fecha": 1625652934000
+    },
+    {
+      "nombre": "INSTRUCCIONES DE USO (VIDEO)",
+      "url": "https://www.youtube-nocookie.com/embed/co0v_S-Dbjw?rel=0&showinfo=0",
+      "video": true,
+      "fecha": 1625652934000
+    }
+  ],
+  "listaDocsProfesional": [
+    {
+      "nombre": "LISTA DE VERIFICACIÓN",
+      "url": "https://cima.aemps.es/cima/DocsPub/15/1042",
+      "fecha": 1625652934000
+    }
+  ]
+}

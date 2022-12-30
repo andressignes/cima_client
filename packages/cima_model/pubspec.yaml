@@ -1,0 +1,16 @@
+name: cima_model
+description: A new Flutter package project.
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+
+dependencies:
+  equatable: ^2.0.3
+  json_annotation: ^4.0.1
+
+dev_dependencies:
+  build_runner: ^2.3.3
+  json_serializable: ^6.5.4
+  lints: ^2.0.1
+  test: ^1.17.0
