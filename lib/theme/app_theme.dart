@@ -1,18 +1,19 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 
 final appTheme = AppTheme();
 
 class AppTheme {
-  final _theme = ThemeData(
-    useMaterial3: true,
-    colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.teal),
-  );
+  final _colorScheme = FlexScheme.dellGenoa;
+  final _userMaterial3 = true;
 
-  ThemeData get light => _theme.copyWith(
-        brightness: Brightness.light,
+  ThemeData get light => FlexThemeData.light(
+        useMaterial3: _userMaterial3,
+        scheme: _colorScheme,
       );
 
-  ThemeData get dark => _theme.copyWith(
-        brightness: Brightness.dark,
+  ThemeData get dark => FlexThemeData.dark(
+        useMaterial3: _userMaterial3,
+        scheme: _colorScheme,
       );
 }

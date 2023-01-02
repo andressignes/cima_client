@@ -4,21 +4,24 @@ import 'package:cima_client/theme/theme.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class App extends StatelessWidget {
   const App({
     super.key,
-    required CimaRepository cimaRepository,
-  }) : _cimaRepository = cimaRepository;
+    required this.cimaRepository,
+    required this.preferences,
+  });
 
-  final CimaRepository _cimaRepository;
+  final CimaRepository cimaRepository;
+  final SharedPreferences preferences;
 
   @override
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
-      value: _cimaRepository,
+      value: cimaRepository,
       child: BlocProvider<ThemeAppCubit>(
-        create: (context) => ThemeAppCubit(),
+        create: (context) => ThemeAppCubit(preferences: preferences),
         child: BlocBuilder<ThemeAppCubit, ThemeAppState>(
           builder: (context, state) {
             return MaterialApp.router(

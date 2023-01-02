@@ -15,7 +15,9 @@ dependencies:
     path: packages/cima_model
   cima_repository:
     path: packages/cima_repository
+  collection: ^1.16.0
   equatable: ^2.0.3
+  flex_color_scheme: ^6.1.2
   flutter:
     sdk: flutter
   flutter_barcode_scanner: ^2.0.0
@@ -26,6 +28,8 @@ dependencies:
     path: packages/formz_inputs
   go_router: ^6.0.0
   intl: ^0.17.0
+  package_info_plus: ^3.0.2
+  shared_preferences: ^2.0.15
   url_launcher: ^6.1.7
 
 dev_dependencies:

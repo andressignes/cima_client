@@ -6,6 +6,7 @@ import 'package:cima_api/cima_api.dart';
 import 'package:cima_client/common/env/environment_config.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
@@ -22,8 +23,11 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap(
-  FutureOr<Widget> Function(CimaRepository repository) builder,
+  FutureOr<Widget> Function(
+          CimaRepository cimaRepository, SharedPreferences preferences)
+      builder,
 ) async {
+  WidgetsFlutterBinding.ensureInitialized();
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };
@@ -31,9 +35,11 @@ Future<void> bootstrap(
   Bloc.observer = AppBlocObserver();
   final cimaApiClient = CimaApiClient(baseUrl: EnvironmentConfig.apiUrl);
   final cimaRepository = CimaRepository(remoteDataSource: cimaApiClient);
-
+  final preferences = await SharedPreferences.getInstance();
   await runZonedGuarded(
-    () async => runApp(await builder(cimaRepository)),
+    () async => runApp(
+      await builder(cimaRepository, preferences),
+    ),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }
