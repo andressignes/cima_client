@@ -1,5 +1,6 @@
 import 'package:cima_client/app/router/router.dart';
 import 'package:cima_client/l10n/l10n.dart';
+import 'package:cima_client/search_result/bloc/search_medication_result_bloc.dart';
 import 'package:cima_client/theme/theme.dart';
 import 'package:cima_repository/cima_repository.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,16 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return RepositoryProvider.value(
       value: cimaRepository,
-      child: BlocProvider<ThemeAppCubit>(
-        create: (context) => ThemeAppCubit(preferences: preferences),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<ThemeAppCubit>(
+            create: (context) => ThemeAppCubit(preferences: preferences),
+          ),
+          BlocProvider(
+            create: (context) =>
+                SearchMedicationResultBloc(cimaRepository: cimaRepository),
+          ),
+        ],
         child: BlocBuilder<ThemeAppCubit, ThemeAppState>(
           builder: (context, state) {
             return MaterialApp.router(

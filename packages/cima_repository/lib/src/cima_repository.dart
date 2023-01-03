@@ -40,6 +40,27 @@ class CimaRepository {
     }
   }
 
+  Future<Either<Failure, Presentacion>> getPresentation({
+    required String nationalCode,
+  }) async {
+    try {
+      final response =
+          await _remoteDataSource.getPresentation(nationalCode: nationalCode);
+
+      if (response.statusCode != 200) {
+        return Left(ServerFailure());
+      }
+      try {
+        final presentation = Presentacion.fromJson(jsonDecode(response.body));
+        return Right(presentation);
+      } on FormatException {
+        return Left(FormatFailure());
+      }
+    } catch (e) {
+      return Left(ServerFailure());
+    }
+  }
+
   Future<Either<Failure, List<Medicamento>>> findMedications(
       {Map<String, String>? params}) async {
     try {
@@ -57,6 +78,37 @@ class CimaRepository {
               .map((e) => Medicamento.fromJson(e))
               .toList();
           return Right(medicamentos);
+        } catch (e) {
+          log('error: $e');
+          return Left(FormatFailure());
+        }
+      } else if (response.statusCode == 204) {
+        return Left(NoDataFailure());
+      } else {
+        return Left(ServerFailure());
+      }
+    } catch (e) {
+      return Left(ServerFailure());
+    }
+  }
+
+  Future<Either<Failure, List<Presentacion>>> findPresentations(
+      {Map<String, String>? params}) async {
+    try {
+      final response = await _remoteDataSource.searchPresentations(
+        conditions: params,
+      );
+      log('statusCode: ${response.statusCode}');
+      if (response.statusCode == 200) {
+        try {
+          final cimaPaginado = CimaPaginado.fromJson(jsonDecode(response.body));
+          if (cimaPaginado.resultados?.isEmpty ?? true) {
+            return Right([]);
+          }
+          final presentations = cimaPaginado.resultados!
+              .map((e) => Presentacion.fromJson(e))
+              .toList();
+          return Right(presentations);
         } catch (e) {
           log('error: $e');
           return Left(FormatFailure());

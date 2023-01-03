@@ -13,8 +13,8 @@ class Loading extends SearchMedicationResultState {}
 
 class Error extends SearchMedicationResultState {}
 
-class Available extends SearchMedicationResultState {
-  const Available({required this.medicamentos});
+class AvailableSearchMedicationResultState extends SearchMedicationResultState {
+  const AvailableSearchMedicationResultState({required this.medicamentos});
 
   final List<Medicamento> medicamentos;
 

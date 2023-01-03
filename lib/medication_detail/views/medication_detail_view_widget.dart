@@ -2,6 +2,7 @@ import 'package:cima_client/l10n/l10n.dart';
 import 'package:cima_client/medication_detail/medication_detail.dart';
 import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MedicationDetailWidget extends StatelessWidget {
   const MedicationDetailWidget({super.key, required this.medicamento});
@@ -11,44 +12,52 @@ class MedicationDetailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final currentMedication = (context.watch<MedicationDetailBloc>().state
+            is AvailableMedicationDetailState)
+        ? (context.watch<MedicationDetailBloc>().state
+                as AvailableMedicationDetailState)
+            .medicamento
+        : medicamento;
+
     return SingleChildScrollView(
       child: Column(
         children: [
-          MedicationPhotoWidget(photo: medicamento.photoMaterialAs),
+          MedicationPhotoWidget(photo: currentMedication.photoMaterialAs),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  medicamento.nombre ?? '',
+                  currentMedication.nombre ?? '',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Text(
-                  medicamento.labtitular ?? '',
+                  currentMedication.labtitular ?? '',
                   style: Theme.of(context).textTheme.subtitle1,
                 ),
-                if (medicamento.nregistro != null)
+                if (currentMedication.nregistro != null)
                   Text(
-                    '${l10n.registration_number}: ${medicamento.nregistro!}',
+                    '${l10n.registration_number}: ${currentMedication.nregistro!}',
                     style: Theme.of(context).textTheme.caption,
                   ),
-                ButtonRowWidget(medicamento: medicamento),
-                if (medicamento.formaFarmaceutica != null)
+                ButtonRowWidget(medicamento: currentMedication),
+                if (currentMedication.formaFarmaceutica != null)
                   ListTile(
                     title: Text(l10n.pharmaceutical_form),
-                    subtitle: Text('${medicamento.formaFarmaceutica!.nombre}'),
+                    subtitle:
+                        Text('${currentMedication.formaFarmaceutica!.nombre}'),
                     leading: PharmaceuticalFormPhotoWidget(
-                      photo: medicamento.photoFormaFarmaceutica,
+                      photo: currentMedication.photoFormaFarmaceutica,
                     ),
                   ),
-                if (medicamento.dosis != null)
+                if (currentMedication.dosis != null)
                   ListTile(
                     title: Text(l10n.dose),
-                    subtitle: Text(medicamento.dosis!),
+                    subtitle: Text(currentMedication.dosis!),
                   ),
-                if (medicamento.cpresc != null)
-                  AlertMedicationWidget(medicamento: medicamento),
+                if (currentMedication.cpresc != null)
+                  AlertMedicationWidget(medicamento: currentMedication),
               ],
             ),
           )

@@ -29,7 +29,8 @@ class SearchMedicationResultBloc
       result.fold(
         (error) => Error(),
         (medications) {
-          return Available(medicamentos: medications);
+          return AvailableSearchMedicationResultState(
+              medicamentos: medications);
         },
       ),
     );

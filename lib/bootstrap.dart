@@ -24,7 +24,9 @@ class AppBlocObserver extends BlocObserver {
 
 Future<void> bootstrap(
   FutureOr<Widget> Function(
-          CimaRepository cimaRepository, SharedPreferences preferences)
+    CimaRepository cimaRepository,
+    SharedPreferences preferences,
+  )
       builder,
 ) async {
   WidgetsFlutterBinding.ensureInitialized();

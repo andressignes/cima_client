@@ -13,8 +13,8 @@ class Error extends MedicationDetailState {}
 
 class Loading extends MedicationDetailState {}
 
-class Available extends MedicationDetailState {
-  const Available({required this.medicamento});
+class AvailableMedicationDetailState extends MedicationDetailState {
+  const AvailableMedicationDetailState({required this.medicamento});
 
   final Medicamento medicamento;
 

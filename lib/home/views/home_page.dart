@@ -1,4 +1,3 @@
-import 'package:cima_client/app/router/routes.dart';
 import 'package:cima_client/home/home.dart';
 import 'package:cima_client/l10n/l10n.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,7 @@ import 'package:go_router/go_router.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  static Page<void> get page => const MaterialPage(child: HomePage());
+  static Page<void> page({Key? key}) => MaterialPage(child: HomePage(key: key));
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,7 @@ class HomePage extends StatelessWidget {
         children: [
           FloatingActionButton(
             heroTag: 'search',
-            onPressed: () => context.pushNamed(Routes.search.name),
+            onPressed: () => context.go('/search'),
             child: const Icon(Icons.search),
           ),
           const SizedBox(width: 16),

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:http/http.dart';
 
 class CimaApiClient {
@@ -22,33 +20,37 @@ class CimaApiClient {
     return _getMedicamento(nregistro: nRegistro);
   }
 
-  Future<Response> _getMedicamento({
-    String? cn,
-    String? nregistro,
-  }) async {
+  Future<Response> _getMedicamento({String? cn, String? nregistro}) async {
     final params = <String, String>{};
-    if (cn != null) {
-      params['cn'] = cn;
-    }
-    if (nregistro != null) {
-      params['nregistro'] = nregistro;
-    }
-    final url = Uri.https(_baseUrl, '$_baseEndPoint/medicamento', params);
-    final cimaResponse = await _client.get(url);
-    return cimaResponse;
+    if (cn != null) params['cn'] = cn;
+    if (nregistro != null) params['nregistro'] = nregistro;
+
+    return await _get(path: 'medicamento', params: params);
+  }
+
+  Future<Response> getPresentation({required String nationalCode}) async {
+    return await _get(path: 'presentacion/$nationalCode');
+  }
+
+  Future<Response> searchPresentations(
+      {Map<String, String>? conditions}) async {
+    return await _get(path: 'presentaciones', params: conditions);
   }
 
   Future<Response> getMedications({Map<String, String>? params}) async {
-    var url = Uri.https(_baseUrl, '$_baseEndPoint/medicamentos', params);
-    log(url.toString());
-    var cimaResponse = await _client.get(url);
-    return cimaResponse;
+    return await _get(path: 'medicamentos', params: params);
   }
 
   Future<Response> getProblemasSuministro({Map<String, String>? params}) async {
-    var url = Uri.https(_baseUrl, '$_baseEndPoint/psuministro', params);
-    log(url.toString());
-    var cimaResponse = await _client.get(url);
+    return await _get(path: 'psuministro', params: params);
+  }
+
+  Future<Response> _get({
+    required String path,
+    Map<String, String>? params,
+  }) async {
+    final url = Uri.https(_baseUrl, '$_baseEndPoint/$path', params);
+    final cimaResponse = await _client.get(url);
     return cimaResponse;
   }
 }

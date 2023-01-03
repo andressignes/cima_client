@@ -85,33 +85,3 @@ class SettingsPage extends StatelessWidget {
     );
   }
 }
-
-class _AppearanceSectionView extends StatelessWidget {
-  const _AppearanceSectionView();
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = context.l10n;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          l10n.appearance,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headline5,
-        ),
-        Row(
-          children: [
-            Text(
-              l10n.theme,
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            const SizedBox(width: 8),
-            const ThemeSelectorWidget()
-          ],
-        ),
-      ],
-    );
-  }
-}

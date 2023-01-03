@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cima_client/app/router/routes.dart';
 import 'package:cima_client/l10n/l10n.dart';
 import 'package:cima_client/search/search.dart';
+import 'package:cima_client/search_result/bloc/search_medication_result_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz_inputs/formz_inputs.dart';
@@ -21,9 +22,12 @@ class SearchSubmitButton extends StatelessWidget {
         return ElevatedButton(
           onPressed: () {
             if (state.status.isValid) {
-              final params = <String, dynamic>{
+              final params = <String, String>{
                 'nombre': state.medicationName.value
               };
+              context
+                  .read<SearchMedicationResultBloc>()
+                  .add(Search(params: params));
               context.goNamed(Routes.searchResult.name, queryParams: params);
             } else {
               return;

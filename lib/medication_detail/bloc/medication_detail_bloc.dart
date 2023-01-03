@@ -30,7 +30,8 @@ class MedicationDetailBloc
     emit(
       result.fold(
         (_) => Error(),
-        (medicamento) => Available(medicamento: medicamento),
+        (medicamento) =>
+            AvailableMedicationDetailState(medicamento: medicamento),
       ),
     );
   }
