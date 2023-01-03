@@ -7,14 +7,14 @@ import 'package:test/test.dart';
 void main() {
   group('Foto', () {
     late Map<String, dynamic> json;
-    late Foto obj;
+    late Photo obj;
 
     setUp(() async {
       json = jsonDecode(
         await File('test/resources/foto.json').readAsString(),
       );
 
-      obj = Foto(
+      obj = Photo(
         tipo: json['tipo'] as String,
         url: json['url'] as String,
         fecha: json['fecha'] as int,
@@ -27,12 +27,12 @@ void main() {
 
     test('supports value comparisons', () {
       expect(
-          Foto(
+          Photo(
                 tipo: 'tipo',
                 url: 'url',
                 fecha: 1,
               ) ==
-              Foto(
+              Photo(
                 tipo: 'tipo',
                 url: 'url',
                 fecha: 1,
@@ -41,7 +41,7 @@ void main() {
     });
 
     test('json serialization fromJson', () {
-      expect(Foto.fromJson(json), obj);
+      expect(Photo.fromJson(json), obj);
     });
 
     test('json serialization toJson', () {

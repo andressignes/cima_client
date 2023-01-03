@@ -11,7 +11,7 @@ class SupplyProblemItemWidget extends StatelessWidget {
     required this.supplyProblem,
   });
 
-  final ProblemaSuministro supplyProblem;
+  final SupplyProblems supplyProblem;
 
   DateFormat get dateFormat => DateFormat('dd/MM/yyyy');
 

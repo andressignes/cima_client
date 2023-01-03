@@ -7,14 +7,14 @@ import 'package:test/test.dart';
 void main() {
   group('Estado', () {
     late Map<String, dynamic> json;
-    late Estado obj;
+    late MedicationStatus obj;
 
     setUp(() async {
       json = jsonDecode(
         await File('test/resources/estado.json').readAsString(),
       );
 
-      obj = Estado(
+      obj = MedicationStatus(
         aut: json['aut'] as int,
         rev: json['rev'] as int,
         susp: json['susp'] as int,
@@ -27,12 +27,12 @@ void main() {
 
     test('supports value comparisons', () {
       expect(
-          Estado(
+          MedicationStatus(
                 aut: 1,
                 rev: 2,
                 susp: 3,
               ) ==
-              Estado(
+              MedicationStatus(
                 aut: 1,
                 rev: 2,
                 susp: 3,
@@ -41,7 +41,7 @@ void main() {
     });
 
     test('json serialization fromJson', () {
-      expect(Estado.fromJson(json), obj);
+      expect(MedicationStatus.fromJson(json), obj);
     });
 
     test('json serialization toJson', () {

@@ -5,16 +5,23 @@ part 'atc.g.dart';
 
 @JsonSerializable()
 class Atc extends Equatable {
-  Atc({this.codigo, this.nombre, this.nivel});
+  Atc({
+    required this.code,
+    required this.name,
+    required this.level,
+  });
 
   factory Atc.fromJson(Map<String, dynamic> json) => _$AtcFromJson(json);
 
-  final String? codigo;
-  final String? nombre;
-  final int? nivel;
+  @JsonKey(name: 'codigo')
+  final String code;
+  @JsonKey(name: 'nombre')
+  final String name;
+  @JsonKey(name: 'nivel')
+  final int level;
 
   Map<String, dynamic> toJson() => _$AtcToJson(this);
 
   @override
-  List<Object?> get props => [codigo, nombre, nivel];
+  List<Object?> get props => [code, name, level];
 }

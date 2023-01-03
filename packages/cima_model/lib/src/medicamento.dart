@@ -7,8 +7,8 @@ part 'medicamento.g.dart';
 @JsonSerializable()
 class Medicamento extends Equatable {
   Medicamento({
-    this.nregistro,
-    this.nombre,
+    required this.nregistro,
+    required this.nombre,
     this.pactivos,
     this.labtitular,
     this.estado,
@@ -34,69 +34,97 @@ class Medicamento extends Equatable {
     this.presentaciones,
     this.formaFarmaceutica,
     this.formaFarmaceuticaSimplificada,
-    this.vtm,
     this.dosis,
   });
 
   factory Medicamento.fromJson(Map<String, dynamic> json) =>
       _$MedicamentoFromJson(json);
 
-  final String? nregistro;
-  final String? nombre;
+  @JsonKey(name: 'nregistro')
+  final String nregistro;
+  @JsonKey(name: 'nombre')
+  final String nombre;
+  @JsonKey(name: 'pactivos')
   final String? pactivos;
+  @JsonKey(name: 'labtitular')
   final String? labtitular;
-  final Estado? estado;
+  @JsonKey(name: 'estado')
+  final MedicationStatus? estado;
+  @JsonKey(name: 'cpresc')
   final String? cpresc;
+  @JsonKey(name: 'comerc')
   final bool? comerc;
+  @JsonKey(name: 'receta')
   final bool? receta;
+  @JsonKey(name: 'generico')
   final bool? generico;
+  @JsonKey(name: 'conduc')
   final bool? conduc;
+  @JsonKey(name: 'triangulo')
   final bool? triangulo;
+  @JsonKey(name: 'huerfano')
   final bool? huerfano;
+  @JsonKey(name: 'biosimilar')
   final bool? biosimilar;
+  @JsonKey(name: 'ema')
   final bool? ema;
+  @JsonKey(name: 'psum')
   final bool? psum;
-  final List<Documento>? docs;
-  final List<Foto>? fotos;
+  @JsonKey(name: 'docs')
+  final List<Document>? docs;
+  @JsonKey(name: 'fotos')
+  final List<Photo>? fotos;
+  @JsonKey(name: 'notas')
   final bool? notas;
+  @JsonKey(name: 'materialesInf')
   final bool? materialesInf;
+  @JsonKey(name: 'atcs')
   final List<Atc>? atcs;
+  @JsonKey(name: 'principiosActivos')
   final List<PrincipioActivo>? principiosActivos;
-  final List<PrincipioActivo>? excipientes;
+  @JsonKey(name: 'excipientes')
+  final List<Excipient>? excipientes;
+  @JsonKey(name: 'viasAdministracion')
   final List<Item>? viasAdministracion;
+  @JsonKey(name: 'nosustituible')
   final Item? nosustituible;
-  final List<Presentacion>? presentaciones;
+  @JsonKey(name: 'presentaciones')
+  final List<Presentation>? presentaciones;
+  @JsonKey(name: 'formaFarmaceutica')
   final Item? formaFarmaceutica;
+  @JsonKey(name: 'formaFarmaceuticaSimplificada')
   final Item? formaFarmaceuticaSimplificada;
-  final Item? vtm;
+  @JsonKey(name: 'dosis')
   final String? dosis;
 
   Map<String, dynamic> toJson() => _$MedicamentoToJson(this);
 
-  Documento? getDocumento(TipoDocumento type) {
+  Document? getDocumento(DocumentType type) {
     if (docs == null) return null;
-    if (docs!.indexWhere((element) => element.tipo == type) == -1) return null;
-    return docs!.firstWhere((d) => d.tipo == type);
+    if (docs!.indexWhere((element) => element.type == type) == -1) return null;
+    return docs!.firstWhere((d) => d.type == type);
   }
 
   Uri? get photoMaterialAs {
     if (fotos == null ||
         fotos!.isEmpty ||
-        fotos!.indexWhere((photo) => photo.tipo == 'materialas') == -1) {
+        fotos!.indexWhere((photo) => photo.type == PhotoType.material) == -1) {
       return null;
     }
-    return Uri.parse(
-        fotos!.firstWhere((photo) => photo.tipo == 'materialas').url!);
+    return fotos!.firstWhere((photo) => photo.type == PhotoType.material).url;
   }
 
   Uri? get photoFormaFarmaceutica {
     if (fotos == null ||
         fotos!.isEmpty ||
-        fotos!.indexWhere((photo) => photo.tipo == 'formafarmac') == -1) {
+        fotos!.indexWhere(
+                (photo) => photo.type == PhotoType.pharmaceuticalProduct) ==
+            -1) {
       return null;
     }
-    return Uri.parse(
-        fotos!.firstWhere((photo) => photo.tipo == 'formafarmac').url!);
+    return fotos!
+        .firstWhere((photo) => photo.type == PhotoType.pharmaceuticalProduct)
+        .url;
   }
 
   @override
@@ -128,7 +156,6 @@ class Medicamento extends Equatable {
         presentaciones,
         formaFarmaceutica,
         formaFarmaceuticaSimplificada,
-        vtm,
         dosis
       ];
 }

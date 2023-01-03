@@ -40,7 +40,7 @@ class CimaRepository {
     }
   }
 
-  Future<Either<Failure, Presentacion>> getPresentation({
+  Future<Either<Failure, Presentation>> getPresentation({
     required String nationalCode,
   }) async {
     try {
@@ -51,7 +51,7 @@ class CimaRepository {
         return Left(ServerFailure());
       }
       try {
-        final presentation = Presentacion.fromJson(jsonDecode(response.body));
+        final presentation = Presentation.fromJson(jsonDecode(response.body));
         return Right(presentation);
       } on FormatException {
         return Left(FormatFailure());
@@ -92,7 +92,7 @@ class CimaRepository {
     }
   }
 
-  Future<Either<Failure, List<Presentacion>>> findPresentations(
+  Future<Either<Failure, List<Presentation>>> findPresentations(
       {Map<String, String>? params}) async {
     try {
       final response = await _remoteDataSource.searchPresentations(
@@ -106,7 +106,7 @@ class CimaRepository {
             return Right([]);
           }
           final presentations = cimaPaginado.resultados!
-              .map((e) => Presentacion.fromJson(e))
+              .map((e) => Presentation.fromJson(e))
               .toList();
           return Right(presentations);
         } catch (e) {
@@ -123,7 +123,7 @@ class CimaRepository {
     }
   }
 
-  Future<Either<Failure, List<ProblemaSuministro>>> findProblemasSuministro({
+  Future<Either<Failure, List<SupplyProblems>>> findProblemasSuministro({
     required Map<String, String> params,
   }) async {
     try {
@@ -141,7 +141,7 @@ class CimaRepository {
           return Right([]);
         }
         final problemasSuministro = cimaPaginado.resultados!
-            .map((e) => ProblemaSuministro.fromJson(e))
+            .map((e) => SupplyProblems.fromJson(e))
             .toList();
         return Right(problemasSuministro);
       } catch (e) {

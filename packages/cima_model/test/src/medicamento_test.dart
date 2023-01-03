@@ -67,7 +67,7 @@ void main() {
                 nombre: 'nombre',
                 pactivos: 'pactivos',
                 labtitular: 'labtitular',
-                estado: Estado(susp: 1, rev: 1, aut: 1),
+                estado: MedicationStatus(susp: 1, rev: 1, aut: 1),
                 cpresc: 'cpresc',
                 comerc: true,
                 receta: true,
@@ -78,10 +78,12 @@ void main() {
                 ema: true,
                 psum: true,
                 docs: [
-                  Documento(
-                      tipo: TipoDocumento.fichaTecnica, secc: true, url: 'url')
+                  Document(
+                      type: DocumentType.fichaTecnica,
+                      htmlAvailable: true,
+                      url: 'url')
                 ],
-                fotos: [Foto(tipo: '', url: 'url', fecha: 1)],
+                fotos: [Photo(tipo: '', url: 'url', fecha: 1)],
                 notas: true,
                 materialesInf: true,
                 atcs: [Atc(nombre: 'nombre', codigo: 'codigo')],
@@ -90,7 +92,7 @@ void main() {
                 ],
                 viasAdministracion: [Item(nombre: 'nombre', codigo: 'codigo')],
                 nosustituible: Item(nombre: 'nombre', codigo: 'codigo'),
-                presentaciones: [Presentacion(cn: '', nombre: 'nombre')],
+                presentaciones: [Presentation(cn: '', nombre: 'nombre')],
                 formaFarmaceutica: Item(nombre: 'nombre', codigo: 'codigo'),
                 formaFarmaceuticaSimplificada: Item(
                   nombre: 'nombre',
@@ -103,7 +105,7 @@ void main() {
                 nombre: 'nombre',
                 pactivos: 'pactivos',
                 labtitular: 'labtitular',
-                estado: Estado(susp: 1, rev: 1, aut: 1),
+                estado: MedicationStatus(susp: 1, rev: 1, aut: 1),
                 cpresc: 'cpresc',
                 comerc: true,
                 receta: true,
@@ -114,10 +116,12 @@ void main() {
                 ema: true,
                 psum: true,
                 docs: [
-                  Documento(
-                      tipo: TipoDocumento.fichaTecnica, secc: true, url: 'url')
+                  Document(
+                      type: DocumentType.fichaTecnica,
+                      htmlAvailable: true,
+                      url: 'url')
                 ],
-                fotos: [Foto(tipo: '', url: 'url', fecha: 1)],
+                fotos: [Photo(tipo: '', url: 'url', fecha: 1)],
                 notas: true,
                 materialesInf: true,
                 atcs: [Atc(nombre: 'nombre', codigo: 'codigo')],
@@ -126,7 +130,7 @@ void main() {
                 ],
                 viasAdministracion: [Item(nombre: 'nombre', codigo: 'codigo')],
                 nosustituible: Item(nombre: 'nombre', codigo: 'codigo'),
-                presentaciones: [Presentacion(cn: '', nombre: 'nombre')],
+                presentaciones: [Presentation(cn: '', nombre: 'nombre')],
                 formaFarmaceutica: Item(nombre: 'nombre', codigo: 'codigo'),
                 formaFarmaceuticaSimplificada: Item(
                   nombre: 'nombre',
@@ -143,7 +147,7 @@ void main() {
 
     test('json serialization toJson', () {
       expect(obj.nregistro, json['nregistro']);
-      expect(obj.estado, Estado.fromJson(json['estado']));
+      expect(obj.estado, MedicationStatus.fromJson(json['estado']));
       // expect(obj.toJson(), json);
     });
   });

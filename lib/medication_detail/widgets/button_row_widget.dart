@@ -18,11 +18,11 @@ class ButtonRowWidget extends StatelessWidget {
         children: [
           PdfButtonWidget(
             title: l10n.technical_profile,
-            url: medicamento.getDocumento(TipoDocumento.fichaTecnica)?.url,
+            url: medicamento.getDocumento(DocumentType.fichaTecnica)?.url,
           ),
           PdfButtonWidget(
             title: l10n.prospect,
-            url: medicamento.getDocumento(TipoDocumento.prospecto)?.url,
+            url: medicamento.getDocumento(DocumentType.prospecto)?.url,
           ),
         ],
       ),

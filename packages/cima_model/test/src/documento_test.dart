@@ -7,17 +7,17 @@ import 'package:test/test.dart';
 void main() {
   group('Documento', () {
     late Map<String, dynamic> json;
-    late Documento obj;
+    late Document obj;
 
     setUp(() async {
       json = jsonDecode(
         await File('test/resources/documento.json').readAsString(),
       );
 
-      obj = Documento(
-        tipo: TipoDocumento.fichaTecnica,
+      obj = Document(
+        type: DocumentType.fichaTecnica,
         url: json['url'] as String,
-        secc: json['secc'] as bool,
+        htmlAvailable: json['secc'] as bool,
       );
     });
 
@@ -27,21 +27,21 @@ void main() {
 
     test('supports value comparisons', () {
       expect(
-          Documento(
-                tipo: TipoDocumento.fichaTecnica,
+          Document(
+                type: DocumentType.fichaTecnica,
                 url: "",
-                secc: true,
+                htmlAvailable: true,
               ) ==
-              Documento(
-                tipo: TipoDocumento.fichaTecnica,
+              Document(
+                type: DocumentType.fichaTecnica,
                 url: "",
-                secc: true,
+                htmlAvailable: true,
               ),
           isTrue);
     });
 
     test('json serialization fromJson', () {
-      expect(Documento.fromJson(json), obj);
+      expect(Document.fromJson(json), obj);
     });
 
     test('json serialization toJson', () {

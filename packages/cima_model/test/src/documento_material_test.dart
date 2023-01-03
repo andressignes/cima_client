@@ -7,14 +7,14 @@ import 'package:test/test.dart';
 void main() {
   group('DocumentoMaterial', () {
     late Map<String, dynamic> json;
-    late DocumentoMaterial obj;
+    late MaterialDocument obj;
 
     setUp(() async {
       json = jsonDecode(
         await File('test/resources/documento_material.json').readAsString(),
       );
 
-      obj = DocumentoMaterial(
+      obj = MaterialDocument(
         nombre: json['nombre'] as String,
         url: json['url'] as String,
         fecha: json['fecha'] as int,
@@ -27,12 +27,12 @@ void main() {
 
     test('supports value comparisons', () {
       expect(
-          DocumentoMaterial(
+          MaterialDocument(
                 nombre: 'nombre',
                 url: 'url',
                 fecha: 1,
               ) ==
-              DocumentoMaterial(
+              MaterialDocument(
                 nombre: 'nombre',
                 url: 'url',
                 fecha: 1,
@@ -41,7 +41,7 @@ void main() {
     });
 
     test('json serialization fromJson', () {
-      expect(DocumentoMaterial.fromJson(json), obj);
+      expect(MaterialDocument.fromJson(json), obj);
     });
 
     test('json serialization toJson', () {

@@ -138,7 +138,7 @@ void main() {
         final problemasSuministroJson = jsonDecode(problemasSuministroRaw);
         final cimaPaginado = CimaPaginado.fromJson(problemasSuministroJson);
         final problemasSuministro = cimaPaginado.resultados!
-            .map((e) => ProblemaSuministro.fromJson(e))
+            .map((e) => SupplyProblems.fromJson(e))
             .toList();
 
         when(() => apiClient.getProblemasSuministro(params: {}))
@@ -157,7 +157,7 @@ void main() {
         final problemasSuministroJson = jsonDecode(problemasSuministroRaw);
         final cimaPaginado = CimaPaginado.fromJson(problemasSuministroJson);
         final problemasSuministro = cimaPaginado.resultados!
-            .map((e) => ProblemaSuministro.fromJson(e))
+            .map((e) => SupplyProblems.fromJson(e))
             .toList();
         when(() => apiClient.getProblemasSuministro(params: params))
             .thenAnswer((_) async => Response(problemasSuministroRaw, 200));

@@ -7,18 +7,20 @@ part of 'material.dart';
 // **************************************************************************
 
 Material _$MaterialFromJson(Map<String, dynamic> json) => Material(
-      medicamento: json['medicamento'] as String?,
-      listaDocsPaciente: (json['listaDocsPaciente'] as List<dynamic>?)
-          ?.map((e) => DocumentoMaterial.fromJson(e as Map<String, dynamic>))
+      title: json['titulo'] as String,
+      patientDocuments: (json['listaDocsPaciente'] as List<dynamic>?)
+          ?.map((e) => MaterialDocument.fromJson(e as Map<String, dynamic>))
           .toList(),
-      listaDocsProfesional: (json['listaDocsProfesional'] as List<dynamic>?)
-          ?.map((e) => DocumentoMaterial.fromJson(e as Map<String, dynamic>))
+      practitionerDocuments: (json['listaDocsProfesional'] as List<dynamic>?)
+          ?.map((e) => MaterialDocument.fromJson(e as Map<String, dynamic>))
           .toList(),
-      principiosActivos: json['principiosActivos'] as String?,
+      videoUrl: json['video'] as String?,
     );
 
 Map<String, dynamic> _$MaterialToJson(Material instance) {
-  final val = <String, dynamic>{};
+  final val = <String, dynamic>{
+    'titulo': instance.title,
+  };
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -26,9 +28,8 @@ Map<String, dynamic> _$MaterialToJson(Material instance) {
     }
   }
 
-  writeNotNull('medicamento', instance.medicamento);
-  writeNotNull('listaDocsPaciente', instance.listaDocsPaciente);
-  writeNotNull('listaDocsProfesional', instance.listaDocsProfesional);
-  writeNotNull('principiosActivos', instance.principiosActivos);
+  writeNotNull('listaDocsPaciente', instance.patientDocuments);
+  writeNotNull('listaDocsProfesional', instance.practitionerDocuments);
+  writeNotNull('video', instance.videoUrl);
   return val;
 }

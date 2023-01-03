@@ -28,7 +28,7 @@ class Error extends SupplyProblemsState {
 class Loaded extends SupplyProblemsState {
   const Loaded(this.problemasSuministro);
 
-  final List<ProblemaSuministro> problemasSuministro;
+  final List<SupplyProblems> problemasSuministro;
 
   @override
   List<Object> get props => [problemasSuministro];

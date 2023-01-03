@@ -7,19 +7,19 @@ import 'package:test/test.dart';
 void main() {
   group('Nota', () {
     late Map<String, dynamic> json;
-    late Nota obj;
+    late Note obj;
 
     setUp(() async {
       json = jsonDecode(
         await File('test/resources/nota.json').readAsString(),
       );
 
-      obj = Nota(
-        tipo: json['tipo'] as int,
-        num: json['num'] as String,
+      obj = Note(
+        type: json['tipo'] as int,
+        number: json['num'] as String,
         referencia: json['referencia'] as String,
-        asunto: json['asunto'] as String,
-        fecha: json['fecha'] as int,
+        issue: json['asunto'] as String,
+        publicationDate: json['fecha'] as int,
         url: json['url'] as String,
       );
     });
@@ -30,27 +30,27 @@ void main() {
 
     test('supports value comparisons', () {
       expect(
-          Nota(
-                tipo: 1,
-                num: '1',
+          Note(
+                type: 1,
+                number: '1',
                 referencia: '1',
-                asunto: '1',
-                fecha: 1,
+                issue: '1',
+                publicationDate: 1,
                 url: '1',
               ) ==
-              Nota(
-                tipo: 1,
-                num: '1',
+              Note(
+                type: 1,
+                number: '1',
                 referencia: '1',
-                asunto: '1',
-                fecha: 1,
+                issue: '1',
+                publicationDate: 1,
                 url: '1',
               ),
           isTrue);
     });
 
     test('json serialization fromJson', () {
-      expect(Nota.fromJson(json), obj);
+      expect(Note.fromJson(json), obj);
     });
 
     test('json serialization toJson', () {

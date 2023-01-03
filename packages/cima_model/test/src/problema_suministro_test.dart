@@ -7,14 +7,14 @@ import 'package:test/test.dart';
 void main() {
   group('Problema Suministro', () {
     late Map<String, dynamic> json;
-    late ProblemaSuministro obj;
+    late SupplyProblems obj;
 
     setUpAll(() async {
       json = jsonDecode(
         await File('test/resources/problema_suministro.json').readAsString(),
       );
 
-      obj = ProblemaSuministro.fromJson(json);
+      obj = SupplyProblems.fromJson(json);
 
       // obj = ProblemaSuministro(
       //   cn: json['cn'] as String,
@@ -32,7 +32,7 @@ void main() {
 
     test('supports value comparisons', () {
       expect(
-          ProblemaSuministro(
+          SupplyProblems(
                 cn: '1',
                 nombre: '1',
                 activo: true,
@@ -40,7 +40,7 @@ void main() {
                 ffin: 1,
                 observ: '1',
               ) ==
-              ProblemaSuministro(
+              SupplyProblems(
                 cn: '1',
                 nombre: '1',
                 activo: true,
@@ -52,7 +52,7 @@ void main() {
     });
 
     test('json serialization fromJson', () {
-      expect(ProblemaSuministro.fromJson(json), obj);
+      expect(SupplyProblems.fromJson(json), obj);
     });
 
     test('json serialization toJson', () {

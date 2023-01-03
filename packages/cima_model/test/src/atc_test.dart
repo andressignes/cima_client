@@ -15,9 +15,9 @@ void main() {
       );
 
       atcObj = Atc(
-        nombre: atcJson['nombre'] as String,
-        codigo: atcJson['codigo'] as String,
-        nivel: atcJson['nivel'] as int,
+        name: atcJson['nombre'] as String,
+        code: atcJson['codigo'] as String,
+        level: atcJson['nivel'] as int,
       );
     });
 
@@ -26,9 +26,12 @@ void main() {
     });
 
     test('supports value comparisons', () {
+      final code = 'fakeCode';
+      final name = 'fakeName';
+      final level = 1;
       expect(
-          Atc(codigo: '', nivel: 0, nombre: '') ==
-              Atc(codigo: '', nivel: 0, nombre: ''),
+          Atc(code: code, level: level, name: name) ==
+              Atc(code: code, level: level, name: name),
           isTrue);
     });
 

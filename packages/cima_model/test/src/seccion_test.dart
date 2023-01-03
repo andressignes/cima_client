@@ -7,14 +7,14 @@ import 'package:test/test.dart';
 void main() {
   group('Seccion', () {
     late Map<String, dynamic> json;
-    late Seccion obj;
+    late DocumentSection obj;
 
     setUp(() async {
       json = jsonDecode(
         await File('test/resources/seccion.json').readAsString(),
       );
 
-      obj = Seccion.fromJson(json);
+      obj = DocumentSection.fromJson(json);
 
       // obj = Seccion(
       //   seccion: json['seccion'] as String,
@@ -31,23 +31,23 @@ void main() {
 
     test('supports value comparisons', () {
       expect(
-          Seccion(
-                seccion: 'seccion',
-                titulo: 'titulo',
-                orden: 1,
-                contenido: 'contenido',
+          DocumentSection(
+                section: 'seccion',
+                title: 'titulo',
+                order: 1,
+                body: 'contenido',
               ) ==
-              Seccion(
-                seccion: 'seccion',
-                titulo: 'titulo',
-                orden: 1,
-                contenido: 'contenido',
+              DocumentSection(
+                section: 'seccion',
+                title: 'titulo',
+                order: 1,
+                body: 'contenido',
               ),
           isTrue);
     });
 
     test('json serialization fromJson', () {
-      expect(Seccion.fromJson(json), obj);
+      expect(DocumentSection.fromJson(json), obj);
     });
 
     test('json serialization toJson', () {
