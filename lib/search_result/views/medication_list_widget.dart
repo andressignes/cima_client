@@ -1,35 +1,33 @@
-import 'package:cima_client/l10n/l10n.dart';
+import 'package:cima_client/common/widgets/widgets.dart';
 import 'package:cima_client/search_result/search_result.dart';
-import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MedicationListWidget extends StatelessWidget {
-  const MedicationListWidget({
-    super.key,
-    required List<Medicamento> medications,
-  }) : _medications = medications;
-  final List<Medicamento> _medications;
+  const MedicationListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    if (_medications.isEmpty) {
-      return Padding(
-        padding: const EdgeInsets.all(16),
-        child: Center(
-          child: Text(
-            l10n.no_results,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headline4,
-          ),
-        ),
-      );
-    }
-    return ListView.builder(
-      itemCount: _medications.length,
-      itemBuilder: (context, index) => MedicationItemList(
-        medication: _medications.elementAt(index),
-      ),
+    return BlocBuilder<SearchMedicationResultBloc, SearchMedicationResultState>(
+      builder: (context, state) {
+        if (state is AvailableSearchMedicationResultState) {
+          final medications = state.medicamentos;
+          if (medications.isEmpty) {
+            return const CimaEmpty();
+          }
+          return ListView.builder(
+            itemCount: medications.length,
+            itemBuilder: (context, index) => MedicationItemList(
+              medication: medications.elementAt(index),
+            ),
+          );
+        } else if (state is Initial) {
+          return const SizedBox.shrink();
+        } else if (state is Loading) {
+          return const CimaLoading();
+        }
+        return const CimaEmpty();
+      },
     );
   }
 }

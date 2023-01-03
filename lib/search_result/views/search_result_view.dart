@@ -25,7 +25,7 @@ class SearchResultView extends StatelessWidget {
           } else if (state is Loading) {
             return const CimaLoading();
           } else if (state is AvailableSearchMedicationResultState) {
-            return MedicationListWidget(medications: state.medicamentos);
+            return const MedicationListWidget();
           }
           return const CimaError();
         },

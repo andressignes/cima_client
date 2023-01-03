@@ -1,7 +1,7 @@
 import 'package:cima_client/home/home.dart';
 import 'package:cima_client/l10n/l10n.dart';
+import 'package:cima_client/search/search.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,6 +14,17 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.home_page_title),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: MedicationSearchDelegate(),
+              );
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -43,11 +54,14 @@ class HomePage extends StatelessWidget {
         children: [
           FloatingActionButton(
             heroTag: 'search',
-            onPressed: () => context.go('/search'),
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: MedicationSearchDelegate(),
+              );
+            },
             child: const Icon(Icons.search),
           ),
-          const SizedBox(width: 16),
-          const ScanFabWidget(),
         ],
       ),
     );

@@ -15,3 +15,10 @@ class Search extends SearchMedicationResultEvent {
   @override
   List<Object?> get props => [params];
 }
+
+class ClearSearch extends SearchMedicationResultEvent {
+  const ClearSearch();
+
+  @override
+  List<Object?> get props => [];
+}

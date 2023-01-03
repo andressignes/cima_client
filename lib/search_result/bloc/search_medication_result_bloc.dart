@@ -14,6 +14,7 @@ class SearchMedicationResultBloc
       : _cimaRepository = cimaRepository,
         super(Initial()) {
     on<Search>(_onSearch);
+    on<ClearSearch>(_onClearSearch);
   }
 
   final CimaRepository _cimaRepository;
@@ -34,5 +35,12 @@ class SearchMedicationResultBloc
         },
       ),
     );
+  }
+
+  void _onClearSearch(
+    ClearSearch event,
+    Emitter<SearchMedicationResultState> emit,
+  ) {
+    emit(Initial());
   }
 }
