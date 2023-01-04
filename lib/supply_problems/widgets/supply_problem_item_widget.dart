@@ -36,7 +36,7 @@ class SupplyProblemItemWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  supplyProblem.nombre ?? '',
+                  supplyProblem.name ?? '',
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 Text(

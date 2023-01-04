@@ -49,7 +49,7 @@ void main() {
         expect(
             result,
             Right(
-              Medicamento.fromJson(
+              Medication.fromJson(
                 jsonDecode(medicamentoJson),
               ),
             ));
@@ -62,7 +62,7 @@ void main() {
         expect(
             result,
             Right(
-              Medicamento.fromJson(
+              Medication.fromJson(
                 jsonDecode(medicamentoJson),
               ),
             ));
@@ -75,7 +75,7 @@ void main() {
         expect(
             result,
             Right(
-              Medicamento.fromJson(
+              Medication.fromJson(
                 jsonDecode(medicamentoJson),
               ),
             ));
@@ -108,12 +108,12 @@ void main() {
       test('find by name', () async {
         late final String medicamentoRAW;
         late final Map<String, dynamic> medicamentoJson;
-        late final List<Medicamento> listMedicamentos;
+        late final List<Medication> listMedicamentos;
         medicamentoRAW =
             await File('test/data/medicamento.json').readAsString();
         medicamentoJson = jsonDecode(medicamentoRAW);
         listMedicamentos = (medicamentoJson['resultados'] as List)
-            .map((m) => Medicamento.fromJson(m))
+            .map((m) => Medication.fromJson(m))
             .toList();
 
         when(() => apiClient.getMedications(params: params))

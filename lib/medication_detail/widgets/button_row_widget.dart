@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class ButtonRowWidget extends StatelessWidget {
   const ButtonRowWidget({super.key, required this.medicamento});
 
-  final Medicamento medicamento;
+  final Medication medicamento;
 
   @override
   Widget build(BuildContext context) {

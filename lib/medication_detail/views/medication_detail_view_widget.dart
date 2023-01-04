@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class MedicationDetailWidget extends StatelessWidget {
   const MedicationDetailWidget({super.key, required this.medicamento});
 
-  final Medicamento medicamento;
+  final Medication medicamento;
 
   @override
   Widget build(BuildContext context) {
@@ -22,23 +22,23 @@ class MedicationDetailWidget extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          MedicationPhotoWidget(photo: currentMedication.photoMaterialAs),
+          MedicationPhotoWidget(photo: currentMedication.photoMaterial),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  currentMedication.nombre ?? '',
+                  currentMedication.name ?? '',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Text(
-                  currentMedication.labtitular ?? '',
+                  currentMedication.laboratory ?? '',
                   style: Theme.of(context).textTheme.subtitle1,
                 ),
-                if (currentMedication.nregistro != null)
+                if (currentMedication.registerNumber != null)
                   Text(
-                    '${l10n.registration_number}: ${currentMedication.nregistro!}',
+                    '${l10n.registration_number}: ${currentMedication.registerNumber!}',
                     style: Theme.of(context).textTheme.caption,
                   ),
                 ButtonRowWidget(medicamento: currentMedication),
@@ -46,17 +46,17 @@ class MedicationDetailWidget extends StatelessWidget {
                   ListTile(
                     title: Text(l10n.pharmaceutical_form),
                     subtitle:
-                        Text('${currentMedication.formaFarmaceutica!.nombre}'),
+                        Text('${currentMedication.formaFarmaceutica!.name}'),
                     leading: PharmaceuticalFormPhotoWidget(
-                      photo: currentMedication.photoFormaFarmaceutica,
+                      photo: currentMedication.photoPharmaceuticalProduct,
                     ),
                   ),
-                if (currentMedication.dosis != null)
+                if (currentMedication.dosage != null)
                   ListTile(
                     title: Text(l10n.dose),
-                    subtitle: Text(currentMedication.dosis!),
+                    subtitle: Text(currentMedication.dosage!),
                   ),
-                if (currentMedication.cpresc != null)
+                if (currentMedication.conditionPrescriptions != null)
                   AlertMedicationWidget(medicamento: currentMedication),
               ],
             ),

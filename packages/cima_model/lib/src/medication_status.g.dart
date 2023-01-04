@@ -8,12 +8,9 @@ part of 'medication_status.dart';
 
 MedicationStatus _$MedicationStatusFromJson(Map<String, dynamic> json) =>
     MedicationStatus(
-      authorizationDate:
-          json['aut'] == null ? null : DateTime.parse(json['aut'] as String),
-      suspensionDate:
-          json['susp'] == null ? null : DateTime.parse(json['susp'] as String),
-      revocationDate:
-          json['rev'] == null ? null : DateTime.parse(json['rev'] as String),
+      authorizationDate: MedicationStatus._fromJson(json['aut'] as int?),
+      suspensionDate: MedicationStatus._fromJson(json['susp'] as int?),
+      revocationDate: MedicationStatus._fromJson(json['rev'] as int?),
     );
 
 Map<String, dynamic> _$MedicationStatusToJson(MedicationStatus instance) {
@@ -25,8 +22,8 @@ Map<String, dynamic> _$MedicationStatusToJson(MedicationStatus instance) {
     }
   }
 
-  writeNotNull('aut', instance.authorizationDate?.toIso8601String());
-  writeNotNull('susp', instance.suspensionDate?.toIso8601String());
-  writeNotNull('rev', instance.revocationDate?.toIso8601String());
+  writeNotNull('aut', MedicationStatus._toJson(instance.authorizationDate));
+  writeNotNull('susp', MedicationStatus._toJson(instance.suspensionDate));
+  writeNotNull('rev', MedicationStatus._toJson(instance.revocationDate));
   return val;
 }

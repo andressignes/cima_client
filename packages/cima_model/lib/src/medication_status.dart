@@ -14,11 +14,11 @@ class MedicationStatus extends Equatable {
   factory MedicationStatus.fromJson(Map<String, dynamic> json) =>
       _$MedicationStatusFromJson(json);
 
-  @JsonKey(name: 'aut')
+  @JsonKey(name: 'aut', fromJson: _fromJson, toJson: _toJson)
   final DateTime? authorizationDate;
-  @JsonKey(name: 'susp')
+  @JsonKey(name: 'susp', fromJson: _fromJson, toJson: _toJson)
   final DateTime? suspensionDate;
-  @JsonKey(name: 'rev')
+  @JsonKey(name: 'rev', fromJson: _fromJson, toJson: _toJson)
   final DateTime? revocationDate;
 
   Map<String, dynamic> toJson() => _$MedicationStatusToJson(this);
@@ -29,4 +29,9 @@ class MedicationStatus extends Equatable {
         suspensionDate,
         revocationDate,
       ];
+
+  static DateTime? _fromJson(int? epoch) =>
+      epoch != null ? DateTime.fromMillisecondsSinceEpoch(epoch) : null;
+
+  static int? _toJson(DateTime? dateTime) => dateTime?.millisecondsSinceEpoch;
 }

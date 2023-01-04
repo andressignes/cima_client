@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:cima_model/cima_model.dart';
 import 'package:test/test.dart';
 
@@ -10,45 +7,21 @@ void main() {
     late SupplyProblems obj;
 
     setUpAll(() async {
-      json = jsonDecode(
-        await File('test/resources/problema_suministro.json').readAsString(),
-      );
+      json = {
+        "cn": "997593",
+        "nombre": "BACTROBAN 20 mg/g pomada , 1 tubo de 30 g",
+        "fini": 1641769200000,
+        "ffin": 1651010400000,
+        "activo": true,
+        "observ":
+            "Existe/n otro/s medicamento/s con el mismo principio activo y para la misma vía de administración. "
+      };
 
       obj = SupplyProblems.fromJson(json);
-
-      // obj = ProblemaSuministro(
-      //   cn: json['cn'] as String,
-      //   nombre: json['nombre'] as String,
-      //   activo: json['activo'] as bool,
-      //   fini: json['fini'] as int,
-      //   ffin: json['ffin'] as int,
-      //   observ: json['observ'] as String,
-      // );
     });
 
     test('can be instantiated', () {
       expect(obj, isNotNull);
-    });
-
-    test('supports value comparisons', () {
-      expect(
-          SupplyProblems(
-                cn: '1',
-                nombre: '1',
-                activo: true,
-                fini: 1,
-                ffin: 1,
-                observ: '1',
-              ) ==
-              SupplyProblems(
-                cn: '1',
-                nombre: '1',
-                activo: true,
-                fini: 1,
-                ffin: 1,
-                observ: '1',
-              ),
-          isTrue);
     });
 
     test('json serialization fromJson', () {

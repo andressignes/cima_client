@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 class MedicationItemList extends StatelessWidget {
   const MedicationItemList({super.key, required this.medication});
 
-  final Medicamento medication;
+  final Medication medication;
 
   @override
   Widget build(BuildContext context) {
@@ -18,18 +18,18 @@ class MedicationItemList extends StatelessWidget {
           child: Row(
             children: [
               Expanded(
-                child: PhotoItemList(photo: medication.photoMaterialAs),
+                child: PhotoItemList(photo: medication.photoMaterial),
               ),
               Expanded(
                 flex: 3,
                 child: ListTile(
                   title: Text(
-                    medication.nombre ?? '',
+                    medication.name ?? '',
                     maxLines: 2,
                     overflow: TextOverflow.fade,
                   ),
                   subtitle: Text(
-                    medication.labtitular ?? '',
+                    medication.laboratory ?? '',
                     maxLines: 1,
                     overflow: TextOverflow.fade,
                   ),
@@ -41,7 +41,7 @@ class MedicationItemList extends StatelessWidget {
       ),
       onTap: () => context.pushNamed(
         Routes.medicationDetail.name,
-        queryParams: {'nregistro': medication.nregistro},
+        queryParams: {'nregistro': medication.registerNumber},
       ),
     );
   }

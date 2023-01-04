@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'note.g.dart';
 
 enum NoteType {
-  @JsonValue('1')
+  @JsonValue(1)
   securityNote,
 }
 
@@ -23,14 +23,19 @@ class Note extends Equatable {
 
   @JsonKey(name: 'tipo')
   final NoteType type;
+
   @JsonKey(name: 'num')
   final String number;
-  @JsonKey(name: 'ref')
+
+  @JsonKey(name: 'referencia')
   final String? reference;
+
   @JsonKey(name: 'asunto')
   final String? issue;
-  @JsonKey(name: 'fecha')
+
+  @JsonKey(name: 'fecha', fromJson: _fromJson, toJson: _toJson)
   final DateTime? publicationDate;
+
   @JsonKey(name: 'url')
   final Uri? url;
 
@@ -45,4 +50,9 @@ class Note extends Equatable {
         publicationDate,
         url,
       ];
+
+  static DateTime? _fromJson(int? epoch) =>
+      epoch != null ? DateTime.fromMillisecondsSinceEpoch(epoch) : null;
+
+  static int? _toJson(DateTime? dateTime) => dateTime?.millisecondsSinceEpoch;
 }

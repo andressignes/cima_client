@@ -67,7 +67,8 @@ final router = GoRouter(
         final stateBloc = context.read<SearchMedicationResultBloc>().state;
         if (stateBloc is AvailableSearchMedicationResultState) {
           final medicamento = stateBloc.medicamentos.firstWhere(
-            (element) => element.nregistro == state.queryParams['nregistro'],
+            (element) =>
+                element.registerNumber == state.queryParams['nregistro'],
           );
           return MedicationDetailPage.page(medication: medicamento);
         } else {

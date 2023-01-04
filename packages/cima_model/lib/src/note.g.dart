@@ -9,11 +9,9 @@ part of 'note.dart';
 Note _$NoteFromJson(Map<String, dynamic> json) => Note(
       type: $enumDecode(_$NoteTypeEnumMap, json['tipo']),
       number: json['num'] as String,
-      reference: json['ref'] as String?,
+      reference: json['referencia'] as String?,
       issue: json['asunto'] as String?,
-      publicationDate: json['fecha'] == null
-          ? null
-          : DateTime.parse(json['fecha'] as String),
+      publicationDate: Note._fromJson(json['fecha'] as int?),
       url: json['url'] == null ? null : Uri.parse(json['url'] as String),
     );
 
@@ -29,13 +27,13 @@ Map<String, dynamic> _$NoteToJson(Note instance) {
     }
   }
 
-  writeNotNull('ref', instance.reference);
+  writeNotNull('referencia', instance.reference);
   writeNotNull('asunto', instance.issue);
-  writeNotNull('fecha', instance.publicationDate?.toIso8601String());
+  writeNotNull('fecha', Note._toJson(instance.publicationDate));
   writeNotNull('url', instance.url?.toString());
   return val;
 }
 
 const _$NoteTypeEnumMap = {
-  NoteType.securityNote: '1',
+  NoteType.securityNote: 1,
 };
