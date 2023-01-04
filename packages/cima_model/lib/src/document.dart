@@ -30,7 +30,7 @@ class Document extends Equatable {
   @JsonKey(name: 'tipo')
   final DocumentType type;
   @JsonKey(name: 'url')
-  final String url;
+  final Uri url;
   @JsonKey(name: 'secc', defaultValue: false)
   final bool htmlAvailable;
   final String? urlHtml;

@@ -29,24 +29,24 @@ class MedicationDetailWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  currentMedication.name ?? '',
+                  currentMedication.name,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Text(
                   currentMedication.laboratory ?? '',
                   style: Theme.of(context).textTheme.subtitle1,
                 ),
-                if (currentMedication.registerNumber != null)
-                  Text(
-                    '${l10n.registration_number}: ${currentMedication.registerNumber!}',
-                    style: Theme.of(context).textTheme.caption,
-                  ),
+                Text(
+                  '${l10n.registration_number}: '
+                  '${currentMedication.registerNumber}',
+                  style: Theme.of(context).textTheme.caption,
+                ),
                 ButtonRowWidget(medicamento: currentMedication),
-                if (currentMedication.formaFarmaceutica != null)
+                if (currentMedication.pharmaceuticalForm != null)
                   ListTile(
                     title: Text(l10n.pharmaceutical_form),
                     subtitle:
-                        Text('${currentMedication.formaFarmaceutica!.name}'),
+                        Text('${currentMedication.pharmaceuticalForm!.name}'),
                     leading: PharmaceuticalFormPhotoWidget(
                       photo: currentMedication.photoPharmaceuticalProduct,
                     ),

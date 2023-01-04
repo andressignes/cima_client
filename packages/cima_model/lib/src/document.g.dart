@@ -8,7 +8,7 @@ part of 'document.dart';
 
 Document _$DocumentFromJson(Map<String, dynamic> json) => Document(
       type: $enumDecode(_$DocumentTypeEnumMap, json['tipo']),
-      url: json['url'] as String,
+      url: Uri.parse(json['url'] as String),
       htmlAvailable: json['secc'] as bool? ?? false,
       urlHtml: json['urlHtml'] as String?,
       lastModified: Document._dateTimeFromJson(json['fecha'] as int?),
@@ -17,7 +17,7 @@ Document _$DocumentFromJson(Map<String, dynamic> json) => Document(
 Map<String, dynamic> _$DocumentToJson(Document instance) {
   final val = <String, dynamic>{
     'tipo': _$DocumentTypeEnumMap[instance.type]!,
-    'url': instance.url,
+    'url': instance.url.toString(),
     'secc': instance.htmlAvailable,
   };
 

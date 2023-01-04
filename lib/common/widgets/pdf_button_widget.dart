@@ -9,7 +9,7 @@ class PdfButtonWidget extends StatelessWidget {
   });
 
   final String title;
-  final String? url;
+  final Uri? url;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class PdfButtonWidget extends StatelessWidget {
       return Container();
     }
     return ElevatedButton(
-      onPressed: () => _openBrowser(url),
+      onPressed: url == null ? null : () => _openBrowser(url!),
       child: Padding(
         padding: const EdgeInsets.all(4),
         child: Column(
@@ -30,8 +30,7 @@ class PdfButtonWidget extends StatelessWidget {
     );
   }
 
-  Future<void> _openBrowser(String? url) async {
-    if (url == null) return;
-    await launchUrl(Uri.parse(url));
+  Future<void> _openBrowser(Uri url) async {
+    await launchUrl(url);
   }
 }

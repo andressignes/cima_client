@@ -22,7 +22,8 @@ void main() {
 
     test('supports value comparisons', () {
       final type = DocumentType.fichaTecnica;
-      final url = "https://cima.aemps.es/cima/pdfs/ft/72112/FT_72112.pdf";
+      final url =
+          Uri.parse("https://cima.aemps.es/cima/pdfs/ft/72112/FT_72112.pdf");
       final htmlAvailable = true;
       final lastModified = DateTime.now();
       final urlHtml = "https://cima.aemps.es/cima/pdfs/ft/72112/FT_72112.html";

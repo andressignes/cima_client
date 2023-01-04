@@ -18,14 +18,11 @@ class SupplyProblemItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final start = supplyProblem.fini != null
-        ? dateFormat
-            .format(DateTime.fromMillisecondsSinceEpoch(supplyProblem.fini!))
+    final start = supplyProblem.start != null
+        ? dateFormat.format(supplyProblem.start!)
         : '';
-    final end = supplyProblem.ffin != null
-        ? dateFormat
-            .format(DateTime.fromMillisecondsSinceEpoch(supplyProblem.ffin!))
-        : '';
+    final end =
+        supplyProblem.end != null ? dateFormat.format(supplyProblem.end!) : '';
     return InkWell(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
@@ -36,22 +33,22 @@ class SupplyProblemItemWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  supplyProblem.name ?? '',
+                  supplyProblem.name,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 Text(
-                  supplyProblem.observ ?? '',
+                  supplyProblem.observations,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 const SizedBox(height: 8),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    if (supplyProblem.fini != null)
+                    if (supplyProblem.start != null)
                       Text('${l10n.from}: $start')
                     else
                       const SizedBox.shrink(),
-                    if (supplyProblem.ffin != null)
+                    if (supplyProblem.end != null)
                       Text('${l10n.to}: $end')
                     else
                       const SizedBox.shrink(),
@@ -64,7 +61,7 @@ class SupplyProblemItemWidget extends StatelessWidget {
       ),
       onTap: () => context.pushNamed(
         Routes.medicationDetail.name,
-        queryParams: {'cn': supplyProblem.cn},
+        queryParams: {'cn': supplyProblem.nationalCode},
       ),
     );
   }
