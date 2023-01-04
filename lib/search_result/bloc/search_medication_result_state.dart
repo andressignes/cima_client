@@ -16,7 +16,7 @@ class Error extends SearchMedicationResultState {}
 class AvailableSearchMedicationResultState extends SearchMedicationResultState {
   const AvailableSearchMedicationResultState({required this.medicamentos});
 
-  final List<Medicamento> medicamentos;
+  final List<Medication> medicamentos;
 
   @override
   List<Object?> get props => [medicamentos];

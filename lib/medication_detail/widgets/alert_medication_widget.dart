@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AlertMedicationWidget extends StatelessWidget {
   const AlertMedicationWidget({super.key, required this.medicamento});
 
-  final Medicamento medicamento;
+  final Medication medicamento;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class AlertMedicationWidget extends StatelessWidget {
           const SizedBox(width: 8),
           Flexible(
             child: Text(
-              medicamento.cpresc!,
+              medicamento.conditionPrescriptions!,
               style: Theme.of(context).textTheme.subtitle1!.copyWith(
                     color: Theme.of(context).errorColor,
                   ),

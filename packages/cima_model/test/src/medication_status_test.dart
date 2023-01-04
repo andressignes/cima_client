@@ -1,24 +1,22 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:cima_model/cima_model.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Estado', () {
+  group('MedicationStatus', () {
     late Map<String, dynamic> json;
     late MedicationStatus obj;
 
-    setUp(() async {
-      json = jsonDecode(
-        await File('test/resources/estado.json').readAsString(),
-      );
+    const dateEpoch = 1428530400000;
+    final date = DateTime.fromMillisecondsSinceEpoch(dateEpoch);
 
-      obj = MedicationStatus(
-        aut: json['aut'] as int,
-        rev: json['rev'] as int,
-        susp: json['susp'] as int,
-      );
+    setUp(() async {
+      json = {
+        "aut": 1428530400000,
+        "susp": 1428530400000,
+        "rev": 1428530400000
+      };
+
+      obj = MedicationStatus.fromJson(json);
     });
 
     test('can be instantiated', () {
@@ -28,14 +26,14 @@ void main() {
     test('supports value comparisons', () {
       expect(
           MedicationStatus(
-                aut: 1,
-                rev: 2,
-                susp: 3,
+                authorizationDate: date,
+                revocationDate: date,
+                suspensionDate: date,
               ) ==
               MedicationStatus(
-                aut: 1,
-                rev: 2,
-                susp: 3,
+                authorizationDate: date,
+                revocationDate: date,
+                suspensionDate: date,
               ),
           isTrue);
     });

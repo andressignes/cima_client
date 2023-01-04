@@ -18,10 +18,10 @@ enum DocumentType {
 class Document extends Equatable {
   Document({
     required this.type,
-    this.url,
+    required this.url,
     required this.htmlAvailable,
     this.urlHtml,
-    required this.lastModified,
+    this.lastModified,
   });
 
   factory Document.fromJson(Map<String, dynamic> json) =>
@@ -30,12 +30,12 @@ class Document extends Equatable {
   @JsonKey(name: 'tipo')
   final DocumentType type;
   @JsonKey(name: 'url')
-  final String? url;
+  final String url;
   @JsonKey(name: 'secc', defaultValue: false)
   final bool htmlAvailable;
   final String? urlHtml;
-  @JsonKey(name: 'fecha')
-  final DateTime lastModified;
+  @JsonKey(name: 'fecha', fromJson: _dateTimeFromJson, toJson: _dateTimeToJson)
+  final DateTime? lastModified;
 
   Map<String, dynamic> toJson() => _$DocumentToJson(this);
 
@@ -47,4 +47,13 @@ class Document extends Equatable {
         urlHtml,
         lastModified,
       ];
+
+  static DateTime? _dateTimeFromJson(int? epoch) {
+    if (epoch == null) return null;
+    return DateTime.fromMillisecondsSinceEpoch(epoch);
+  }
+
+  static int? _dateTimeToJson(DateTime? dateTime) {
+    return dateTime?.millisecondsSinceEpoch;
+  }
 }

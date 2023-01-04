@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:cima_model/cima_model.dart';
 import 'package:test/test.dart';
 
@@ -9,16 +6,18 @@ void main() {
     late Map<String, dynamic> json;
     late MaterialDocument obj;
 
-    setUp(() async {
-      json = jsonDecode(
-        await File('test/resources/documento_material.json').readAsString(),
-      );
+    final name = 'name';
+    final url = Uri.parse('https://example.com');
+    final date = DateTime.now();
 
-      obj = MaterialDocument(
-        nombre: json['nombre'] as String,
-        url: json['url'] as String,
-        fecha: json['fecha'] as int,
-      );
+    setUp(() async {
+      json = {
+        "nombre": "GUÍA DIRIGIDA AL PACIENTE",
+        "url": "https://cima.aemps.es/cima/DocsPub/16/749",
+        "fecha": 1508760303000
+      };
+
+      obj = MaterialDocument.fromJson(json);
     });
 
     test('can be instantiated', () {
@@ -28,14 +27,14 @@ void main() {
     test('supports value comparisons', () {
       expect(
           MaterialDocument(
-                nombre: 'nombre',
-                url: 'url',
-                fecha: 1,
+                name: name,
+                url: url,
+                lastUpdate: date,
               ) ==
               MaterialDocument(
-                nombre: 'nombre',
-                url: 'url',
-                fecha: 1,
+                name: name,
+                url: url,
+                lastUpdate: date,
               ),
           isTrue);
     });

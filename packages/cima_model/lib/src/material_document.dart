@@ -10,6 +10,7 @@ class MaterialDocument extends Equatable {
     required this.name,
     required this.url,
     required this.lastUpdate,
+    this.isVideo,
   });
 
   factory MaterialDocument.fromJson(Map<String, dynamic> json) =>
@@ -19,11 +20,24 @@ class MaterialDocument extends Equatable {
   final String name;
   @JsonKey(name: 'url')
   final Uri url;
-  @JsonKey(name: 'fecha')
+  @JsonKey(
+    name: 'fecha',
+    fromJson: _dateTimeFromEpoch,
+    toJson: _dateTimeToEpoch,
+  )
   final DateTime lastUpdate;
+
+  @JsonKey(name: 'video')
+  final bool? isVideo;
 
   Map<String, dynamic> toJson() => _$MaterialDocumentToJson(this);
 
   @override
-  List<Object?> get props => [name, url, lastUpdate];
+  List<Object?> get props => [name, url, lastUpdate, isVideo];
+
+  static DateTime _dateTimeFromEpoch(int epoch) =>
+      DateTime.fromMillisecondsSinceEpoch(epoch);
+
+  static int _dateTimeToEpoch(DateTime dateTime) =>
+      dateTime.millisecondsSinceEpoch;
 }

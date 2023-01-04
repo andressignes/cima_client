@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:cima_model/cima_model.dart';
 import 'package:test/test.dart';
 
@@ -10,47 +7,65 @@ void main() {
     late Material obj;
 
     setUp(() async {
-      json = jsonDecode(
-        await File('test/resources/material.json').readAsString(),
-      );
+      json = {
+        "medicamento": "ALTELLUS",
+        "principiosActivos": "EPINEFRINA",
+        "listaDocsPaciente": [
+          {
+            "nombre": "INSTRUCCIONES DE USO PARA EL PACIENTE",
+            "url": "https://cima.aemps.es/cima/DocsPub/16/1086",
+            "fecha": 1625652934000
+          },
+          {
+            "nombre": "INSTRUCCIONES DE USO (VIDEO)",
+            "url":
+                "https://www.youtube-nocookie.com/embed/co0v_S-Dbjw?rel=0&showinfo=0",
+            "video": true,
+            "fecha": 1625652934000
+          }
+        ],
+        "listaDocsProfesional": [
+          {
+            "nombre": "LISTA DE VERIFICACIÓN",
+            "url": "https://cima.aemps.es/cima/DocsPub/15/1042",
+            "fecha": 1625652934000
+          }
+        ]
+      };
 
       obj = Material.fromJson(json);
     });
 
     test('can be instantiated', () {
-      expect(Material(), isNotNull);
+      expect(obj, isNotNull);
     });
 
     test('supports value comparisons', () {
+      final title = 'ALTELLUS';
+      final patientDocuments = [
+        MaterialDocument(
+            name: 'name',
+            lastUpdate: DateTime.now(),
+            url: Uri.parse('https://example.com')),
+      ];
+      final practitionerDocuments = [
+        MaterialDocument(
+            name: 'name',
+            lastUpdate: DateTime.now(),
+            url: Uri.parse('https://example.com')),
+      ];
       expect(
           Material(
-                medicamento: 'Título',
-                listaDocsPaciente: List.empty(),
-                listaDocsProfesional: List.empty(),
-                principiosActivos: 'Texto',
+                title: title,
+                patientDocuments: patientDocuments,
+                practitionerDocuments: practitionerDocuments,
               ) ==
               Material(
-                medicamento: 'Título',
-                listaDocsPaciente: List.empty(),
-                listaDocsProfesional: List.empty(),
-                principiosActivos: 'Texto',
+                title: title,
+                patientDocuments: patientDocuments,
+                practitionerDocuments: practitionerDocuments,
               ),
           isTrue);
-
-      expect(
-          Material(
-                medicamento: 'Título',
-                listaDocsPaciente: List.empty(),
-                listaDocsProfesional: List.empty(),
-                principiosActivos: 'Texto',
-              ) ==
-              Material(
-                medicamento: 'Título',
-                // listaDocsPaciente: List.empty(),
-                listaDocsProfesional: List.empty(),
-                principiosActivos: 'Texto',
-              ),
-          isFalse);
     });
 
     test('json serialization fromJson', () {
@@ -58,7 +73,7 @@ void main() {
     });
 
     test('json serialization toJson', () {
-      expect(obj.medicamento, json['medicamento']);
+      expect(obj.toJson(), json);
     });
   });
 }

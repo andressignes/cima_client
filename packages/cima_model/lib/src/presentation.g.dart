@@ -18,7 +18,7 @@ Map<String, dynamic> _$PresentationToJson(Presentation instance) =>
     <String, dynamic>{
       'cn': instance.nationalCode,
       'nombre': instance.name,
-      'estado': instance.status,
+      'estado': instance.status.toJson(),
       'comerc': instance.isCommercialized,
       'psum': instance.haveSupplyProblems,
     };

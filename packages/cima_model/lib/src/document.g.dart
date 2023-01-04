@@ -8,15 +8,17 @@ part of 'document.dart';
 
 Document _$DocumentFromJson(Map<String, dynamic> json) => Document(
       type: $enumDecode(_$DocumentTypeEnumMap, json['tipo']),
-      url: json['url'] as String?,
+      url: json['url'] as String,
       htmlAvailable: json['secc'] as bool? ?? false,
       urlHtml: json['urlHtml'] as String?,
-      lastModified: DateTime.parse(json['fecha'] as String),
+      lastModified: Document._dateTimeFromJson(json['fecha'] as int?),
     );
 
 Map<String, dynamic> _$DocumentToJson(Document instance) {
   final val = <String, dynamic>{
     'tipo': _$DocumentTypeEnumMap[instance.type]!,
+    'url': instance.url,
+    'secc': instance.htmlAvailable,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -25,10 +27,8 @@ Map<String, dynamic> _$DocumentToJson(Document instance) {
     }
   }
 
-  writeNotNull('url', instance.url);
-  val['secc'] = instance.htmlAvailable;
   writeNotNull('urlHtml', instance.urlHtml);
-  val['fecha'] = instance.lastModified.toIso8601String();
+  writeNotNull('fecha', Document._dateTimeToJson(instance.lastModified));
   return val;
 }
 

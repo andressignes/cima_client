@@ -21,9 +21,9 @@ class SupplyProblems extends Equatable {
   final String nationalCode;
   @JsonKey(name: 'nombre')
   final String name;
-  @JsonKey(name: 'fini')
+  @JsonKey(name: 'fini', fromJson: _fromJson, toJson: _toJson)
   final DateTime? start;
-  @JsonKey(name: 'ffin')
+  @JsonKey(name: 'ffin', fromJson: _fromJson, toJson: _toJson)
   final DateTime? end;
   @JsonKey(name: 'observ', defaultValue: '')
   final String observations;
@@ -41,4 +41,14 @@ class SupplyProblems extends Equatable {
         observations,
         active,
       ];
+
+  static DateTime? _fromJson(int? value) {
+    if (value == null) return null;
+    return DateTime.fromMillisecondsSinceEpoch(value);
+  }
+
+  static int? _toJson(DateTime? value) {
+    if (value == null) return null;
+    return value.millisecondsSinceEpoch;
+  }
 }

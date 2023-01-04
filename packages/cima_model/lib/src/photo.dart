@@ -24,7 +24,7 @@ class Photo extends Equatable {
   final PhotoType type;
   @JsonKey(name: 'url')
   final Uri url;
-  @JsonKey(name: 'fecha')
+  @JsonKey(name: 'fecha', fromJson: _fromJson, toJson: _toJson)
   final DateTime latestUpdate;
 
   Map<String, dynamic> toJson() => _$PhotoToJson(this);
@@ -35,4 +35,9 @@ class Photo extends Equatable {
         url,
         latestUpdate,
       ];
+
+  static DateTime _fromJson(int epoch) =>
+      DateTime.fromMillisecondsSinceEpoch(epoch);
+
+  static int _toJson(DateTime dateTime) => dateTime.millisecondsSinceEpoch;
 }

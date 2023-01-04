@@ -7,7 +7,7 @@ export 'excipient.dart';
 export 'item.dart';
 export 'material.dart';
 export 'material_document.dart';
-export 'medicamento.dart';
+export 'medication.dart';
 export 'medication_status.dart';
 export 'note.dart';
 export 'photo.dart';

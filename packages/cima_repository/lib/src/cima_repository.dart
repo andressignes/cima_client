@@ -13,7 +13,7 @@ class CimaRepository {
 
   final CimaApiClient _remoteDataSource;
 
-  Future<Either<Failure, Medicamento>> getMedicamento({
+  Future<Either<Failure, Medication>> getMedicamento({
     String? nregistro,
     String? cn,
   }) async {
@@ -30,7 +30,7 @@ class CimaRepository {
         return Left(ServerFailure());
       }
       try {
-        final medicamento = Medicamento.fromJson(jsonDecode(response.body));
+        final medicamento = Medication.fromJson(jsonDecode(response.body));
         return Right(medicamento);
       } on FormatException {
         return Left(FormatFailure());
@@ -61,7 +61,7 @@ class CimaRepository {
     }
   }
 
-  Future<Either<Failure, List<Medicamento>>> findMedications(
+  Future<Either<Failure, List<Medication>>> findMedications(
       {Map<String, String>? params}) async {
     try {
       final response = await _remoteDataSource.getMedications(
@@ -75,7 +75,7 @@ class CimaRepository {
             return Right([]);
           }
           final medicamentos = cimaPaginado.resultados!
-              .map((e) => Medicamento.fromJson(e))
+              .map((e) => Medication.fromJson(e))
               .toList();
           return Right(medicamentos);
         } catch (e) {

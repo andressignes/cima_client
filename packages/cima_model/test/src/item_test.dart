@@ -1,6 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:cima_model/cima_model.dart' show Item;
 import 'package:test/test.dart';
 
@@ -8,47 +5,44 @@ void main() {
   group('Item', () {
     late Map<String, dynamic> json;
     late Item obj;
+    final int id = 1;
+    final code = 'code';
+    final name = 'name';
 
     setUp(() async {
-      json = jsonDecode(
-        await File('test/resources/item.json').readAsString(),
-      );
+      json = {"id": 1, "codigo": "abc123", "nombre": "VÍA ORAL"};
 
-      obj = Item(
-        id: json['id'] as int,
-        codigo: json['codigo'] as String,
-        nombre: json['nombre'] as String,
-      );
+      obj = Item.fromJson(json);
     });
 
     test('can be instantiated', () {
-      expect(Item(), isNotNull);
+      expect(Item(id: id, code: code, name: name), isNotNull);
     });
 
     test('supports value comparisons', () {
       expect(
           Item(
-                id: 1,
-                codigo: 'abc123',
-                nombre: '1',
+                id: id,
+                code: code,
+                name: name,
               ) ==
               Item(
-                id: 1,
-                codigo: 'abc123',
-                nombre: '1',
+                id: id,
+                code: code,
+                name: name,
               ),
           isTrue);
 
       expect(
           Item(
-                id: 1,
-                codigo: 'abc123',
-                nombre: '1',
+                id: id,
+                code: code,
+                name: name,
               ) ==
               Item(
-                id: 2,
-                codigo: 'abc123',
-                nombre: '1',
+                id: id + 1,
+                code: code,
+                name: name,
               ),
           isFalse);
     });

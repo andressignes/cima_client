@@ -9,13 +9,13 @@ part of 'photo.dart';
 Photo _$PhotoFromJson(Map<String, dynamic> json) => Photo(
       type: $enumDecode(_$PhotoTypeEnumMap, json['tipo']),
       url: Uri.parse(json['url'] as String),
-      latestUpdate: DateTime.parse(json['fecha'] as String),
+      latestUpdate: Photo._fromJson(json['fecha'] as int),
     );
 
 Map<String, dynamic> _$PhotoToJson(Photo instance) => <String, dynamic>{
       'tipo': _$PhotoTypeEnumMap[instance.type]!,
       'url': instance.url.toString(),
-      'fecha': instance.latestUpdate.toIso8601String(),
+      'fecha': Photo._toJson(instance.latestUpdate),
     };
 
 const _$PhotoTypeEnumMap = {

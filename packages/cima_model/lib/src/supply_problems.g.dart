@@ -10,9 +10,8 @@ SupplyProblems _$SupplyProblemsFromJson(Map<String, dynamic> json) =>
     SupplyProblems(
       nationalCode: json['cn'] as String,
       name: json['nombre'] as String,
-      start:
-          json['fini'] == null ? null : DateTime.parse(json['fini'] as String),
-      end: json['ffin'] == null ? null : DateTime.parse(json['ffin'] as String),
+      start: SupplyProblems._fromJson(json['fini'] as int?),
+      end: SupplyProblems._fromJson(json['ffin'] as int?),
       observations: json['observ'] as String? ?? '',
       active: json['activo'] as bool,
     );
@@ -29,8 +28,8 @@ Map<String, dynamic> _$SupplyProblemsToJson(SupplyProblems instance) {
     }
   }
 
-  writeNotNull('fini', instance.start?.toIso8601String());
-  writeNotNull('ffin', instance.end?.toIso8601String());
+  writeNotNull('fini', SupplyProblems._toJson(instance.start));
+  writeNotNull('ffin', SupplyProblems._toJson(instance.end));
   val['observ'] = instance.observations;
   val['activo'] = instance.active;
   return val;

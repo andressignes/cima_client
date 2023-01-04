@@ -11,10 +11,10 @@ class MedicationDetailPage extends StatelessWidget {
     required this.medication,
   });
 
-  static Page<void> page({required Medicamento medication}) =>
+  static Page<void> page({required Medication medication}) =>
       MaterialPage<void>(child: MedicationDetailPage(medication: medication));
 
-  final Medicamento medication;
+  final Medication medication;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class MedicationDetailPage extends StatelessWidget {
       create: (context) =>
           MedicationDetailBloc(cimaRepository: context.read<CimaRepository>())
             ..add(
-              FetchMedicamento(nregistro: medication.nregistro),
+              FetchMedicamento(nregistro: medication.registerNumber),
             ),
       child: Scaffold(
         appBar: AppBar(
