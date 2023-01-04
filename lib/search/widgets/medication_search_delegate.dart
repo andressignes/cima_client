@@ -1,9 +1,8 @@
-import 'package:cima_client/search_result/bloc/search_medication_result_bloc.dart';
 import 'package:cima_client/search_result/search_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MedicationSearchDelegate extends SearchDelegate {
+class MedicationSearchDelegate extends SearchDelegate<void> {
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [

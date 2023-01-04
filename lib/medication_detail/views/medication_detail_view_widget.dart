@@ -56,8 +56,7 @@ class MedicationDetailWidget extends StatelessWidget {
                     title: Text(l10n.dose),
                     subtitle: Text(currentMedication.dosage!),
                   ),
-                if (currentMedication.conditionPrescriptions != null)
-                  AlertMedicationWidget(medicamento: currentMedication),
+                FeaturesWidget(medication: currentMedication),
               ],
             ),
           )

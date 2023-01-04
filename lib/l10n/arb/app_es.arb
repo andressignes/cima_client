@@ -133,15 +133,27 @@
         "description": "The text of the system theme"
     },
     "dark_mode": "Modo oscuro",
-    "@dark_mode": {
-        "description": "The text of the dark mode"
-    },
-    "light_mode": "Modo claro",
-    "@light_mode": {
-        "description": "The text of the light mode"
-    },
-    "cancel": "Cancelar",
-    "@cancel": {
-        "description": "The text of the cancel button"
-    }
+  "@dark_mode": {
+    "description": "The text of the dark mode"
+  },
+  "light_mode": "Modo claro",
+  "@light_mode": {
+    "description": "The text of the light mode"
+  },
+  "cancel": "Cancelar",
+  "@cancel": {
+    "description": "The text of the cancel button"
+  },
+  "features": "Caracteristicas",
+  "@features": {
+    "description": "The title of the features page"
+  },
+  "prescription_required": "Requiere receta",
+  "@prescription_required": {
+    "description": "The text of the prescription required"
+  },
+  "prescription_not_required": "No requiere receta",
+  "@prescription_not_required": {
+    "description": "The text of the prescription not required"
+  }
 }

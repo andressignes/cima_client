@@ -24,7 +24,7 @@ class MedicationItemList extends StatelessWidget {
                 flex: 3,
                 child: ListTile(
                   title: Text(
-                    medication.name ?? '',
+                    medication.name,
                     maxLines: 2,
                     overflow: TextOverflow.fade,
                   ),

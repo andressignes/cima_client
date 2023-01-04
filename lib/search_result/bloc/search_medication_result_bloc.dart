@@ -31,7 +31,8 @@ class SearchMedicationResultBloc
         (error) => Error(),
         (medications) {
           return AvailableSearchMedicationResultState(
-              medicamentos: medications);
+            medicamentos: medications,
+          );
         },
       ),
     );
