@@ -155,5 +155,25 @@
   "prescription_not_required": "No requiere receta",
   "@prescription_not_required": {
     "description": "The text of the prescription not required"
+  },
+  "affects_driving": "Afecta a la conducción",
+  "@affects_driving": {
+    "description": "The text of the affects driving"
+  },
+  "does_not_affect_driving": "No afecta a la conducción",
+  "@does_not_affect_driving": {
+    "description": "The text of the does not affect driving"
+  },
+  "triangle_advice": "Este medicamento está sujeto a seguimiento adicional",
+  "@triangle_advice": {
+    "description": "The text of the triangle advice"
+  },
+  "supply_problems_advice": "Este medicamento tiene problemas de suministro",
+  "@supply_problems_advice": {
+    "description": "The text of the supply problems advice"
+  },
+  "presentations": "Presentaciones",
+  "@presentations": {
+    "description": "The text of the presentations"
   }
 }

@@ -20,47 +20,51 @@ class MedicationDetailWidget extends StatelessWidget {
         : medicamento;
 
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          MedicationPhotoWidget(photo: currentMedication.photoMaterial),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  currentMedication.name,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                Text(
-                  currentMedication.laboratory ?? '',
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
-                Text(
-                  '${l10n.registration_number}: '
-                  '${currentMedication.registerNumber}',
-                  style: Theme.of(context).textTheme.caption,
-                ),
-                ButtonRowWidget(medicamento: currentMedication),
-                if (currentMedication.pharmaceuticalForm != null)
-                  ListTile(
-                    title: Text(l10n.pharmaceutical_form),
-                    subtitle:
-                        Text('${currentMedication.pharmaceuticalForm!.name}'),
-                    leading: PharmaceuticalFormPhotoWidget(
-                      photo: currentMedication.photoPharmaceuticalProduct,
+      child: SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            MedicationPhotoWidget(photo: currentMedication.photoMaterial),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    currentMedication.name,
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
+                  Text(
+                    currentMedication.laboratory ?? '',
+                    style: Theme.of(context).textTheme.subtitle1,
+                  ),
+                  Text(
+                    '${l10n.registration_number}: '
+                    '${currentMedication.registerNumber}',
+                    style: Theme.of(context).textTheme.caption,
+                  ),
+                  ButtonRowWidget(medicamento: currentMedication),
+                  if (currentMedication.pharmaceuticalForm != null)
+                    ListTile(
+                      title: Text(l10n.pharmaceutical_form),
+                      subtitle:
+                          Text('${currentMedication.pharmaceuticalForm!.name}'),
+                      leading: PharmaceuticalFormPhotoWidget(
+                        photo: currentMedication.photoPharmaceuticalProduct,
+                      ),
                     ),
-                  ),
-                if (currentMedication.dosage != null)
-                  ListTile(
-                    title: Text(l10n.dose),
-                    subtitle: Text(currentMedication.dosage!),
-                  ),
-                FeaturesWidget(medication: currentMedication),
-              ],
-            ),
-          )
-        ],
+                  if (currentMedication.dosage != null)
+                    ListTile(
+                      title: Text(l10n.dose),
+                      subtitle: Text(currentMedication.dosage!),
+                    ),
+                  FeaturesWidget(medication: currentMedication),
+                  const PresentationsGridWidget(),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

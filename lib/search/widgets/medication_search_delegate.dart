@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cima_client/search_result/search_result.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,12 +37,14 @@ class MedicationSearchDelegate extends SearchDelegate<void> {
   @override
   Widget buildResults(BuildContext context) {
     search(context, query);
+    log('buildResults');
     return const MedicationListWidget();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     search(context, query);
+    log('buildSuggestions');
     return const MedicationListWidget();
   }
 

@@ -24,7 +24,9 @@ class MedicationDetailPage extends StatelessWidget {
       create: (context) =>
           MedicationDetailBloc(cimaRepository: context.read<CimaRepository>())
             ..add(
-              FetchMedicamento(nregistro: medication.registerNumber),
+              FetchMedicamento(
+                nregistro: medication.registerNumber,
+              ),
             ),
       child: Scaffold(
         appBar: AppBar(

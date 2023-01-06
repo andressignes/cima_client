@@ -8,6 +8,7 @@ import 'package:cima_client/search/search.dart';
 import 'package:cima_client/search_result/search_result.dart';
 import 'package:cima_client/settings/settings.dart';
 import 'package:cima_client/supply_problems/supply_problems.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -66,10 +67,13 @@ final router = GoRouter(
       pageBuilder: (context, state) {
         final stateBloc = context.read<SearchMedicationResultBloc>().state;
         if (stateBloc is AvailableSearchMedicationResultState) {
-          final medicamento = stateBloc.medicamentos.firstWhere(
+          final medicamento = stateBloc.medicamentos.firstWhereOrNull(
             (element) =>
                 element.registerNumber == state.queryParams['nregistro'],
           );
+          if (medicamento == null) {
+            return const MaterialPage(child: Text('not found'));
+          }
           return MedicationDetailPage.page(medication: medicamento);
         } else {
           log('medication not found');
