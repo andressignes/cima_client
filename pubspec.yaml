@@ -21,7 +21,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_barcode_scanner: ^2.0.0
-  flutter_bloc: ^8.1.1
+  flutter_bloc: ^8.1.2
   flutter_localizations:
     sdk: flutter
   formz_inputs:
