@@ -31,7 +31,7 @@ dependencies:
   package_info_plus: ^3.0.2
   share_plus: ^6.3.0
   shared_preferences: ^2.0.15
-  url_launcher: ^6.1.7
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   bloc_test: ^9.1.0
