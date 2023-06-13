@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MedicationDetailWidget extends StatelessWidget {
-  const MedicationDetailWidget({super.key, required this.medicamento});
+  const MedicationDetailWidget({required this.medicamento, super.key});
 
   final Medication medicamento;
 

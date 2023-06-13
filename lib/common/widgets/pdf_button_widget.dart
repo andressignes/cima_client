@@ -3,9 +3,9 @@ import 'package:url_launcher/url_launcher.dart';
 
 class PdfButtonWidget extends StatelessWidget {
   const PdfButtonWidget({
-    super.key,
     required this.title,
     required this.url,
+    super.key,
   });
 
   final String title;

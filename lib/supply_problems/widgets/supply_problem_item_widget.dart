@@ -7,8 +7,8 @@ import 'package:intl/intl.dart';
 
 class SupplyProblemItemWidget extends StatelessWidget {
   const SupplyProblemItemWidget({
-    super.key,
     required this.supplyProblem,
+    super.key,
   });
 
   final SupplyProblems supplyProblem;

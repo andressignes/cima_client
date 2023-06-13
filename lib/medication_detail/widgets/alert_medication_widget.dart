@@ -2,7 +2,7 @@ import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
 
 class AlertMedicationWidget extends StatelessWidget {
-  const AlertMedicationWidget({super.key, required this.medicamento});
+  const AlertMedicationWidget({required this.medicamento, super.key});
 
   final Medication medicamento;
   String get conditionPrescriptions => medicamento.conditionPrescriptions ?? '';

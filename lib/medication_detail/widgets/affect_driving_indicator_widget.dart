@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class AffectDrivingIndicatorWidget extends StatelessWidget {
   const AffectDrivingIndicatorWidget({
-    super.key,
     required this.medication,
+    super.key,
   });
 
   final Medication medication;

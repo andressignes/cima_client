@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 class SupplyProblemsListWidget extends StatelessWidget {
   const SupplyProblemsListWidget({
-    super.key,
     required this.supplyProblemsList,
+    super.key,
   });
 
   final List<SupplyProblems> supplyProblemsList;

@@ -27,8 +27,10 @@ class SearchSubmitButton extends StatelessWidget {
               context
                   .read<SearchMedicationResultBloc>()
                   .add(Search(params: params));
-              context.goNamed(Routes.searchResult.name,
-                  queryParameters: params);
+              context.goNamed(
+                Routes.searchResult.name,
+                queryParameters: params,
+              );
             } else {
               return;
             }

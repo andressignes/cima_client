@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchResultView extends StatelessWidget {
   const SearchResultView({
-    super.key,
     required this.title,
+    super.key,
   });
 
   final String title;

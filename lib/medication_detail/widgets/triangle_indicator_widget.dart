@@ -3,7 +3,7 @@ import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
 
 class TriangleIndicatorWidget extends StatelessWidget {
-  const TriangleIndicatorWidget({super.key, required this.medication});
+  const TriangleIndicatorWidget({required this.medication, super.key});
 
   final Medication medication;
 

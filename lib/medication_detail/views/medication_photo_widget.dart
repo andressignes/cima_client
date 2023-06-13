@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class MedicationPhotoWidget extends StatelessWidget {
   const MedicationPhotoWidget({
-    super.key,
     required this.photo,
+    super.key,
   });
 
   final Uri? photo;

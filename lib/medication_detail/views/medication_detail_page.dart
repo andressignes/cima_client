@@ -8,8 +8,8 @@ import 'package:share_plus/share_plus.dart';
 
 class MedicationDetailPage extends StatelessWidget {
   const MedicationDetailPage({
-    super.key,
     required this.medication,
+    super.key,
   });
 
   static Page<void> page({required Medication medication}) =>

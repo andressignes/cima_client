@@ -9,9 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class App extends StatelessWidget {
   const App({
-    super.key,
     required this.cimaRepository,
     required this.preferences,
+    super.key,
   });
 
   final CimaRepository cimaRepository;

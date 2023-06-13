@@ -4,7 +4,7 @@ import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
 
 class FeaturesWidget extends StatelessWidget {
-  const FeaturesWidget({super.key, required this.medication});
+  const FeaturesWidget({required this.medication, super.key});
 
   final Medication medication;
 

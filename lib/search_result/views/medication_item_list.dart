@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class MedicationItemList extends StatelessWidget {
-  const MedicationItemList({super.key, required this.medication});
+  const MedicationItemList({required this.medication, super.key});
 
   final Medication medication;
 

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class PhotoItemList extends StatelessWidget {
   const PhotoItemList({
-    super.key,
     required this.photo,
+    super.key,
   });
 
   final Uri? photo;

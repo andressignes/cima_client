@@ -3,7 +3,7 @@ import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
 
 class SupplyProblemsIndicatorWidget extends StatelessWidget {
-  const SupplyProblemsIndicatorWidget({super.key, required this.medication});
+  const SupplyProblemsIndicatorWidget({required this.medication, super.key});
 
   final Medication medication;
 

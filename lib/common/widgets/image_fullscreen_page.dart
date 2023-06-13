@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class ImageFullscreenPage extends StatelessWidget {
   const ImageFullscreenPage({
-    super.key,
     required String imageLink,
+    super.key,
   }) : _imageLink = imageLink;
 
   final String _imageLink;
