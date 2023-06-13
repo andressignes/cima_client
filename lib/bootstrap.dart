@@ -26,8 +26,7 @@ Future<void> bootstrap(
   FutureOr<Widget> Function(
     CimaRepository cimaRepository,
     SharedPreferences preferences,
-  )
-      builder,
+  ) builder,
 ) async {
   WidgetsFlutterBinding.ensureInitialized();
   FlutterError.onError = (details) {
