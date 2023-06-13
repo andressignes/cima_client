@@ -69,7 +69,7 @@ final router = GoRouter(
         if (stateBloc is AvailableSearchMedicationResultState) {
           final medicamento = stateBloc.medicamentos.firstWhereOrNull(
             (element) =>
-                element.registerNumber == state.queryParams['nregistro'],
+                element.registerNumber == state.queryParameters['nregistro'],
           );
           if (medicamento == null) {
             return const MaterialPage(child: Text('not found'));

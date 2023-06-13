@@ -32,16 +32,16 @@ class MedicationDetailWidget extends StatelessWidget {
                 children: [
                   Text(
                     currentMedication.name,
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   Text(
                     currentMedication.laboratory ?? '',
-                    style: Theme.of(context).textTheme.subtitle1,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                   Text(
                     '${l10n.registration_number}: '
                     '${currentMedication.registerNumber}',
-                    style: Theme.of(context).textTheme.caption,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
                   ButtonRowWidget(medicamento: currentMedication),
                   if (currentMedication.pharmaceuticalForm != null)

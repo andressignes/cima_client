@@ -4,7 +4,7 @@ version: 0.0.1
 publish_to: none
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   cima_api:
@@ -15,7 +15,7 @@ dependencies:
   errors:
     path: ../errors
   collection: ^1.16.0
-  http: ^0.13.4
+  http: ^1.0.0
 dev_dependencies:
   test: ^1.22.1
   mocktail: ^0.3.0

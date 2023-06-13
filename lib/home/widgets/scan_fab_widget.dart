@@ -42,9 +42,9 @@ class _ScanFabWidgetState extends State<ScanFabWidget> {
         log('Barcode: $barcodeScanRes');
         final nationalCode = barcodeScanRes.substring(6, 12);
         log('cn: $nationalCode');
-        context.pushNamed(
+        await context.pushNamed(
           Routes.medicationDetail.name,
-          queryParams: {
+          queryParameters: {
             'cn': nationalCode,
           },
         );

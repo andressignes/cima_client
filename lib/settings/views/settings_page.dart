@@ -45,7 +45,7 @@ class SettingsPage extends StatelessWidget {
                 children: [
                   Text(
                     l10n.theme,
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(width: 8),
                   const ThemeSelectorWidget()

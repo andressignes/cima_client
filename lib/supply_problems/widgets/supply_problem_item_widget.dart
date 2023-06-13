@@ -61,7 +61,7 @@ class SupplyProblemItemWidget extends StatelessWidget {
       ),
       onTap: () => context.pushNamed(
         Routes.medicationDetail.name,
-        queryParams: {'cn': supplyProblem.nationalCode},
+        queryParameters: {'cn': supplyProblem.nationalCode},
       ),
     );
   }

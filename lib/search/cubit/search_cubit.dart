@@ -12,7 +12,7 @@ class SearchCubit extends Cubit<SearchState> {
     emit(
       state.copyWith(
         medicationName: MedicationNameFormInput.dirty(medicationName),
-        status: Formz.validate([medicamentoName]),
+        isValid: Formz.validate([medicamentoName]),
       ),
     );
   }

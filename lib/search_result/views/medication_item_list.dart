@@ -41,7 +41,7 @@ class MedicationItemList extends StatelessWidget {
       ),
       onTap: () => context.pushNamed(
         Routes.medicationDetail.name,
-        queryParams: {'nregistro': medication.registerNumber},
+        queryParameters: {'nregistro': medication.registerNumber},
       ),
     );
   }

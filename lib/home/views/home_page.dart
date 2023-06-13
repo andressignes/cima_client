@@ -32,16 +32,16 @@ class HomePage extends StatelessWidget {
           children: [
             Text(
               l10n.home_page_paragraph1,
-              style: Theme.of(context).textTheme.headline5,
+              style: Theme.of(context).textTheme.headlineSmall,
             ),
             Text(
               l10n.home_page_paragraph2,
-              style: Theme.of(context).textTheme.bodyText2,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 16),
             Text(
               l10n.home_page_paragraph3,
-              style: Theme.of(context).textTheme.bodyText2,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 16),
             const LinksRowWidget(),

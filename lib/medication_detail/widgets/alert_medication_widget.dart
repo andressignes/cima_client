@@ -17,14 +17,14 @@ class AlertMedicationWidget extends StatelessWidget {
         children: [
           Icon(
             Icons.warning,
-            color: Theme.of(context).errorColor,
+            color: Theme.of(context).colorScheme.error,
           ),
           const SizedBox(width: 8),
           Flexible(
             child: Text(
               conditionPrescriptions,
-              style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                    color: Theme.of(context).errorColor,
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.error,
                     fontStyle: FontStyle.italic,
                   ),
             ),

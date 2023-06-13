@@ -15,7 +15,7 @@ class CimaError extends StatelessWidget {
           const Text('🙈', style: TextStyle(fontSize: 64)),
           Text(
             l10n.error_title,
-            style: theme.textTheme.headline5,
+            style: theme.textTheme.headlineSmall,
           ),
         ],
       ),

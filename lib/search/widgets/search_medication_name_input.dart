@@ -20,7 +20,7 @@ class SearchMedicationNameInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: l10n.medication_name,
             errorText:
-                input.invalid ? l10n.medication_name_min_3_characters : null,
+                input.isNotValid ? l10n.medication_name_min_3_characters : null,
           ),
         );
       },

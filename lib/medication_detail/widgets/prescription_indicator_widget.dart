@@ -24,7 +24,7 @@ class PrescriptionIndicatorWidget extends StatelessWidget {
               needPrescription
                   ? l10n.prescription_required
                   : l10n.prescription_not_required,
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
         ],

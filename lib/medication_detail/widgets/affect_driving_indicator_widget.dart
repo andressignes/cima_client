@@ -21,7 +21,7 @@ class AffectDrivingIndicatorWidget extends StatelessWidget {
         children: [
           Icon(
             Icons.drive_eta_outlined,
-            color: affectsDriving ? Theme.of(context).errorColor : null,
+            color: affectsDriving ? Theme.of(context).colorScheme.error : null,
           ),
           const SizedBox(width: 8),
           Flexible(
@@ -29,10 +29,10 @@ class AffectDrivingIndicatorWidget extends StatelessWidget {
               affectsDriving
                   ? l10n.affects_driving
                   : l10n.does_not_affect_driving,
-              style: Theme.of(context).textTheme.subtitle1!.copyWith(
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
                     color: affectsDriving
-                        ? Theme.of(context).errorColor
-                        : Theme.of(context).textTheme.subtitle1!.color,
+                        ? Theme.of(context).colorScheme.error
+                        : Theme.of(context).textTheme.titleMedium!.color,
                   ),
             ),
           ),

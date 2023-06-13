@@ -27,7 +27,7 @@ class TriangleIndicatorWidget extends StatelessWidget {
           Flexible(
             child: Text(
               l10n.triangle_advice,
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
         ],

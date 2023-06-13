@@ -19,7 +19,7 @@ class CimaLoading extends StatelessWidget {
               const SizedBox(width: 16),
               Text(
                 l10n.searching,
-                style: theme.textTheme.headline5,
+                style: theme.textTheme.headlineSmall,
               ),
             ],
           ),

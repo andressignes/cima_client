@@ -25,7 +25,7 @@ class PresentationsGridWidget extends StatelessWidget {
           children: [
             Text(
               l10n.presentations,
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.titleLarge,
             ),
             SizedBox(
               height: 150,
@@ -41,7 +41,7 @@ class PresentationsGridWidget extends StatelessWidget {
                       child: ListTile(
                         onTap: () => context.pushNamed(
                           Routes.medicationDetail.name,
-                          queryParams: {'cn': p.nationalCode},
+                          queryParameters: {'cn': p.nationalCode},
                         ),
                         title: Text(
                           p.name,

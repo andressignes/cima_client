@@ -17,10 +17,10 @@ class SearchPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(l10n.search_title),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
+        body: const Padding(
+          padding: EdgeInsets.all(16),
           child: Column(
-            children: const [
+            children: [
               SearchMedicationNameInput(),
               SizedBox(height: 8),
               SearchSubmitButton(),

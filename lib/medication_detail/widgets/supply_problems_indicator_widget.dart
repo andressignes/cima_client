@@ -24,7 +24,7 @@ class SupplyProblemsIndicatorWidget extends StatelessWidget {
           Flexible(
             child: Text(
               l10n.supply_problems_advice,
-              style: Theme.of(context).textTheme.subtitle1,
+              style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
         ],
