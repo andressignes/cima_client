@@ -21,7 +21,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_barcode_scanner: ^2.0.0
-  flutter_bloc: ^8.1.1
+  flutter_bloc: ^8.1.2
   flutter_localizations:
     sdk: flutter
   formz_inputs:
@@ -30,8 +30,8 @@ dependencies:
   intl: ^0.18.0
   package_info_plus: ^4.0.2
   share_plus: ^7.0.2
-  shared_preferences: ^2.0.15
-  url_launcher: ^6.1.7
+  shared_preferences: ^2.1.2
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   bloc_test: ^9.1.0
