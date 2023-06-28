@@ -1,14 +1,20 @@
 import 'dart:developer';
 
 import 'package:cima_client/search_result/search_result.dart';
+import 'package:cima_model/cima_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MedicationSearchDelegate extends SearchDelegate<void> {
+class MedicationSearchDelegate extends SearchDelegate<Medication?> {
+  MedicationSearchDelegate(this.searchMedicationResultBloc);
+
+  final SearchMedicationResultBloc searchMedicationResultBloc;
+  final minCharsSearch = 3;
+
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
-      const IconButton(onPressed: null, icon: Icon(Icons.qr_code_scanner)),
+      // const IconButton(onPressed: null, icon: Icon(Icons.qr_code_scanner)),
       IconButton(
         icon: const Icon(Icons.clear),
         onPressed: () {
@@ -36,23 +42,21 @@ class MedicationSearchDelegate extends SearchDelegate<void> {
 
   @override
   Widget buildResults(BuildContext context) {
-    search(context, query);
+    if (query.length < minCharsSearch) return const SizedBox.shrink();
     log('buildResults');
-    return const MedicationListWidget();
+    return buildResultList(context, query);
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    search(context, query);
+    if (query.length < minCharsSearch) return const SizedBox.shrink();
     log('buildSuggestions');
-    return const MedicationListWidget();
+    return buildResultList(context, query);
   }
 
-  void search(BuildContext context, String query) {
-    if (query.length < 3) return;
-    context
-        .read<SearchMedicationResultBloc>()
-        .add(Search(params: {'nombre': query}));
+  Widget buildResultList(BuildContext context, String query) {
+    searchMedicationResultBloc.add(Search(params: {'nombre': query}));
+    return const MedicationListWidget();
   }
 
   @override

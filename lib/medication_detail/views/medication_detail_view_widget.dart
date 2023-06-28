@@ -59,7 +59,7 @@ class MedicationDetailWidget extends StatelessWidget {
                       subtitle: Text(currentMedication.dosage!),
                     ),
                   FeaturesWidget(medication: currentMedication),
-                  const PresentationsGridWidget(),
+                  // const PresentationsGridWidget(),
                 ],
               ),
             )

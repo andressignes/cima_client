@@ -20,4 +20,9 @@ class AvailableSearchMedicationResultState extends SearchMedicationResultState {
 
   @override
   List<Object?> get props => [medicamentos];
+
+  @override
+  String toString() {
+    return '${medicamentos.length} medications';
+  }
 }

@@ -65,6 +65,7 @@ final router = GoRouter(
       name: Routes.medicationDetail.name,
       path: Routes.medicationDetail.path,
       pageBuilder: (context, state) {
+        log('call with params: ${state.queryParameters}');
         final stateBloc = context.read<SearchMedicationResultBloc>().state;
         if (stateBloc is AvailableSearchMedicationResultState) {
           final medicamento = stateBloc.medicamentos.firstWhereOrNull(
@@ -72,8 +73,12 @@ final router = GoRouter(
                 element.registerNumber == state.queryParameters['nregistro'],
           );
           if (medicamento == null) {
-            return const MaterialPage(child: Text('not found'));
+            log('mediation not found');
+            return const MaterialPage(child: Center(child: Text('not found')));
           }
+          context.read<MedicationDetailBloc>().add(
+                FetchMedicamento(nregistro: medicamento.registerNumber),
+              );
           return MedicationDetailPage.page(medication: medicamento);
         } else {
           log('medication not found');

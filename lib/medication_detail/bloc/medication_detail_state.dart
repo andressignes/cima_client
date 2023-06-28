@@ -20,4 +20,9 @@ class AvailableMedicationDetailState extends MedicationDetailState {
 
   @override
   List<Object> get props => [super.props, medicamento];
+
+  @override
+  String toString() {
+    return medicamento.name;
+  }
 }

@@ -1,7 +1,8 @@
-import 'package:cima_client/home/home.dart';
 import 'package:cima_client/l10n/l10n.dart';
 import 'package:cima_client/search/search.dart';
+import 'package:cima_client/search_result/bloc/search_medication_result_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -14,17 +15,17 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.home_page_title),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search),
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: MedicationSearchDelegate(),
-              );
-            },
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(Icons.search),
+        //     onPressed: () {
+        //       showSearch(
+        //         context: context,
+        //         delegate: MedicationSearchDelegate(),
+        //       );
+        //     },
+        //   ),
+        // ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -44,11 +45,11 @@ class HomePage extends StatelessWidget {
               style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 16),
-            const LinksRowWidget(),
+            // const LinksRowWidget(),
           ],
         ),
       ),
-      drawer: const DrawerWidget(),
+      // drawer: const DrawerWidget(),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -57,7 +58,9 @@ class HomePage extends StatelessWidget {
             onPressed: () {
               showSearch(
                 context: context,
-                delegate: MedicationSearchDelegate(),
+                delegate: MedicationSearchDelegate(
+                  context.read<SearchMedicationResultBloc>(),
+                ),
               );
             },
             child: const Icon(Icons.search),
