@@ -96,6 +96,87 @@ void main() {
       });
     });
 
+    group('getPresentation', () {
+      final presentationEndPoint = '/cima/rest/presentacion';
+      test('get presentation with valid cn', () async {
+        final nationalcode = '712729';
+
+        when(
+          () => client.get(Uri.https(
+            baseUrl,
+            '$presentationEndPoint/$nationalcode',
+          )),
+        ).thenAnswer((_) async => Response(jsonEncode(jsonResponse), 200));
+        final apiClient = CimaApiClient(
+          httpClient: client,
+          baseUrl: baseUrl,
+        );
+        final result =
+            await apiClient.getPresentation(nationalCode: nationalcode);
+        expect(result, isA<Response>());
+        expect(result.statusCode, 200);
+      });
+
+      test('get presentation with invalid cn', () async {
+        final nationalCode = 'fake';
+
+        when(
+          () => client.get(Uri.https(
+            baseUrl,
+            '$presentationEndPoint/$nationalCode',
+          )),
+        ).thenAnswer((_) async => Response('', 204));
+        final apiClient = CimaApiClient(
+          httpClient: client,
+          baseUrl: baseUrl,
+        );
+        final result =
+            await apiClient.getPresentation(nationalCode: nationalCode);
+        expect(result, isA<Response>());
+        expect(result.statusCode, 204);
+      });
+    });
+
+    group('findPresentation', () {
+      final presentationEndPoint = '/cima/rest/presentaciones';
+      final params = <String, String>{};
+      test('find presentation with valid cn', () async {
+        final nationalCode = '712729';
+        params['cn'] = nationalCode;
+
+        when(
+          () => client.get(Uri.https(baseUrl, presentationEndPoint, params)),
+        ).thenAnswer((_) async => Response(jsonEncode(jsonResponse), 200));
+        final apiClient = CimaApiClient(
+          httpClient: client,
+          baseUrl: baseUrl,
+        );
+        final result = await apiClient.searchPresentations(conditions: params);
+        expect(result, isA<Response>());
+        expect(result.statusCode, 200);
+      });
+
+      test('find presentation with invalid cn', () async {
+        final nationalCode = 'fake';
+        params['cn'] = nationalCode;
+
+        when(
+          () => client.get(Uri.https(
+            baseUrl,
+            presentationEndPoint,
+            params,
+          )),
+        ).thenAnswer((_) async => Response('', 204));
+        final apiClient = CimaApiClient(
+          httpClient: client,
+          baseUrl: baseUrl,
+        );
+        final result = await apiClient.searchPresentations(conditions: params);
+        expect(result, isA<Response>());
+        expect(result.statusCode, 204);
+      });
+    });
+
     group('getMedications', () {
       test('get medications without params', () async {
         final params = <String, String>{};
